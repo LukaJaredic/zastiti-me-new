@@ -20,3 +20,16 @@ declare module '@astryxdesign/core/Badge' {
     'gray': true;
   }
 }
+
+declare module '@astryxdesign/core/Card' {
+  interface CardVariantMap {
+    'door-kids': true;
+    'door-parents': true;
+  }
+}
+
+declare module '@astryxdesign/core/Section' {
+  interface SectionVariantMap {
+    'doors': true;
+  }
+}

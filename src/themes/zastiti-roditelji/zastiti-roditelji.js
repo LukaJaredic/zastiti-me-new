@@ -449,11 +449,41 @@ export const zastitiRoditeljiTheme = {
     "card": {
       "base": {
         "padding": "var(--spacing-3)"
+      },
+      "variant:door-kids": {
+        "backgroundColor": "var(--color-warning)"
+      },
+      "variant:door-parents": {
+        "backgroundColor": "var(--color-info-muted)"
       }
     },
     "section": {
       "base": {
         "padding": "var(--spacing-3)"
+      },
+      "variant:doors": {
+        "display": "grid",
+        "gridTemplateColumns": "repeat(2, minmax(0, 1fr))",
+        "gap": "var(--spacing-8)",
+        "paddingBlock": "var(--spacing-8)",
+        "paddingInlineStart": "max(var(--spacing-6), calc((100% - 1120px) / 2))",
+        "paddingInlineEnd": "max(var(--spacing-6), calc((100% - 1120px) / 2))",
+        "minHeight": "calc(100dvh - 73px)",
+        "boxSizing": "border-box"
+      }
+    },
+    "clickable-card": {
+      "variant:door-kids": {
+        "backgroundColor": "var(--color-warning)",
+        "borderRadius": "var(--radius-container)",
+        "overflow": "hidden",
+        "minHeight": "0"
+      },
+      "variant:door-parents": {
+        "backgroundColor": "var(--color-info-muted)",
+        "borderRadius": "var(--radius-container)",
+        "overflow": "hidden",
+        "minHeight": "0"
       }
     },
     "top-nav": {
@@ -519,6 +549,35 @@ export const zastitiRoditeljiTheme = {
             "scale": {
               "base": 16,
               "ratio": 1.1736
+            }
+          }
+        }
+      },
+      {
+        "when": {
+          "width": {
+            "below": "lg"
+          }
+        },
+        "value": {
+          "components": {
+            "section": {
+              "variant:doors": {
+                "gridTemplateColumns": "minmax(0, 1fr)",
+                "gridTemplateRows": "repeat(2, minmax(0, 1fr))",
+                "gap": "0",
+                "paddingBlock": "0",
+                "paddingInlineStart": "0",
+                "paddingInlineEnd": "0"
+              }
+            },
+            "clickable-card": {
+              "variant:door-kids": {
+                "borderRadius": "0"
+              },
+              "variant:door-parents": {
+                "borderRadius": "0"
+              }
             }
           }
         }

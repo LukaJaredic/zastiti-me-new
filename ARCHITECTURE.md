@@ -25,7 +25,7 @@ Stack: Next.js 16 (App Router, Cache Components, React Compiler), React 19, Astr
 app/
   [locale]/                  every page lives under the locale segment (me | en)
     layout.tsx               root layout: generateStaticParams (me, en), <html lang>, fonts, Providers, header, footer
-    page.tsx                 home: the three paths (SOS, parents, kids)
+    page.tsx                 home: the two doors (kids, parents)
     dictionaries.ts          getLocale() / getDictionary(): locale from next/root-params, typed messages
     sos/                     report form page + actions.ts (Server Action)
     kontakt/                 contact form page + actions.ts
@@ -73,7 +73,7 @@ These are the rules the code relies on. Breaking one needs a discussion and an u
 
 - **Messages** (`content/messages/*.json`) hold every short string and page copy, namespaced by page (`home.*`, `sos.*`, `parents.*`). Pages call `getDictionary()`, which reads the locale from `next/root-params` (see Next's internationalization guide in `node_modules/next/dist/docs/01-app/02-guides/internationalization.md`). No i18n library.
 - **Collections** (`content/activities.ts`, `content/guides.ts`, …) are typed arrays sorted newest-first, each item with a stable `slug`, a `date`, and localized fields. Detail routes read the same array in `generateStaticParams` and call `notFound()` when a slug isn't in it. Cache Components rules out `dynamicParams = false`.
-- **Client components never read the locale themselves.** `next/root-params` only works on the server, so pages pass localized strings down as props (see `components/PathCards.tsx`).
+- **Client components never read the locale themselves.** `next/root-params` only works on the server, so pages pass localized strings down as props (see `components/HomeDoors.tsx`).
 
 ### Not found
 
@@ -110,7 +110,7 @@ Built so far:
 - the Astryx setup, the `zastiti` theme with Phosphor icons, fonts and providers
 - locale routing: `[locale]` root segment, `proxy.ts`, `lib/i18n.ts` and typed dictionaries
 - `content/messages/`, copied verbatim from `old-site-reference/`
-- the home page with the three path cards, in both languages
+- the home page with the two doors (kids, parents), in both languages
 - the bilingual global 404
 - the header (`components/SiteHeader.tsx`, in AppShell's top nav, with a mobile drawer and a ME/EN link that keeps the current path) and footer (`components/SiteFooter.tsx`); their links live in `components/siteNav.ts`
 - audience colours: `components/AudienceTheme.tsx` wraps the header and page in a nested Astryx theme by URL (`/roditelji` teal, `/djeca` sun, `/sos` coral; shared pages keep brand green). The three themes in `src/themes/zastiti-{roditelji,djeca,sos}/` extend `zastiti` and swap only the accent family

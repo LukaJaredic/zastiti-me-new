@@ -146,6 +146,41 @@ export const zastitiTheme = defineTheme({
   },
 
   components: {
+    // Home: the two doors. Two framed cards side by side, filling the screen
+    // under the 72px header, on the same 1120px column as the header.
+    section: {
+      'variant:doors': {
+        display: 'grid',
+        gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
+        gap: 'var(--spacing-8)',
+        paddingBlock: 'var(--spacing-8)',
+        paddingInlineStart: 'max(var(--spacing-6), calc((100% - 1120px) / 2))',
+        paddingInlineEnd: 'max(var(--spacing-6), calc((100% - 1120px) / 2))',
+        minHeight: 'calc(100dvh - 73px)',
+        boxSizing: 'border-box',
+      },
+    },
+    // ClickableCard takes its variant names from Card's variant map, and the
+    // theme build only augments that map from `card` (Astryx 0.7.15). Enrol
+    // the door variants here so the type exists; ClickableCard paints them.
+    card: {
+      'variant:door-kids': {backgroundColor: 'var(--color-warning)'},
+      'variant:door-parents': {backgroundColor: 'var(--color-info-muted)'},
+    },
+    'clickable-card': {
+      'variant:door-kids': {
+        backgroundColor: 'var(--color-warning)',
+        borderRadius: 'var(--radius-container)',
+        overflow: 'hidden',
+        minHeight: '0',
+      },
+      'variant:door-parents': {
+        backgroundColor: 'var(--color-info-muted)',
+        borderRadius: 'var(--radius-container)',
+        overflow: 'hidden',
+        minHeight: '0',
+      },
+    },
     // The header bar sits on the same 1120px column as the footer and pages,
     // 72px tall, the logo and the SOS button on the column's edges.
     'top-nav': {
@@ -183,5 +218,33 @@ export const zastitiTheme = defineTheme({
         color: 'var(--color-on-error)',
       },
     },
+  },
+
+  adaptations: {
+    rules: [
+      // Phones and tablets: the doors stack, edge to edge, each half of the
+      // screen under the header, so both are visible at once.
+      {
+        when: {width: {below: 'lg'}},
+        value: {
+          components: {
+            section: {
+              'variant:doors': {
+                gridTemplateColumns: 'minmax(0, 1fr)',
+                gridTemplateRows: 'repeat(2, minmax(0, 1fr))',
+                gap: '0',
+                paddingBlock: '0',
+                paddingInlineStart: '0',
+                paddingInlineEnd: '0',
+              },
+            },
+            'clickable-card': {
+              'variant:door-kids': {borderRadius: '0'},
+              'variant:door-parents': {borderRadius: '0'},
+            },
+          },
+        },
+      },
+    ],
   },
 });

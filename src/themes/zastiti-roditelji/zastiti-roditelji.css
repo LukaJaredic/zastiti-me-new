@@ -546,8 +546,42 @@
     --astryx-card-padding: var(--spacing-3);
   }
 
+  .astryx-card[data-variant="door-kids"] {
+    background-color: var(--color-warning);
+  }
+
+  .astryx-card[data-variant="door-parents"] {
+    background-color: var(--color-info-muted);
+  }
+
   .astryx-section {
     --astryx-section-padding: var(--spacing-3);
+  }
+
+  .astryx-section[data-variant="doors"] {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--spacing-8);
+    min-height: calc(100dvh - 73px);
+    box-sizing: border-box;
+    --astryx-section-padding-inline-start: max(var(--spacing-6), calc((100% - 1120px) / 2));
+    --astryx-section-padding-inline-end: max(var(--spacing-6), calc((100% - 1120px) / 2));
+    --astryx-section-padding-block-start: var(--spacing-8);
+    --astryx-section-padding-block-end: var(--spacing-8);
+  }
+
+  .astryx-clickable-card[data-variant="door-kids"] {
+    background-color: var(--color-warning);
+    border-radius: var(--radius-container);
+    overflow: hidden;
+    min-height: 0;
+  }
+
+  .astryx-clickable-card[data-variant="door-parents"] {
+    background-color: var(--color-info-muted);
+    border-radius: var(--radius-container);
+    overflow: hidden;
+    min-height: 0;
   }
 
   .astryx-top-nav {
@@ -702,6 +736,30 @@
     --font-family-body: var(--font-onest), "Segoe UI", system-ui, sans-serif;
     --font-family-heading: var(--font-fraunces), Georgia, "Times New Roman", serif;
     --font-family-code: ui-monospace, "SF Mono", Consolas, monospace;
+  }
+  }
+}
+
+@media (width < 1024px) {
+  @scope ([data-astryx-theme="zastiti-roditelji"]) to ([data-astryx-theme]) {
+    .astryx-section[data-variant="doors"] {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+    gap: 0;
+    --astryx-section-padding: 0;
+    --astryx-section-padding-inline: initial;
+    --astryx-section-padding-inline-start: initial;
+    --astryx-section-padding-inline-end: initial;
+    --astryx-section-padding-block-start: initial;
+    --astryx-section-padding-block-end: initial;
+  }
+
+    .astryx-clickable-card[data-variant="door-kids"] {
+    border-radius: 0;
+  }
+
+    .astryx-clickable-card[data-variant="door-parents"] {
+    border-radius: 0;
   }
   }
 }

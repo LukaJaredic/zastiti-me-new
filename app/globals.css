@@ -102,9 +102,13 @@
     rotate: 1.3deg;
   }
 
-  [data-underline-seed]:hover::after {
-    opacity: 0.35;
-    clip-path: inset(0);
+  /* Hover effects only on devices that can hover: on touch screens a tap
+     leaves :hover stuck on until the next tap elsewhere. */
+  @media (hover: hover) {
+    [data-underline-seed]:hover::after {
+      opacity: 0.35;
+      clip-path: inset(0);
+    }
   }
 
   [data-underline-seed][aria-current="page"]::after {
@@ -115,6 +119,25 @@
   @media (prefers-reduced-motion: reduce) {
     [data-underline-seed]::after {
       transition: none;
+    }
+  }
+
+  /* The homepage doors rise 2px on hover (cut paper, the door-* variants in
+     the zastiti theme). Here and not in the theme because a theme override
+     can't be limited to devices that can hover. Only from 1024px: below it
+     the doors lie stacked edge to edge and don't rise. With reduced motion
+     the shadow still deepens, but the door stays put. Not while pressed:
+     this layer beats the theme's, and the press (:active) lives there. */
+  @media (hover: hover) and (width >= 1024px) {
+    .astryx-clickable-card:is([data-variant="door-kids"], [data-variant="door-parents"]):hover:not(:active) {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-cut-hover);
+    }
+  }
+
+  @media (hover: hover) and (width >= 1024px) and (prefers-reduced-motion: reduce) {
+    .astryx-clickable-card:is([data-variant="door-kids"], [data-variant="door-parents"]):hover:not(:active) {
+      transform: none;
     }
   }
 

@@ -6,9 +6,9 @@ import {Grid} from '@astryxdesign/core/Grid';
 import {Divider} from '@astryxdesign/core/Divider';
 import {Text} from '@astryxdesign/core/Text';
 import {Link} from '@astryxdesign/core/Link';
-import {List, ListItem} from '@astryxdesign/core/List';
 import type {Locale} from '@/lib/i18n';
 import type {Messages} from '@/app/[locale]/dictionaries';
+import {FooterLinks} from './FooterLinks';
 import {Logo} from './Logo';
 import {footerLinks, legalLinks} from './siteNav';
 
@@ -73,15 +73,13 @@ export async function SiteFooter({
               </VStack>
 
               <Column label={footer.quickLinksTitle}>
-                <List edge="flush">
-                  {footerLinks(footer).map((l) => (
-                    <ListItem
-                      key={l.path}
-                      label={l.label}
-                      href={`${home}${l.path}`}
-                    />
-                  ))}
-                </List>
+                <FooterLinks
+                  layout="column"
+                  links={footerLinks(footer).map((l) => ({
+                    label: l.label,
+                    href: `${home}${l.path}`,
+                  }))}
+                />
               </Column>
 
               <Column label={contactLabel}>
@@ -102,23 +100,15 @@ export async function SiteFooter({
                 <Text type="supporting">
                   {footer.copyright.replace('{year}', String(year))}
                 </Text>
-                <HStack
-                  as="nav"
-                  gap={6}
-                  wrap="wrap"
-                  aria-label={footer.legalLinksTitle}
-                >
-                  {legalLinks(footer).map((l) => (
-                    <Link
-                      key={l.path}
-                      href={`${home}${l.path}`}
-                      type="supporting"
-                      color="secondary"
-                    >
-                      {l.label}
-                    </Link>
-                  ))}
-                </HStack>
+                <VStack as="nav" aria-label={footer.legalLinksTitle}>
+                  <FooterLinks
+                    layout="row"
+                    links={legalLinks(footer).map((l) => ({
+                      label: l.label,
+                      href: `${home}${l.path}`,
+                    }))}
+                  />
+                </VStack>
               </HStack>
             </VStack>
           </VStack>

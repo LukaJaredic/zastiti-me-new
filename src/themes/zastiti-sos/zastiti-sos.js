@@ -451,10 +451,10 @@ export const zastitiSosTheme = {
         "padding": "var(--spacing-3)"
       },
       "variant:door-kids": {
-        "backgroundColor": "#f3ba4a"
+        "backgroundColor": "#f9b52e"
       },
       "variant:door-parents": {
-        "backgroundColor": "#d6eaee"
+        "backgroundColor": "#cae4eb"
       }
     },
     "section": {
@@ -488,7 +488,7 @@ export const zastitiSosTheme = {
         "--door-art-position": "right 35%",
         "--door-art-mask": "none",
         "--door-art-flip": "none",
-        "backgroundColor": "#f3ba4a"
+        "backgroundColor": "#f9b52e"
       },
       "variant:door-parents": {
         "borderRadius": "var(--radius-container)",
@@ -505,7 +505,7 @@ export const zastitiSosTheme = {
         "--door-art-position": "right 35%",
         "--door-art-mask": "none",
         "--door-art-flip": "none",
-        "backgroundColor": "#d6eaee"
+        "backgroundColor": "#cae4eb"
       }
     },
     "top-nav": {

@@ -547,11 +547,11 @@
   }
 
   .astryx-card[data-variant="door-kids"] {
-    background-color: #f3ba4a;
+    background-color: #f9b52e;
   }
 
   .astryx-card[data-variant="door-parents"] {
-    background-color: #d6eaee;
+    background-color: #cae4eb;
   }
 
   .astryx-section {
@@ -585,7 +585,7 @@
     --door-art-position: right 35%;
     --door-art-mask: none;
     --door-art-flip: none;
-    background-color: #f3ba4a;
+    background-color: #f9b52e;
   }
 
   .astryx-clickable-card[data-variant="door-parents"] {
@@ -603,7 +603,7 @@
     --door-art-position: right 35%;
     --door-art-mask: none;
     --door-art-flip: none;
-    background-color: #d6eaee;
+    background-color: #cae4eb;
   }
 
   .astryx-top-nav {

@@ -31,7 +31,7 @@ export default async function Home() {
             description: home.kidsDescription,
             action: home.kidsAction,
             href: `/${locale}/djeca`,
-            image: '/images/home/djeca.webp',
+            image: '/images/home/djeca-papir.webp',
           },
           {
             audience: 'parents',
@@ -39,7 +39,7 @@ export default async function Home() {
             description: home.parentsDescription,
             action: home.parentsAction,
             href: `/${locale}/roditelji`,
-            image: '/images/home/roditelji.webp',
+            image: '/images/home/roditelji-papir.webp',
           },
         ]}
       />

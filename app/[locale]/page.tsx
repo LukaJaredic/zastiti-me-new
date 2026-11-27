@@ -1,6 +1,19 @@
+import type {Metadata} from 'next';
 import {VisuallyHidden} from '@astryxdesign/core/VisuallyHidden';
 import {HomeDoors} from '@/components/HomeDoors';
+import {pageMetadata} from '@/lib/metadata';
 import {getDictionary, getLocale} from './dictionaries';
+
+export async function generateMetadata(): Promise<Metadata> {
+  const {metadata, components} = await getDictionary();
+  return pageMetadata({
+    locale: await getLocale(),
+    path: '',
+    title: metadata['default-title'],
+    description: metadata['default-description'],
+    siteName: components.header.siteName,
+  });
+}
 
 export default async function Home() {
   const locale = await getLocale();

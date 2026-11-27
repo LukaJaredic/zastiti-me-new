@@ -4,6 +4,7 @@ import "../globals.css";
 import "@astryxdesign/core/reset.css";
 import "@astryxdesign/core/astryx.css";
 import { htmlLang, locales } from "@/lib/i18n";
+import { siteUrl } from "@/lib/metadata";
 import { AppShell } from "@astryxdesign/core/AppShell";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -31,9 +32,12 @@ export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
 }
 
+// Defaults for every page. Each page adds its own title, canonical,
+// hreflang and Open Graph tags through pageMetadata() in lib/metadata.ts.
 export async function generateMetadata(): Promise<Metadata> {
   const { metadata } = await getDictionary();
   return {
+    metadataBase: siteUrl,
     title: metadata["default-title"],
     description: metadata["default-description"],
   };

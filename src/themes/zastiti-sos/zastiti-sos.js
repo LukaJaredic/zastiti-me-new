@@ -125,7 +125,7 @@ export const zastitiSosTheme = {
     "--color-syntax-added-marker": "var(--color-syntax-punctuation)",
     "--color-syntax-removed-marker": "var(--color-syntax-punctuation)",
     "--color-background-surface": "light-dark(#ffffff, #17201b)",
-    "--color-background-body": "light-dark(#f7f5f0, #101713)",
+    "--color-background-body": "light-dark(#f6efe1, #101713)",
     "--color-background-card": "light-dark(#ffffff, #17201b)",
     "--color-background-popover": "light-dark(#ffffff, #17201b)",
     "--color-background-muted": "light-dark(#efebe2, #0b100d)",
@@ -230,10 +230,28 @@ export const zastitiSosTheme = {
     "--size-element-lg": "44px"
   },
   localTokens: {
-    "--astryx-theme-neutral-color-status-fill-accent": "light-dark(#0074e2, #6d9cfe)"
+    "--astryx-theme-neutral-color-status-fill-accent": "light-dark(#0074e2, #6d9cfe)",
+    "--paper-grain": "url(/images/paper-grain.webp)",
+    "--paper-strip": "light-dark(#fffaf0, #17201b)",
+    "--paper-cream": "light-dark(#f3e6cb, #0b100d)",
+    "--sos-edge": "light-dark(#7a2410, #a8442a)",
+    "--shadow-cut": "0 3px 0 light-dark(rgba(26, 67, 41, 0.13), rgba(0, 0, 0, 0.45)), 0 16px 30px -14px light-dark(rgba(26, 67, 41, 0.35), rgba(0, 0, 0, 0.7))",
+    "--shadow-cut-hover": "0 5px 0 light-dark(rgba(26, 67, 41, 0.13), rgba(0, 0, 0, 0.45)), 0 22px 34px -14px light-dark(rgba(26, 67, 41, 0.38), rgba(0, 0, 0, 0.75))",
+    "--shadow-cut-stack": "0 3px 0 light-dark(rgba(26, 67, 41, 0.14), rgba(0, 0, 0, 0.5)), 0 10px 18px -8px light-dark(rgba(26, 67, 41, 0.3), rgba(0, 0, 0, 0.6))",
+    "--shadow-strip": "0 2px 0 light-dark(rgba(26, 67, 41, 0.07), rgba(0, 0, 0, 0.35)), 0 8px 16px -8px light-dark(rgba(26, 67, 41, 0.22), rgba(0, 0, 0, 0.6))",
+    "--shadow-fold": "0 -2px 0 light-dark(rgba(26, 67, 41, 0.06), rgba(0, 0, 0, 0.35)), inset 0 1px 0 light-dark(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.04))"
   },
   __localTokenOwners: {
-    "--astryx-theme-neutral-color-status-fill-accent": "neutral"
+    "--astryx-theme-neutral-color-status-fill-accent": "neutral",
+    "--paper-grain": "zastiti",
+    "--paper-strip": "zastiti",
+    "--paper-cream": "zastiti",
+    "--sos-edge": "zastiti",
+    "--shadow-cut": "zastiti",
+    "--shadow-cut-hover": "zastiti",
+    "--shadow-cut-stack": "zastiti",
+    "--shadow-strip": "zastiti",
+    "--shadow-fold": "zastiti"
   },
   __localTokenLineage: ["neutral","zastiti","zastiti-sos"],
   components: {
@@ -371,7 +389,13 @@ export const zastitiSosTheme = {
       },
       "variant:sos": {
         "backgroundColor": "var(--color-error)",
-        "color": "var(--color-on-error)"
+        "color": "var(--color-on-error)",
+        "boxShadow": "0 3px 0 var(--sos-edge)",
+        "transition": "transform 100ms ease-out, box-shadow 100ms ease-out",
+        ":active": {
+          "transform": "translateY(2px)",
+          "boxShadow": "0 1px 0 var(--sos-edge)"
+        }
       }
     },
     "badge": {
@@ -467,6 +491,12 @@ export const zastitiSosTheme = {
       "base": {
         "padding": "var(--spacing-3)"
       },
+      "variant:muted": {
+        "backgroundColor": "var(--paper-cream)",
+        "backgroundImage": "var(--paper-grain)",
+        "boxShadow": "var(--shadow-fold)",
+        "borderTopColor": "transparent"
+      },
       "variant:doors": {
         "display": "grid",
         "gridTemplateColumns": "repeat(2, minmax(0, 1fr))",
@@ -478,9 +508,37 @@ export const zastitiSosTheme = {
         "boxSizing": "border-box"
       }
     },
+    "app-shell": {
+      "variant:section": {
+        "backgroundColor": "var(--color-background-body)",
+        "backgroundImage": "var(--paper-grain)"
+      }
+    },
+    "app-shell-header": {
+      "base": {
+        "backgroundColor": "var(--paper-strip)",
+        "backgroundImage": "var(--paper-grain)",
+        "boxShadow": "var(--shadow-strip)",
+        "zIndex": "3",
+        "borderTopWidth": "4px",
+        "borderTopStyle": "solid",
+        "borderTopColor": "var(--color-accent)"
+      }
+    },
+    "layout-header": {
+      "base": {
+        "borderBottomColor": "transparent"
+      }
+    },
     "clickable-card": {
       "variant:door-kids": {
-        "borderRadius": "var(--radius-container)",
+        "borderRadius": "var(--radius-page)",
+        "boxShadow": "var(--shadow-cut)",
+        "transition": "transform 160ms ease-out, box-shadow 160ms ease-out",
+        ":hover": {
+          "transform": "translateY(-2px)",
+          "boxShadow": "var(--shadow-cut-hover)"
+        },
         "overflow": "hidden",
         "minHeight": "0",
         "display": "grid",
@@ -500,7 +558,13 @@ export const zastitiSosTheme = {
         "backgroundColor": "#f9b52e"
       },
       "variant:door-parents": {
-        "borderRadius": "var(--radius-container)",
+        "borderRadius": "var(--radius-page)",
+        "boxShadow": "var(--shadow-cut)",
+        "transition": "transform 160ms ease-out, box-shadow 160ms ease-out",
+        ":hover": {
+          "transform": "translateY(-2px)",
+          "boxShadow": "var(--shadow-cut-hover)"
+        },
         "overflow": "hidden",
         "minHeight": "0",
         "display": "grid",
@@ -536,13 +600,6 @@ export const zastitiSosTheme = {
         "backgroundColor": "var(--color-accent-muted)",
         "color": "var(--color-text-accent)",
         "borderRadius": "var(--radius-element)"
-      }
-    },
-    "app-shell-header": {
-      "base": {
-        "borderTopWidth": "4px",
-        "borderTopStyle": "solid",
-        "borderTopColor": "var(--color-accent)"
       }
     }
   },
@@ -621,6 +678,12 @@ export const zastitiSosTheme = {
                 "--door-text-items": "flex-start",
                 "--door-text-anchor": "start",
                 "--door-text-max": "100%",
+                "zIndex": "1",
+                "boxShadow": "var(--shadow-cut-stack)",
+                ":hover": {
+                  "transform": "none",
+                  "boxShadow": "var(--shadow-cut-stack)"
+                },
                 "--door-text-col": "1",
                 "--door-art-width": "68%",
                 "--door-art-side": "end",
@@ -636,11 +699,44 @@ export const zastitiSosTheme = {
                 "--door-text-items": "flex-start",
                 "--door-text-anchor": "start",
                 "--door-text-max": "100%",
+                "boxShadow": "none",
+                ":hover": {
+                  "transform": "none",
+                  "boxShadow": "none"
+                },
                 "--door-text-col": "2",
                 "--door-art-width": "60%",
                 "--door-art-side": "start",
                 "--door-art-position": "0% 60%",
                 "--door-art-mask": "linear-gradient(to left, transparent, #000 26%)"
+              }
+            }
+          }
+        }
+      },
+      {
+        "when": {
+          "motion": "reduce"
+        },
+        "value": {
+          "components": {
+            "clickable-card": {
+              "variant:door-kids": {
+                ":hover": {
+                  "transform": "none"
+                }
+              },
+              "variant:door-parents": {
+                ":hover": {
+                  "transform": "none"
+                }
+              }
+            },
+            "button": {
+              "variant:sos": {
+                ":active": {
+                  "transform": "none"
+                }
               }
             }
           }

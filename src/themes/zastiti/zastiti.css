@@ -194,7 +194,7 @@
     --color-syntax-added-marker: var(--color-syntax-punctuation);
     --color-syntax-removed-marker: var(--color-syntax-punctuation);
     --color-background-surface: light-dark(#ffffff, #17201b);
-    --color-background-body: light-dark(#f7f5f0, #101713);
+    --color-background-body: light-dark(#f6efe1, #101713);
     --color-background-card: light-dark(#ffffff, #17201b);
     --color-background-popover: light-dark(#ffffff, #17201b);
     --color-background-muted: light-dark(#efebe2, #0b100d);
@@ -307,6 +307,15 @@
     --color-border-error: var(--color-text-error);
     --duration-exit: var(--duration-fast);
     --astryx-theme-neutral-color-status-fill-accent: light-dark(#0074e2, #6d9cfe);
+    --paper-grain: url(/images/paper-grain.webp);
+    --paper-strip: light-dark(#fffaf0, #17201b);
+    --paper-cream: light-dark(#f3e6cb, #0b100d);
+    --sos-edge: light-dark(#7a2410, #a8442a);
+    --shadow-cut: 0 3px 0 light-dark(rgba(26, 67, 41, 0.13), rgba(0, 0, 0, 0.45)), 0 16px 30px -14px light-dark(rgba(26, 67, 41, 0.35), rgba(0, 0, 0, 0.7));
+    --shadow-cut-hover: 0 5px 0 light-dark(rgba(26, 67, 41, 0.13), rgba(0, 0, 0, 0.45)), 0 22px 34px -14px light-dark(rgba(26, 67, 41, 0.38), rgba(0, 0, 0, 0.75));
+    --shadow-cut-stack: 0 3px 0 light-dark(rgba(26, 67, 41, 0.14), rgba(0, 0, 0, 0.5)), 0 10px 18px -8px light-dark(rgba(26, 67, 41, 0.3), rgba(0, 0, 0, 0.6));
+    --shadow-strip: 0 2px 0 light-dark(rgba(26, 67, 41, 0.07), rgba(0, 0, 0, 0.35)), 0 8px 16px -8px light-dark(rgba(26, 67, 41, 0.22), rgba(0, 0, 0, 0.6));
+    --shadow-fold: 0 -2px 0 light-dark(rgba(26, 67, 41, 0.06), rgba(0, 0, 0, 0.35)), inset 0 1px 0 light-dark(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.04));
   }
 
   :scope {
@@ -460,6 +469,22 @@
   .astryx-button[data-variant="sos"] {
     background-color: var(--color-error);
     color: var(--color-on-error);
+    box-shadow: 0 3px 0 var(--sos-edge);
+    transition: transform 100ms ease-out, box-shadow 100ms ease-out;
+  }
+
+  @media not all and (pointer: coarse) {
+  .astryx-button[data-variant="sos"]:active {
+    transform: translateY(2px);
+    box-shadow: 0 1px 0 var(--sos-edge);
+  }
+  }
+
+  @media (pointer: coarse) {
+  .astryx-button[data-variant="sos"]:is([data-astryx-press="on"], [data-astryx-press="on"] :where(:not([data-astryx-pressable], [data-astryx-press="on"] [data-astryx-pressable] *)), :where(:not([data-astryx-pressable])):has([data-astryx-press="on"])) {
+    transform: translateY(2px);
+    box-shadow: 0 1px 0 var(--sos-edge);
+  }
   }
 
   .astryx-badge[data-variant="neutral"] {
@@ -566,6 +591,13 @@
     --astryx-section-padding: var(--spacing-3);
   }
 
+  .astryx-section[data-variant="muted"] {
+    background-color: var(--paper-cream);
+    background-image: var(--paper-grain);
+    box-shadow: var(--shadow-fold);
+    border-top-color: transparent;
+  }
+
   .astryx-section[data-variant="doors"] {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -578,8 +610,26 @@
     --astryx-section-padding-block-end: var(--spacing-8);
   }
 
+  .astryx-app-shell[data-variant="section"] {
+    background-color: var(--color-background-body);
+    background-image: var(--paper-grain);
+  }
+
+  .astryx-app-shell-header {
+    background-color: var(--paper-strip);
+    background-image: var(--paper-grain);
+    box-shadow: var(--shadow-strip);
+    z-index: 3;
+  }
+
+  .astryx-layout-header {
+    border-bottom-color: transparent;
+  }
+
   .astryx-clickable-card[data-variant="door-kids"] {
-    border-radius: var(--radius-container);
+    border-radius: var(--radius-page);
+    box-shadow: var(--shadow-cut);
+    transition: transform 160ms ease-out, box-shadow 160ms ease-out;
     overflow: hidden;
     min-height: 0;
     display: grid;
@@ -599,8 +649,15 @@
     background-color: #f9b52e;
   }
 
+  .astryx-clickable-card[data-variant="door-kids"]:hover:where(:not(:disabled,[aria-disabled="true"])) {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-cut-hover);
+  }
+
   .astryx-clickable-card[data-variant="door-parents"] {
-    border-radius: var(--radius-container);
+    border-radius: var(--radius-page);
+    box-shadow: var(--shadow-cut);
+    transition: transform 160ms ease-out, box-shadow 160ms ease-out;
     overflow: hidden;
     min-height: 0;
     display: grid;
@@ -618,6 +675,11 @@
     --door-art-position: left 35%;
     --door-art-mask: none;
     background-color: #c7e8eb;
+  }
+
+  .astryx-clickable-card[data-variant="door-parents"]:hover:where(:not(:disabled,[aria-disabled="true"])) {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-cut-hover);
   }
 
   .astryx-top-nav {
@@ -800,11 +862,18 @@
     --door-text-items: flex-start;
     --door-text-anchor: start;
     --door-text-max: 100%;
+    z-index: 1;
+    box-shadow: var(--shadow-cut-stack);
     --door-text-col: 1;
     --door-art-width: 68%;
     --door-art-side: end;
     --door-art-position: 70% 60%;
     --door-art-mask: linear-gradient(to right, transparent, #000 45%);
+  }
+
+    .astryx-clickable-card[data-variant="door-kids"]:hover:where(:not(:disabled,[aria-disabled="true"])) {
+    transform: none;
+    box-shadow: var(--shadow-cut-stack);
   }
 
     .astryx-clickable-card[data-variant="door-parents"] {
@@ -816,11 +885,41 @@
     --door-text-items: flex-start;
     --door-text-anchor: start;
     --door-text-max: 100%;
+    box-shadow: none;
     --door-text-col: 2;
     --door-art-width: 60%;
     --door-art-side: start;
     --door-art-position: 0% 60%;
     --door-art-mask: linear-gradient(to left, transparent, #000 26%);
+  }
+
+    .astryx-clickable-card[data-variant="door-parents"]:hover:where(:not(:disabled,[aria-disabled="true"])) {
+    transform: none;
+    box-shadow: none;
+  }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  @scope ([data-astryx-theme="zastiti"]) to ([data-astryx-theme]) {
+    .astryx-clickable-card[data-variant="door-kids"]:hover:where(:not(:disabled,[aria-disabled="true"])) {
+    transform: none;
+  }
+
+    .astryx-clickable-card[data-variant="door-parents"]:hover:where(:not(:disabled,[aria-disabled="true"])) {
+    transform: none;
+  }
+
+    @media not all and (pointer: coarse) {
+  .astryx-button[data-variant="sos"]:active {
+    transform: none;
+  }
+  }
+
+    @media (pointer: coarse) {
+  .astryx-button[data-variant="sos"]:is([data-astryx-press="on"], [data-astryx-press="on"] :where(:not([data-astryx-pressable], [data-astryx-press="on"] [data-astryx-pressable] *)), :where(:not([data-astryx-pressable])):has([data-astryx-press="on"])) {
+    transform: none;
+  }
   }
   }
 }

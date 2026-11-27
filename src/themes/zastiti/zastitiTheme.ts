@@ -34,6 +34,9 @@ export const c = {
   // surface and sunken: no cream at night.
   strip: ['#fffaf0', '#17201b'],
   cream: ['#f3e6cb', '#0b100d'],
+  // The mobile menu sheet: cream; at night a step lighter than the page so
+  // it reads as lying on top.
+  sheet: ['#f3e6cb', '#1b231e'],
   sosEdge: ['#7a2410', '#a8442a'],
 } as const;
 
@@ -220,6 +223,16 @@ export const zastitiTheme = defineTheme({
     '--paper-strip': t(c.strip),
     '--paper-cream': t(c.cream),
     '--sos-edge': t(c.sosEdge),
+    '--paper-sheet': t(c.sheet),
+    // A torn paper edge, a 160px tile repeated along a sheet's bottom (used
+    // as a mask, so it is the shape, not a colour).
+    '--paper-torn-edge': 'url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22160%22%20height%3D%2214%22%20viewBox%3D%220%200%20160%2014%22%3E%3Cpath%20d%3D%22M0%200H160V6L154%209%20147%207%20141%2011%20133%208%20126%2010%20118%206%20111%209%20104%208%2097%2012%2090%209%2083%2010%2076%207%2069%2010%2061%208%2054%2011%2047%208%2040%209%2033%206%2026%2010%2019%208%2012%2011%206%208%200%209Z%22%2F%3E%3C%2Fsvg%3E")',
+    // A fold: a crease line, dark then light, like a folded sheet.
+    '--paper-fold':
+      'linear-gradient(light-dark(rgba(26, 67, 41, 0.1), rgba(0, 0, 0, 0.5)) 0 1px, light-dark(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.05)) 1px 2px)',
+    // A filter, so the shadow follows the torn edge.
+    '--shadow-sheet':
+      'drop-shadow(0 3px 0 light-dark(rgba(26, 67, 41, 0.12), rgba(0, 0, 0, 0.45))) drop-shadow(0 14px 14px light-dark(rgba(26, 67, 41, 0.22), rgba(0, 0, 0, 0.6)))',
     '--shadow-cut':
       '0 3px 0 light-dark(rgba(26, 67, 41, 0.13), rgba(0, 0, 0, 0.45)), 0 16px 30px -14px light-dark(rgba(26, 67, 41, 0.35), rgba(0, 0, 0, 0.7))',
     '--shadow-cut-hover':
@@ -267,6 +280,16 @@ export const zastitiTheme = defineTheme({
         boxShadow: 'var(--shadow-fold)',
         borderTopColor: 'transparent',
       },
+      // The menu sheet's paper: cream with grain, and a torn bottom edge cut
+      // by a mask (the paper above it, the torn tile along the bottom).
+      'variant:menu-sheet': {
+        backgroundColor: 'var(--paper-sheet)',
+        backgroundImage: 'var(--paper-grain)',
+        maskImage: 'linear-gradient(#000 0 0), var(--paper-torn-edge)',
+        maskSize: '100% calc(100% - 13px), 160px 14px',
+        maskPosition: 'top, bottom left',
+        maskRepeat: 'no-repeat, repeat-x',
+      },
       // Home: the two doors. Two framed cards side by side, filling the
       // screen under the 72px header, on the same 1120px column as the header.
       'variant:doors': {
@@ -278,6 +301,45 @@ export const zastitiTheme = defineTheme({
         paddingInlineEnd: 'max(var(--spacing-6), calc((100% - 1120px) / 2))',
         minHeight: 'calc(100dvh - 73px)',
         boxSizing: 'border-box',
+      },
+    },
+    // The mobile menu (MobileMenu): a full-width sheet pinned to the top.
+    // The dialog itself is only the frame and casts the shadow; the paper
+    // and its torn edge are the Section inside.
+    dialog: {
+      'variant:menu-sheet': {
+        backgroundColor: 'transparent',
+        borderRadius: '0',
+        boxShadow: 'none',
+        padding: '0',
+        filter: 'var(--shadow-sheet)',
+        // Edge to edge: no viewport gutters.
+        maxWidth: '100%',
+        // Unfolds down from the top instead of Dialog's zoom from the
+        // button (keyframes in app/globals.css).
+        animation: 'menu-sheet-down 280ms cubic-bezier(0.2, 0.8, 0.2, 1)',
+      },
+    },
+    divider: {
+      'variant:fold': {
+        height: '2px',
+        backgroundColor: 'transparent',
+        backgroundImage: 'var(--paper-fold)',
+        borderWidth: '0',
+      },
+    },
+    // Menu links: 20px semibold rows, 52px tall.
+    'side-nav-item': {
+      'size:lg': {
+        minHeight: '52px',
+        fontSize: 'var(--font-size-xl)',
+        fontWeight: 'var(--font-weight-semibold)',
+        letterSpacing: '-0.01em',
+      },
+      // The current page: the brand tint pill, as in the desktop bar.
+      selected: {
+        backgroundColor: 'var(--color-accent-muted)',
+        color: 'var(--color-text-accent)',
       },
     },
     // Headings balance their lines so a title breaks evenly ("Za /
@@ -345,6 +407,14 @@ export const zastitiTheme = defineTheme({
         borderColor: 'var(--color-border-emphasized)',
       },
       // The SOS button: reporting violence only.
+      // The menu's language and theme buttons: icons only, 64px targets.
+      'variant:menu-setting': {
+        width: '64px',
+        height: '64px',
+        borderRadius: 'var(--radius-element)',
+        backgroundColor: 'transparent',
+        color: 'var(--color-text-primary)',
+      },
       // Paper craft: a darker paper edge underneath that presses flat when
       // tapped. Still a solid fill: no texture on the one urgent action.
       'variant:sos': {
@@ -428,6 +498,10 @@ export const zastitiTheme = defineTheme({
             },
             button: {
               'variant:sos': {':active': {transform: 'none'}},
+            },
+            // The menu appears in place without sliding.
+            dialog: {
+              'variant:menu-sheet': {animation: 'none'},
             },
           },
         },

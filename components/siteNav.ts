@@ -5,7 +5,6 @@ import type {Messages} from '@/app/[locale]/dictionaries';
  * site's Montenegrin slugs (ARCHITECTURE.md, invariant 5).
  */
 
-type Header = Messages['components']['header'];
 type Footer = Messages['components']['footer'];
 
 export type Audience = 'parents' | 'kids' | 'sos';
@@ -33,17 +32,12 @@ export function primaryLinks(m: Messages): NavLink[] {
   ];
 }
 
-/** Every page, for the mobile menu. */
-export function allLinks(m: Messages): NavLink[] {
-  const menu: Header['menu'] = m.components.header.menu;
-  return [
-    {label: menu.home, path: ''},
-    ...primaryLinks(m),
-    {label: menu.digitalAbuse, path: '/digitalno-nasilje'},
-    {label: menu.team, path: '/tim-i-partneri'},
-    {label: menu.contact, path: '/kontakt'},
-    {label: menu.rest, path: '/ostalo'},
-  ];
+/**
+ * The mobile menu: home and the same five words as the desktop bar. The
+ * other pages are linked from the footer (design system, MobileMenu).
+ */
+export function menuLinks(m: Messages): NavLink[] {
+  return [{label: m.components.header.menu.home, path: ''}, ...primaryLinks(m)];
 }
 
 export const sosPath = '/sos';

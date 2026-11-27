@@ -9,7 +9,7 @@ import { AppShell } from "@astryxdesign/core/AppShell";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { AudienceTheme } from "@/components/AudienceTheme";
-import { allLinks, primaryLinks } from "@/components/siteNav";
+import { menuLinks, primaryLinks } from "@/components/siteNav";
 import { Providers } from "../providers";
 import { getDictionary, getLocale } from "./dictionaries";
 
@@ -66,12 +66,13 @@ export default async function RootLayout({
                   content={{
                     siteName: components.header.siteName,
                     navLabel: components.header.menuButtonTitle,
+                    closeMenuLabel: components.header.closeMenu,
                     sosLabel: components.header.sosButton,
                     languageLabel: components.header.languageSwitcherAria,
                     themeDarkLabel: components.header.themeDark,
                     themeLightLabel: components.header.themeLight,
                     primary: primaryLinks(messages),
-                    all: allLinks(messages),
+                    menu: menuLinks(messages),
                   }}
                 />
               }

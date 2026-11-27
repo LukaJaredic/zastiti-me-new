@@ -20,15 +20,18 @@ export function Logo({
   name,
   href,
   size = 'xl',
+  onClick,
 }: {
   name: string;
   href: string;
   size?: keyof typeof heights;
+  /** Runs before navigating (the mobile menu closes itself). */
+  onClick?: () => void;
 }) {
   const height = heights[size];
   const {resolved} = useColorMode();
   return (
-    <Link href={href} isStandalone>
+    <Link href={href} isStandalone onClick={onClick}>
       <Image
         src="/images/logo.png"
         alt={name}

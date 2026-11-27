@@ -24,7 +24,7 @@ The full brand book is the Zaštiti.me design system: https://claude.ai/artifact
 - **Type:** Onest for everything; headings carry weight (display and h1 bold, the rest semibold). Sentence case for titles and buttons. Body text at least 16px, reading column max 38rem.
 - **Icons:** Phosphor (`@phosphor-icons/react`), `regular` weight, through Astryx `<Icon icon={…Icon} />`. Fixed meanings: `WarningCircleIcon` = SOS, `BookOpenTextIcon` = parents, `GameControllerIcon` = kids, `ShieldCheckIcon` = privacy and safety.
 - **Copy:** Montenegrin first. Use the approved text from `old-site-reference/zastiti-me/messages/*.json` verbatim, and address the reader as "ti". Ask before writing new copy.
-- **Tokens:** all colours, radii, shadows and fonts live in `src/themes/zastiti/zastitiTheme.ts`. Change the design system first, mirror the change there, then run `npx astryx theme build src/themes/zastiti/zastitiTheme.ts`.
+- **Tokens:** all colours, radii, shadows and fonts live in `src/themes/zastiti/zastitiTheme.ts`. Change the design system first, then mirror the change there. While you work, keep `npx astryx theme build --watch src/themes/zastiti*/*Theme.ts` running. The built theme files (`src/themes/zastiti*/zastiti*.{css,js,d.ts}`) are generated and gitignored: `npm run themes` rebuilds them, and `npm run dev` and `npm run build` run it first. Never edit or commit them.
 - **Accessibility:** WCAG 2.2 AA. Every theme colour pair is checked for contrast. Keep focus rings visible, label every field, and never show state by colour alone.
 
 <!-- ASTRYX:START -->

@@ -3,7 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "themes": "astryx theme build src/themes/zastiti*/*Theme.ts",
+    "predev": "npm run themes",
     "dev": "next dev",
+    "prebuild": "npm run themes",
     "build": "next build",
     "start": "next start",
     "lint": "eslint"

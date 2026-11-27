@@ -4,7 +4,6 @@ import Image from 'next/image';
 import {ArrowRightIcon} from '@phosphor-icons/react';
 import {Section} from '@astryxdesign/core/Section';
 import {ClickableCard} from '@astryxdesign/core/ClickableCard';
-import {Overlay} from '@astryxdesign/core/Overlay';
 import {MediaTheme} from '@astryxdesign/core/theme';
 import {VStack} from '@astryxdesign/core/VStack';
 import {HStack} from '@astryxdesign/core/HStack';
@@ -26,7 +25,9 @@ const variant = {kids: 'door-kids', parents: 'door-parents'} as const;
  * The home page's two doors: Za djecu and Za roditelje. Side by side as
  * framed cards on wide screens, stacked edge to edge under 1024px (the
  * `doors` and `door-*` variants in the zastiti theme). Each whole card is
- * one link; the text sits in the illustration's empty top-left corner.
+ * one link. On wide screens the text sits in the illustration's empty
+ * top-left; under 1024px text and art sit side by side, the parents' door
+ * mirroring the kids', so the text never lands on the drawing.
  */
 export function HomeDoors({doors}: {doors: Door[]}) {
   return (
@@ -39,30 +40,22 @@ export function HomeDoors({doors}: {doors: Door[]}) {
           variant={variant[d.audience]}
           padding={0}
         >
-          <Overlay
-            scrim={false}
-            position="top"
-            align="start"
-            style={{height: '100%'}}
-            content={
-              // The illustrations are light in both modes: keep dark text.
-              <MediaTheme mode="light">
-                <VStack gap={3} padding={6} width="100%">
-                  <Heading level={2} type="display-2" weight="bold">
-                    {d.title}
-                  </Heading>
-                  {/* The illustrations leave their left ~45% empty at every
-                      width: keep the running text inside it. */}
-                  <VStack gap={3} maxWidth="42%">
-                    <Text>{d.description}</Text>
-                    <HStack gap={2} vAlign="center">
-                      <Text weight="semibold">{d.action}</Text>
-                      <Icon icon={ArrowRightIcon} />
-                    </HStack>
-                  </VStack>
-                </VStack>
-              </MediaTheme>
-            }
+          {/* The art spans the door. On wide screens it fills it and the text
+              sits over its empty left side; below lg the theme puts the text
+              in one column and sizes the art to the other side, fading it
+              out under the text's edge, parents mirrored (doorLayout in
+              zastitiTheme.ts). Neither takes pointer events, so the whole
+              door is one link. */}
+          <VStack
+            style={{
+              gridRow: '1',
+              gridColumn: '1 / -1',
+              justifySelf: 'var(--door-art-side)',
+              width: 'var(--door-art-width)',
+              position: 'relative',
+              minHeight: '0',
+              pointerEvents: 'none',
+            }}
           >
             <Image
               src={d.image}
@@ -73,10 +66,43 @@ export function HomeDoors({doors}: {doors: Door[]}) {
               preload={i === 0}
               fetchPriority={i === 0 ? 'high' : 'auto'}
               loading="eager"
-              sizes="(min-width: 1024px) 50vw, 100vw"
-              style={{objectFit: 'cover', objectPosition: 'right 35%'}}
+              sizes="(min-width: 1024px) 50vw, 70vw"
+              style={{
+                objectFit: 'cover',
+                objectPosition: 'var(--door-art-position)',
+                maskImage: 'var(--door-art-mask)',
+                transform: 'var(--door-art-flip)',
+              }}
             />
-          </Overlay>
+          </VStack>
+          {/* The illustrations are light in both modes: keep dark text. */}
+          <MediaTheme mode="light">
+            <VStack
+              gap={3}
+              padding={6}
+              style={{
+                gridRow: '1',
+                gridColumn: 'var(--door-text-col)',
+                alignSelf: 'var(--door-text-align)',
+                position: 'relative',
+                minWidth: '0',
+                pointerEvents: 'none',
+              }}
+            >
+              <Heading level={2} type="display-2" weight="bold">
+                {d.title}
+              </Heading>
+              {/* Over the art, the running text stays in the illustration's
+                  empty left side; in its own column it fills the column. */}
+              <VStack gap={3} maxWidth="var(--door-text-max)">
+                <Text>{d.description}</Text>
+                <HStack gap={2} vAlign="center">
+                  <Text weight="semibold">{d.action}</Text>
+                  <Icon icon={ArrowRightIcon} />
+                </HStack>
+              </VStack>
+            </VStack>
+          </MediaTheme>
         </ClickableCard>
       ))}
     </Section>

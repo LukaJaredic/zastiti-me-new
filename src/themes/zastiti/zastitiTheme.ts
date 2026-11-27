@@ -34,6 +34,42 @@ type Pair = readonly [string, string];
 export const t = (v: Pair | string): [string, string] | string =>
   typeof v === 'string' ? v : [v[0], v[1]];
 
+// The home illustrations' own background colours, sampled from the files.
+// The doors are painted in them in both modes: the art is always light, so
+// the door around it must match it exactly, and the text on it stays dark.
+const doorArt = {kids: '#f3ba4a', parents: '#d6eaee'} as const;
+
+// A door is a grid. On wide screens it is one cell: the art fills it and the
+// text sits over the art's empty left side. HomeDoors places its two items
+// with these custom properties.
+const doorLayout = {
+  borderRadius: 'var(--radius-container)',
+  overflow: 'hidden',
+  minHeight: '0',
+  display: 'grid',
+  gridTemplateColumns: 'minmax(0, 1fr)',
+  gridTemplateRows: 'minmax(0, 1fr)',
+  '--door-text-col': '1',
+  '--door-text-align': 'start',
+  '--door-text-max': '42%',
+  '--door-art-width': '100%',
+  '--door-art-side': 'stretch',
+  '--door-art-position': 'right 35%',
+  '--door-art-mask': 'none',
+  '--door-art-flip': 'none',
+} as const;
+
+// Below lg the door splits into two columns, text beside the art, so the
+// text never lands on the drawing whatever the phone's shape. The art is
+// wider than its half and fades out under the edge of the text column, so
+// there is no hard line where the picture stops.
+const doorSideBySide = {
+  borderRadius: '0',
+  gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 1fr)',
+  '--door-text-align': 'center',
+  '--door-text-max': '100%',
+} as const;
+
 export const zastitiTheme = defineTheme({
   name: 'zastiti',
   extends: neutralTheme,
@@ -174,22 +210,12 @@ export const zastitiTheme = defineTheme({
     // theme build only augments that map from `card` (Astryx 0.7.15). Enrol
     // the door variants here so the type exists; ClickableCard paints them.
     card: {
-      'variant:door-kids': {backgroundColor: 'var(--color-warning)'},
-      'variant:door-parents': {backgroundColor: 'var(--color-info-muted)'},
+      'variant:door-kids': {backgroundColor: doorArt.kids},
+      'variant:door-parents': {backgroundColor: doorArt.parents},
     },
     'clickable-card': {
-      'variant:door-kids': {
-        backgroundColor: 'var(--color-warning)',
-        borderRadius: 'var(--radius-container)',
-        overflow: 'hidden',
-        minHeight: '0',
-      },
-      'variant:door-parents': {
-        backgroundColor: 'var(--color-info-muted)',
-        borderRadius: 'var(--radius-container)',
-        overflow: 'hidden',
-        minHeight: '0',
-      },
+      'variant:door-kids': {...doorLayout, backgroundColor: doorArt.kids},
+      'variant:door-parents': {...doorLayout, backgroundColor: doorArt.parents},
     },
     // The header bar sits on the same 1120px column as the footer and pages,
     // 72px tall, the logo and the SOS button on the column's edges.
@@ -243,6 +269,8 @@ export const zastitiTheme = defineTheme({
             '--text-display-1-weight': 'var(--font-weight-bold)',
             '--text-display-2-weight': 'var(--font-weight-bold)',
             '--text-display-3-weight': 'var(--font-weight-bold)',
+            // Door titles share half the door with the art: one step smaller.
+            '--text-display-2-size': 'var(--font-size-2xl)',
           },
           components: {
             section: {
@@ -255,9 +283,32 @@ export const zastitiTheme = defineTheme({
                 paddingInlineEnd: '0',
               },
             },
+            // Text and art side by side; the parents' door mirrors the kids'
+            // so the two read as a pair down the screen.
             'clickable-card': {
-              'variant:door-kids': {borderRadius: '0'},
-              'variant:door-parents': {borderRadius: '0'},
+              'variant:door-kids': {
+                ...doorSideBySide,
+                '--door-text-col': '1',
+                '--door-art-width': '68%',
+                '--door-art-side': 'end',
+                '--door-art-position': '70% 60%',
+                '--door-art-mask': 'linear-gradient(to right, transparent, #000 45%)',
+              },
+              'variant:door-parents': {
+                ...doorSideBySide,
+                '--door-text-col': '2',
+                // Mirrored, so mother and son sit against the screen edge
+                // and the art's empty side faces the text. The image is
+                // flipped, so position and mask are in its own (unflipped)
+                // coordinates: 100% keeps the figures, "to right" fades the
+                // edge that ends up beside the text. Two figures, so a little
+                // narrower than the kids' art.
+                '--door-art-flip': 'scaleX(-1)',
+                '--door-art-width': '60%',
+                '--door-art-side': 'start',
+                '--door-art-position': '100% 60%',
+                '--door-art-mask': 'linear-gradient(to right, transparent, #000 26%)',
+              },
             },
           },
         },

@@ -547,11 +547,11 @@
   }
 
   .astryx-card[data-variant="door-kids"] {
-    background-color: var(--color-warning);
+    background-color: #f3ba4a;
   }
 
   .astryx-card[data-variant="door-parents"] {
-    background-color: var(--color-info-muted);
+    background-color: #d6eaee;
   }
 
   .astryx-section {
@@ -571,17 +571,39 @@
   }
 
   .astryx-clickable-card[data-variant="door-kids"] {
-    background-color: var(--color-warning);
     border-radius: var(--radius-container);
     overflow: hidden;
     min-height: 0;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: minmax(0, 1fr);
+    --door-text-col: 1;
+    --door-text-align: start;
+    --door-text-max: 42%;
+    --door-art-width: 100%;
+    --door-art-side: stretch;
+    --door-art-position: right 35%;
+    --door-art-mask: none;
+    --door-art-flip: none;
+    background-color: #f3ba4a;
   }
 
   .astryx-clickable-card[data-variant="door-parents"] {
-    background-color: var(--color-info-muted);
     border-radius: var(--radius-container);
     overflow: hidden;
     min-height: 0;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: minmax(0, 1fr);
+    --door-text-col: 1;
+    --door-text-align: start;
+    --door-text-max: 42%;
+    --door-art-width: 100%;
+    --door-art-side: stretch;
+    --door-art-position: right 35%;
+    --door-art-mask: none;
+    --door-art-flip: none;
+    background-color: #d6eaee;
   }
 
   .astryx-top-nav {
@@ -746,6 +768,7 @@
     --text-display-1-weight: var(--font-weight-bold);
     --text-display-2-weight: var(--font-weight-bold);
     --text-display-3-weight: var(--font-weight-bold);
+    --text-display-2-size: var(--font-size-2xl);
   }
 
     .astryx-section[data-variant="doors"] {
@@ -762,10 +785,27 @@
 
     .astryx-clickable-card[data-variant="door-kids"] {
     border-radius: 0;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    --door-text-align: center;
+    --door-text-max: 100%;
+    --door-text-col: 1;
+    --door-art-width: 68%;
+    --door-art-side: end;
+    --door-art-position: 70% 60%;
+    --door-art-mask: linear-gradient(to right, transparent, #000 45%);
   }
 
     .astryx-clickable-card[data-variant="door-parents"] {
     border-radius: 0;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    --door-text-align: center;
+    --door-text-max: 100%;
+    --door-text-col: 2;
+    --door-art-flip: scaleX(-1);
+    --door-art-width: 60%;
+    --door-art-side: start;
+    --door-art-position: 100% 60%;
+    --door-art-mask: linear-gradient(to right, transparent, #000 26%);
   }
   }
 }

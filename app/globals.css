@@ -1,9 +1,10 @@
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
+/* Cascade order for Astryx: reset < base components < theme overrides < app. */
+@layer reset, astryx-base, astryx-theme, app;
 
-body {
-  margin: 0;
+@layer app {
+  body {
+    background-color: var(--color-background-body);
+    color: var(--color-text-primary);
+    font-family: var(--font-family-body);
+  }
 }

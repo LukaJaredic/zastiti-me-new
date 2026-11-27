@@ -1,6 +1,6 @@
 'use client';
 
-import {useEffectEvent, useLayoutEffect, useRef} from 'react';
+import {useLayoutEffect, useRef, useState} from 'react';
 import {TranslateIcon, WarningCircleIcon} from '@phosphor-icons/react';
 import {Dialog} from '@astryxdesign/core/Dialog';
 import {Section} from '@astryxdesign/core/Section';
@@ -11,6 +11,7 @@ import {Button} from '@astryxdesign/core/Button';
 import {Icon} from '@astryxdesign/core/Icon';
 import {Logo} from './Logo';
 import {ThemeToggle} from './ThemeToggle';
+import {menuState} from './menuState';
 import {underlineSeed} from './siteNav';
 
 export type MobileMenuContent = {
@@ -34,14 +35,24 @@ export type MobileMenuContent = {
  * closes it, and focus returns to the menu button. Every link closes it
  * before navigating.
  *
+ * Dialog closes instantly, with no exit motion of its own. So every close
+ * first marks the sheet closing (data-closing): it slides back up and the
+ * dimmed page clears (app/globals.css), and only then is the dialog told to
+ * close. With reduced motion it closes at once.
+ *
+ * Switching language keeps the menu open, like switching theme: the other
+ * language's menu opens in place (`opensInPlace`, no slide), with focus on
+ * the language icon (menuState.carryTo).
+ *
  * With cacheComponents, Next keeps the page you left mounted but hidden (a
  * React Activity). A menu left open there would stay a modal dialog, unseen,
  * and block every click on the new page. So whenever the menu is hidden or
- * unmounted it closes its native dialog itself.
+ * unmounted it closes its own native dialog.
  */
 export function MobileMenu({
   id,
   isOpen,
+  opensInPlace = false,
   onClose,
   home,
   sosHref,
@@ -51,6 +62,8 @@ export function MobileMenu({
 }: {
   id: string;
   isOpen: boolean;
+  /** Open without sliding in: the menu was open before a language switch. */
+  opensInPlace?: boolean;
   onClose: () => void;
   home: string;
   sosHref: string;
@@ -59,12 +72,38 @@ export function MobileMenu({
   content: MobileMenuContent;
 }) {
   const dialogRef = useRef<HTMLDialogElement>(null);
-  const close = useEffectEvent(onClose);
+  const closeTimer = useRef<number | undefined>(undefined);
+  const [isClosing, setClosing] = useState(false);
+
+  // A fresh open never starts mid-close.
+  const [wasOpen, setWasOpen] = useState(isOpen);
+  if (wasOpen !== isOpen) {
+    setWasOpen(isOpen);
+    if (isOpen) setClosing(false);
+  }
+
+  const requestClose = () => {
+    if (isClosing) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      onClose();
+      return;
+    }
+    setClosing(true);
+    // Matches the 200ms slide-up in app/globals.css.
+    closeTimer.current = window.setTimeout(() => {
+      setClosing(false);
+      onClose();
+    }, 200);
+  };
+
+  // Hidden or unmounted: close this page's native dialog so it can't block
+  // the page now showing. The open state itself is shared (menuState) and
+  // may be carrying over to the other language, so it stays as it is.
   useLayoutEffect(() => {
     const dialog = dialogRef.current;
     return () => {
+      window.clearTimeout(closeTimer.current);
       dialog?.close();
-      close();
     };
   }, []);
 
@@ -74,8 +113,10 @@ export function MobileMenu({
       id={id}
       isOpen={isOpen}
       onOpenChange={(open) => {
-        if (!open) onClose();
+        if (!open) requestClose();
       }}
+      data-closing={isClosing ? '' : undefined}
+      data-in-place={opensInPlace ? '' : undefined}
       aria-label={content.navLabel}
       variant="menu-sheet"
       width="100%"
@@ -91,7 +132,7 @@ export function MobileMenu({
           hAlign="between"
           vAlign="center"
         >
-          <Logo name={content.siteName} href={home} onClick={onClose} />
+          <Logo name={content.siteName} href={home} onClick={requestClose} />
           <HStack gap={2} vAlign="center">
             <Button
               label={content.sosLabel}
@@ -99,7 +140,7 @@ export function MobileMenu({
               size="lg"
               href={sosHref}
               icon={<Icon icon={WarningCircleIcon} />}
-              onClick={onClose}
+              onClick={requestClose}
             />
             <Button
               label={content.closeLabel}
@@ -107,7 +148,7 @@ export function MobileMenu({
               size="lg"
               isIconOnly
               icon={<Icon icon="close" />}
-              onClick={onClose}
+              onClick={requestClose}
             />
           </HStack>
         </HStack>
@@ -126,7 +167,7 @@ export function MobileMenu({
               href={l.href}
               isSelected={l.isCurrent}
               size="lg"
-              onClick={onClose}
+              onClick={requestClose}
               data-underline-seed={underlineSeed(i)}
             />
           ))}
@@ -139,7 +180,8 @@ export function MobileMenu({
             isIconOnly
             href={languageHref}
             icon={<Icon icon={TranslateIcon} />}
-            onClick={onClose}
+            onClick={() => menuState.carryTo(languageHref)}
+            data-autofocus={opensInPlace ? '' : undefined}
           />
           <ThemeToggle
             darkLabel={content.themeDarkLabel}

@@ -1,8 +1,10 @@
 import type {Locale} from '@/lib/i18n';
 
 /**
- * Partners on the About page, in the client's order: a logo wall, each
- * tile linking to the partner's own site.
+ * Partners on the About page: a logo wall, each tile linking to the
+ * partner's own site. The client's order, except that INHOPE and the .ME
+ * domain swap places: INHOPE closes the wall on a row of its own with the
+ * largest logo.
  *
  * Logos come from each partner's official site (public/images/partners/),
  * at their own size. A partner without a logo file shows its name instead.
@@ -18,6 +20,8 @@ export type Partner = {
   href: string;
   logo?: {src: string; width: number; height: number};
   ground?: string;
+  /** Takes a whole row, with a larger logo. */
+  featured?: boolean;
 };
 
 const same = (name: string): Localized => ({me: name, en: name});
@@ -32,9 +36,9 @@ export const partners: Partner[] = [
     href: 'https://www.gov.me/mps',
   },
   {
-    name: same('INHOPE'),
-    href: 'https://www.inhope.org/EN',
-    logo: {src: '/images/partners/inhope.png', width: 500, height: 97},
+    name: {me: '.ME domen', en: '.ME domain'},
+    href: 'https://domen.me/',
+    logo: {src: '/images/partners/domen.webp', width: 256, height: 256},
   },
   {
     name: same('UNICEF'),
@@ -61,8 +65,9 @@ export const partners: Partner[] = [
     ground: '#1c75bc',
   },
   {
-    name: {me: '.ME domen', en: '.ME domain'},
-    href: 'https://domen.me/',
-    logo: {src: '/images/partners/domen.webp', width: 256, height: 256},
+    name: same('INHOPE'),
+    href: 'https://www.inhope.org/EN',
+    logo: {src: '/images/partners/inhope.png', width: 500, height: 97},
+    featured: true,
   },
 ];

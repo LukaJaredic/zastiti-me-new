@@ -116,24 +116,34 @@ const splitReverse = {
   gridTemplateAreas: '"art text"',
 } as const;
 
-// A partner's logo on a tile (About page). White in both modes: partners'
-// logos are drawn for a light ground. A sheet of paper like the doors, a
-// smaller lift on hover; the logo sits centred inside.
-const logoTile = {
+// The partners' logos (About page) as one sheet of paper: white in both
+// modes, since partners' logos are drawn for a light ground. The sheet
+// (Card `logo-wall`) carries the radius and the paper shadow and clips its
+// cells; the cells (ClickableCard `logo`) are square-cornered, split by
+// hairlines each draws on its top and left edge. The list sits one hairline
+// up and left of the sheet's edge, so the outer row and column of lines fall
+// outside and are clipped. Hover and press are ClickableCard's own overlay,
+// which also shades a cell with its own ground (--logo-ground).
+const logoLine = c.line[0];
+const logoGround = 'var(--logo-ground, #ffffff)';
+
+const logoWall = {
   backgroundColor: '#ffffff',
-  color: c.ink[0],
   borderRadius: 'var(--radius-container)',
   boxShadow: 'var(--shadow-cut)',
+  overflow: 'hidden',
+} as const;
+
+const logoTile = {
+  backgroundColor: logoGround,
+  color: c.ink[0],
+  borderRadius: '0',
+  boxShadow: `inset 1px 0 0 ${logoLine}, inset 0 1px 0 ${logoLine}`,
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  transition: 'transform 160ms ease-out, box-shadow 160ms ease-out',
-  ':hover': {transform: 'translateY(-2px)', boxShadow: 'var(--shadow-cut-hover)'},
-  ':active': {
-    transform: 'translateY(1px)',
-    boxShadow: 'var(--shadow-cut-pressed)',
-    transitionDuration: '80ms',
-  },
+  // The sheet clips anything outside a cell, so the focus ring goes inside.
+  '--focus-outline-offset': 'calc(-1 * var(--spacing-2))',
 } as const;
 
 // Tablets: equal halves, 32px apart.
@@ -492,7 +502,8 @@ export const zastitiTheme = defineTheme({
     card: {
       'variant:door-kids': {backgroundColor: doorArt.kids},
       'variant:door-parents': {backgroundColor: doorArt.parents},
-      'variant:logo': {backgroundColor: logoTile.backgroundColor},
+      'variant:logo': {backgroundColor: '#ffffff'},
+      'variant:logo-wall': logoWall,
     },
     'clickable-card': {
       'variant:door-kids': {...doorLayout, backgroundColor: doorArt.kids},
@@ -685,10 +696,6 @@ export const zastitiTheme = defineTheme({
             'clickable-card': {
               'variant:door-kids': {':active': {transform: 'none'}},
               'variant:door-parents': {':active': {transform: 'none'}},
-              'variant:logo': {
-                ':hover': {transform: 'none'},
-                ':active': {transform: 'none'},
-              },
             },
             button: {
               'variant:sos': {':active': {transform: 'none'}},

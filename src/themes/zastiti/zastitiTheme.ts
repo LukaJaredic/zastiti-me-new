@@ -37,7 +37,7 @@ export const t = (v: Pair | string): [string, string] | string =>
 // The home illustrations' own background colours, sampled from the files.
 // The doors are painted in them in both modes: the art is always light, so
 // the door around it must match it exactly, and the text on it stays dark.
-const doorArt = {kids: '#f3ba4a', parents: '#d6eaee'} as const;
+const doorArt = {kids: '#f9b52e', parents: '#cae4eb'} as const;
 
 // A door is a grid. On wide screens it is one cell: the art fills it and the
 // text sits over the art's empty left side. HomeDoors places its two items

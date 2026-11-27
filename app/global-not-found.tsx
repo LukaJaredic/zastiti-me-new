@@ -1,5 +1,5 @@
 import type {Metadata} from 'next';
-import {Fraunces, Onest} from 'next/font/google';
+import {Onest} from 'next/font/google';
 import './globals.css';
 import '@astryxdesign/core/reset.css';
 import '@astryxdesign/core/astryx.css';
@@ -12,11 +12,10 @@ import {Providers} from './providers';
 
 // This page bypasses app/[locale]/layout.tsx, so it loads its own fonts, CSS
 // and providers. It can't know the locale, so it shows both languages.
-const onest = Onest({subsets: ['latin', 'latin-ext'], variable: '--font-onest'});
-const fraunces = Fraunces({
+const onest = Onest({
   subsets: ['latin', 'latin-ext'],
-  axes: ['opsz'],
-  variable: '--font-fraunces',
+  variable: '--font-onest',
+  display: 'swap',
 });
 
 export const metadata: Metadata = {
@@ -25,7 +24,7 @@ export const metadata: Metadata = {
 
 export default function GlobalNotFound() {
   return (
-    <html lang="sr-Latn-ME" className={`${onest.variable} ${fraunces.variable}`}>
+    <html lang="sr-Latn-ME" className={onest.variable}>
       <body>
         <Providers>
           <Layout

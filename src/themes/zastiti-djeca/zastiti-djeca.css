@@ -111,7 +111,7 @@
     --_scaled-font-size-5xl: calc(3.8125rem * var(--_dynamic-type-large-title, 1));
     --font-size-5xl: var(--_scaled-font-size-5xl);
     --text-heading-1-size: var(--font-size-2xl);
-    --text-heading-1-weight: var(--font-weight-semibold);
+    --text-heading-1-weight: var(--font-weight-bold);
     --text-heading-1-leading: 1.4194;
     --text-heading-2-size: var(--font-size-xl);
     --text-heading-2-weight: var(--font-weight-semibold);
@@ -144,13 +144,13 @@
     --text-supporting-weight: var(--font-weight-normal);
     --text-supporting-leading: 1.5385;
     --text-display-1-size: var(--font-size-5xl);
-    --text-display-1-weight: var(--font-weight-normal);
+    --text-display-1-weight: var(--font-weight-bold);
     --text-display-1-leading: 1.2459;
     --text-display-2-size: var(--font-size-4xl);
-    --text-display-2-weight: var(--font-weight-normal);
+    --text-display-2-weight: var(--font-weight-bold);
     --text-display-2-leading: 1.2245;
     --text-display-3-size: var(--font-size-3xl);
-    --text-display-3-weight: var(--font-weight-normal);
+    --text-display-3-weight: var(--font-weight-bold);
     --text-display-3-leading: 1.2308;
     --duration-fast-min: 95ms;
     --duration-fast: 125ms;
@@ -172,7 +172,7 @@
     --_astryx-pre-tempo-duration-slow-max: 935ms;
     --_astryx-motion-tempo: 1;
     --font-family-body: var(--font-onest), "Segoe UI", system-ui, sans-serif;
-    --font-family-heading: var(--font-fraunces), Georgia, "Times New Roman", serif;
+    --font-family-heading: var(--font-onest), "Segoe UI", system-ui, sans-serif;
     --font-family-code: ui-monospace, "SF Mono", Consolas, monospace;
     --color-syntax-keyword: light-dark(#6b187c, #efa8ff);
     --color-syntax-string: light-dark(#0b5615, #a4d6a3);
@@ -734,7 +734,7 @@
     --text-display-3-weight: var(--font-weight-normal);
     --text-display-3-leading: 1.4667;
     --font-family-body: var(--font-onest), "Segoe UI", system-ui, sans-serif;
-    --font-family-heading: var(--font-fraunces), Georgia, "Times New Roman", serif;
+    --font-family-heading: var(--font-onest), "Segoe UI", system-ui, sans-serif;
     --font-family-code: ui-monospace, "SF Mono", Consolas, monospace;
   }
   }
@@ -742,6 +742,12 @@
 
 @media (width < 1024px) {
   @scope ([data-astryx-theme="zastiti-djeca"]) to ([data-astryx-theme]) {
+    :scope {
+    --text-display-1-weight: var(--font-weight-bold);
+    --text-display-2-weight: var(--font-weight-bold);
+    --text-display-3-weight: var(--font-weight-bold);
+  }
+
     .astryx-section[data-variant="doors"] {
     grid-template-columns: minmax(0, 1fr);
     grid-template-rows: repeat(2, minmax(0, 1fr));

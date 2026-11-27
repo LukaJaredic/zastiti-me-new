@@ -20,7 +20,7 @@ The full brand book is the Zaštiti.me design system: https://claude.ai/artifact
 - **SOS is always one tap away.** The "Prijavi nasilje" button sits in the header on every page. Button `variant="sos"` is used for reporting only, never for delete or other errors.
 - **Three doors, three colours.** SOS = coral (`error`), parents = teal (`teal` / `info`), kids = sun (`yellow` / `warning`). Shared UI uses brand green (`accent`). Don't mix two audience colours in one card.
 - **Paper, not glass.** Warm off-white page, white cards with hairline borders, soft shadows only on things that float or respond to hover. No gradients, no full-bleed photos behind text, no glassmorphism, no emoji.
-- **Type:** Fraunces for headings, Onest for everything else. Sentence case for titles and buttons. Body text at least 16px, reading column max 38rem.
+- **Type:** Onest for everything; headings carry weight (display and h1 bold, the rest semibold). Sentence case for titles and buttons. Body text at least 16px, reading column max 38rem.
 - **Icons:** Phosphor (`@phosphor-icons/react`), `regular` weight, through Astryx `<Icon icon={…Icon} />`. Fixed meanings: `WarningCircleIcon` = SOS, `BookOpenTextIcon` = parents, `GameControllerIcon` = kids, `ShieldCheckIcon` = privacy and safety.
 - **Copy:** Montenegrin first. Use the approved text from `old-site-reference/zastiti-me/messages/*.json` verbatim, and address the reader as "ti". Ask before writing new copy.
 - **Tokens:** all colours, radii, shadows and fonts live in `src/themes/zastiti/zastitiTheme.ts`. Change the design system first, mirror the change there, then run `npx astryx theme build src/themes/zastiti/zastitiTheme.ts`.

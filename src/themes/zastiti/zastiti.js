@@ -42,7 +42,7 @@ export const zastitiTheme = {
     "--font-size-4xl": "3.0625rem",
     "--font-size-5xl": "3.8125rem",
     "--text-heading-1-size": "var(--font-size-2xl)",
-    "--text-heading-1-weight": "var(--font-weight-semibold)",
+    "--text-heading-1-weight": "var(--font-weight-bold)",
     "--text-heading-1-leading": "1.4194",
     "--text-heading-2-size": "var(--font-size-xl)",
     "--text-heading-2-weight": "var(--font-weight-semibold)",
@@ -75,13 +75,13 @@ export const zastitiTheme = {
     "--text-supporting-weight": "var(--font-weight-normal)",
     "--text-supporting-leading": "1.5385",
     "--text-display-1-size": "var(--font-size-5xl)",
-    "--text-display-1-weight": "var(--font-weight-normal)",
+    "--text-display-1-weight": "var(--font-weight-bold)",
     "--text-display-1-leading": "1.2459",
     "--text-display-2-size": "var(--font-size-4xl)",
-    "--text-display-2-weight": "var(--font-weight-normal)",
+    "--text-display-2-weight": "var(--font-weight-bold)",
     "--text-display-2-leading": "1.2245",
     "--text-display-3-size": "var(--font-size-3xl)",
-    "--text-display-3-weight": "var(--font-weight-normal)",
+    "--text-display-3-weight": "var(--font-weight-bold)",
     "--text-display-3-leading": "1.2308",
     "--duration-fast-min": "95ms",
     "--duration-fast": "125ms",
@@ -103,7 +103,7 @@ export const zastitiTheme = {
     "--_astryx-pre-tempo-duration-slow-max": "935ms",
     "--_astryx-motion-tempo": "1",
     "--font-family-body": "var(--font-onest), \"Segoe UI\", system-ui, sans-serif",
-    "--font-family-heading": "var(--font-fraunces), Georgia, \"Times New Roman\", serif",
+    "--font-family-heading": "var(--font-onest), \"Segoe UI\", system-ui, sans-serif",
     "--font-family-code": "ui-monospace, \"SF Mono\", Consolas, monospace",
     "--color-syntax-keyword": "light-dark(#6b187c, #efa8ff)",
     "--color-syntax-string": "light-dark(#0b5615, #a4d6a3)",
@@ -553,6 +553,11 @@ export const zastitiTheme = {
           }
         },
         "value": {
+          "tokens": {
+            "--text-display-1-weight": "var(--font-weight-bold)",
+            "--text-display-2-weight": "var(--font-weight-bold)",
+            "--text-display-3-weight": "var(--font-weight-bold)"
+          },
           "components": {
             "section": {
               "variant:doors": {
@@ -588,8 +593,8 @@ export const zastitiTheme = {
         "fallbacks": "\"Segoe UI\", system-ui, sans-serif"
       },
       "heading": {
-        "family": "var(--font-fraunces)",
-        "fallbacks": "Georgia, \"Times New Roman\", serif"
+        "family": "var(--font-onest)",
+        "fallbacks": "\"Segoe UI\", system-ui, sans-serif"
       },
       "code": {
         "family": "ui-monospace",

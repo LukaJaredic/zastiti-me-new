@@ -45,9 +45,13 @@ export const zastitiTheme = defineTheme({
       family: 'var(--font-onest)',
       fallbacks: '"Segoe UI", system-ui, sans-serif',
     },
+    // One family: headings are Onest too, carried by weight. Display and
+    // h1 are bold, the rest semibold (design system, Typography). The
+    // weights are set as tokens below: `heading.weights` would add a
+    // per-level rule that overrides a Heading's `display-*` type.
     heading: {
-      family: 'var(--font-fraunces)',
-      fallbacks: 'Georgia, "Times New Roman", serif',
+      family: 'var(--font-onest)',
+      fallbacks: '"Segoe UI", system-ui, sans-serif',
     },
     code: {
       family: 'ui-monospace',
@@ -56,6 +60,12 @@ export const zastitiTheme = defineTheme({
   },
 
   tokens: {
+    // Display sizes default to normal weight, which only suited a serif.
+    '--text-heading-1-weight': 'var(--font-weight-bold)',
+    '--text-display-1-weight': 'var(--font-weight-bold)',
+    '--text-display-2-weight': 'var(--font-weight-bold)',
+    '--text-display-3-weight': 'var(--font-weight-bold)',
+
     // Surfaces
     '--color-background-body': t(c.paper),
     '--color-background-surface': t(c.surface),
@@ -227,6 +237,13 @@ export const zastitiTheme = defineTheme({
       {
         when: {width: {below: 'lg'}},
         value: {
+          // Astryx's touch type scale resets display weights to normal
+          // below lg; keep them bold like the rest of the headings.
+          tokens: {
+            '--text-display-1-weight': 'var(--font-weight-bold)',
+            '--text-display-2-weight': 'var(--font-weight-bold)',
+            '--text-display-3-weight': 'var(--font-weight-bold)',
+          },
           components: {
             section: {
               'variant:doors': {

@@ -48,7 +48,7 @@ export function HomeDoors({doors}: {doors: Door[]}) {
               // The illustrations are light in both modes: keep dark text.
               <MediaTheme mode="light">
                 <VStack gap={3} padding={6} width="100%">
-                  <Heading level={2} type="display-2">
+                  <Heading level={2} type="display-2" weight="bold">
                     {d.title}
                   </Heading>
                   {/* The illustrations leave their left ~45% empty at every

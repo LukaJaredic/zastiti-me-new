@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Fraunces, Onest } from "next/font/google";
+import { Onest } from "next/font/google";
 import "../globals.css";
 import "@astryxdesign/core/reset.css";
 import "@astryxdesign/core/astryx.css";
@@ -13,17 +13,13 @@ import { allLinks, primaryLinks } from "@/components/siteNav";
 import { Providers } from "../providers";
 import { getDictionary, getLocale } from "./dictionaries";
 
-// Body: Onest. Headings: Fraunces. Latin Extended covers š, đ, č, ć, ž.
-// The zastiti theme reads these through --font-onest and --font-fraunces.
+// One family, Onest, for headings and text. Latin Extended covers š, đ, č,
+// ć, ž. The zastiti theme reads it through --font-onest. display: "swap"
+// shows the size-matched fallback at once and swaps Onest in when it loads.
 const onest = Onest({
   subsets: ["latin", "latin-ext"],
   variable: "--font-onest",
-});
-
-const fraunces = Fraunces({
-  subsets: ["latin", "latin-ext"],
-  axes: ["opsz"],
-  variable: "--font-fraunces",
+  display: "swap",
 });
 
 // Cache Components needs every root param value listed. Unknown values are
@@ -52,7 +48,7 @@ export default async function RootLayout({
   return (
     <html
       lang={htmlLang[locale]}
-      className={`${onest.variable} ${fraunces.variable}`}
+      className={onest.variable}
     >
       <body>
         <Providers>

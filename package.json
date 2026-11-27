@@ -26,5 +26,9 @@
     "eslint": "^9",
     "eslint-config-next": "16.4.6",
     "typescript": "^5"
+  },
+  "allowScripts": {
+    "@astryxdesign/cli@0.7.15": true,
+    "@astryxdesign/core@0.7.15": true
   }
 }

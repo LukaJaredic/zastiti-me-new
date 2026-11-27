@@ -274,6 +274,10 @@ export const zastitiTheme = defineTheme({
       'variant:section': {
         backgroundColor: 'var(--color-background-body)',
         backgroundImage: 'var(--paper-grain)',
+        // AppShell with height="auto" is at least 100dvh tall, so it grew and
+        // shrank (and moved the footer) as a phone browser's toolbars came
+        // and went. svh never changes, like the homepage doors inside it.
+        minHeight: '100svh',
       },
     },
     // The header is a cream paper strip lying on the page.

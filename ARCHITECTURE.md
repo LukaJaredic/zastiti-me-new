@@ -112,13 +112,14 @@ Built so far:
 - locale routing: `[locale]` root segment, `proxy.ts`, `lib/i18n.ts` and typed dictionaries
 - `content/messages/`, copied verbatim from `old-site-reference/`
 - the home page with the two doors (kids, parents), in both languages
+- the About page (`/o-nama`): rows built from the theme's inner-page Section variants (`row`, `split`, `split-reverse`, `split-hero`, `band-muted`, `band-brand`), whose two halves are `components/Split.tsx`. Split rows are 5:7 on desktop, equal halves on tablets (600-1023px) and stacked on phones, text first in the markup at every width. Its illustrations are jigsaw pieces pre-cut with transparent edges (`public/images/about/`). The team and partners (`content/team.ts`, `content/partners.ts`) are seed data until the client sends the real ones
 - the bilingual global 404
 - the header (`components/SiteHeader.tsx`, in AppShell's top nav, with a ME/EN link that keeps the current path); below 1024px its menu button opens `components/MobileMenu.tsx`, a paper sheet from the top (an Astryx `Dialog`; AppShell's own drawer is unused) and footer (`components/SiteFooter.tsx`); their links live in `components/siteNav.ts`
 - audience colours: `components/AudienceTheme.tsx` wraps the header and page in a nested Astryx theme by URL (`/roditelji` teal, `/djeca` sun, `/sos` coral; shared pages keep brand green). The three themes in `src/themes/zastiti-{roditelji,djeca,sos}/` extend `zastiti` and swap only the accent family
 
 Not built yet:
-- `content/` collections
-- every page except the home page
+- `content/` collections other than the About page's team and partners
+- every page except the home and About pages
 - a remembered language choice (Montenegrin stays the default; the header switch only swaps the locale segment)
 - the forms and `lib/`
 - the logo as SVG (the header and footer use the old site's PNG, `public/images/logo.png`, through `components/Logo.tsx`)

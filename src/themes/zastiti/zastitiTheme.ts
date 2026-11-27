@@ -84,6 +84,54 @@ const doorLayout = {
   '--door-art-mask': 'none',
 } as const;
 
+// Inner pages (About) are built from rows. A row is a Section on the same
+// 1120px column as the header, 40px above and below, so rows sit 80px apart
+// (design system: sections are space-20 apart). Phones and tablets tighten
+// that (adaptations below).
+const row = {
+  backgroundColor: 'transparent',
+  paddingBlock: 'var(--spacing-10)',
+  paddingInlineStart: 'max(var(--spacing-6), calc((100% - 1120px) / 2))',
+  paddingInlineEnd: 'max(var(--spacing-6), calc((100% - 1120px) / 2))',
+  boxSizing: 'border-box',
+} as const;
+
+// A split row: text beside a picture or a list, at 5:7, 80px apart, tops
+// aligned. Its two children place themselves with gridArea 'text' and
+// 'art'; the text always comes first in the markup, and `split-reverse`
+// only moves the art to the left. Tablets use equal halves, phones stack
+// (text first).
+const split = {
+  ...row,
+  display: 'grid',
+  gridTemplateColumns: 'minmax(0, 5fr) minmax(0, 7fr)',
+  gridTemplateAreas: '"text art"',
+  columnGap: 'calc(2 * var(--spacing-10))',
+  alignItems: 'start',
+} as const;
+
+const splitReverse = {
+  ...split,
+  gridTemplateColumns: 'minmax(0, 7fr) minmax(0, 5fr)',
+  gridTemplateAreas: '"art text"',
+} as const;
+
+// Tablets: equal halves, 32px apart.
+const halves = {
+  paddingBlock: 'var(--spacing-8)',
+  gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 1fr)',
+  gridTemplateAreas: '"text art"',
+  columnGap: 'var(--spacing-8)',
+} as const;
+
+// Phones: one column, text above the art.
+const stacked = {
+  paddingBlock: 'var(--spacing-6)',
+  gridTemplateColumns: 'minmax(0, 1fr)',
+  gridTemplateAreas: '"text" "art"',
+  rowGap: 'var(--spacing-8)',
+} as const;
+
 // Below lg the door splits into two columns, text beside the art, so the
 // text never lands on the drawing whatever the phone's shape. The art is
 // wider than its half and fades out under the edge of the text column, so
@@ -130,6 +178,9 @@ export const zastitiTheme = defineTheme({
     '--text-display-1-weight': 'var(--font-weight-bold)',
     '--text-display-2-weight': 'var(--font-weight-bold)',
     '--text-display-3-weight': 'var(--font-weight-bold)',
+    // Large text is the design system's lead (19px, 400). Astryx sets it
+    // semibold, which made every lead as heavy as the headings around it.
+    '--text-large-weight': 'var(--font-weight-normal)',
 
     // Surfaces
     '--color-background-body': t(c.paper),
@@ -330,6 +381,34 @@ export const zastitiTheme = defineTheme({
         minHeight: 'calc(100svh - 73px)',
         boxSizing: 'border-box',
       },
+      // Inner pages: rows on the page column (see `row` and `split` above).
+      'variant:row': row,
+      'variant:split': split,
+      'variant:split-reverse': splitReverse,
+      // An inner page's first row fills the desktop screen under the header,
+      // text and picture centred on each other. svh, like the doors.
+      'variant:split-hero': {
+        ...split,
+        alignItems: 'center',
+        minHeight: 'calc(100svh - 73px)',
+      },
+      // Full-width bands around a row, edge to edge. They sit 40px below
+      // the row before them and keep no space after, so a band followed by
+      // another band touches it. The page gives them their inner padding
+      // (Section's padding props win over the theme).
+      'variant:band-muted': {
+        marginBlockStart: 'var(--spacing-10)',
+        backgroundColor: 'var(--color-background-muted)',
+      },
+      // Brand green, closing a page: no space above (it follows a band) or
+      // below (the footer). Text on it takes the on-accent colour.
+      'variant:band-brand': {
+        backgroundColor: 'var(--color-accent)',
+        '--color-text-primary': 'var(--color-on-accent)',
+        '--color-text-secondary':
+          'color-mix(in srgb, var(--color-on-accent) 82%, transparent)',
+        '--color-icon-primary': 'var(--color-on-accent)',
+      },
     },
     // The mobile menu (MobileMenu): a full-width sheet pinned to the top.
     // The dialog itself is only the frame and casts the shadow; the paper
@@ -444,6 +523,19 @@ export const zastitiTheme = defineTheme({
         borderStyle: 'solid',
         borderColor: 'var(--color-border-emphasized)',
       },
+      // The one action on the brand band: paper white with green text,
+      // stepping up on hover and pressing on its edge, like the SOS button.
+      'variant:on-band': {
+        backgroundColor: 'var(--color-background-surface)',
+        color: 'var(--color-text-accent)',
+        boxShadow: '0 3px 0 light-dark(rgba(0, 0, 0, 0.22), rgba(0, 0, 0, 0.45))',
+        transition: 'transform 100ms ease-out, box-shadow 100ms ease-out',
+        ':hover': {transform: 'translateY(-1px)'},
+        ':active': {
+          transform: 'translateY(2px)',
+          boxShadow: '0 1px 0 light-dark(rgba(0, 0, 0, 0.22), rgba(0, 0, 0, 0.45))',
+        },
+      },
       // The SOS button: reporting violence only.
       // The menu's language and theme buttons: icons only, 64px targets.
       'variant:menu-setting': {
@@ -466,6 +558,9 @@ export const zastitiTheme = defineTheme({
   },
 
   adaptations: {
+    // Tablets start at 600px (Astryx's default sm is 640). The breakpoint
+    // alone emits no CSS; only the rules below use it.
+    widthBreakpoints: {sm: 600},
     rules: [
       // Phones and tablets: the doors stack, edge to edge, each half of the
       // screen under the header, so both are visible at once.
@@ -478,6 +573,7 @@ export const zastitiTheme = defineTheme({
             '--text-display-1-weight': 'var(--font-weight-bold)',
             '--text-display-2-weight': 'var(--font-weight-bold)',
             '--text-display-3-weight': 'var(--font-weight-bold)',
+            '--text-large-weight': 'var(--font-weight-normal)',
             // Door titles share half the door with the art: one step smaller.
             '--text-display-2-size': 'var(--font-size-2xl)',
           },
@@ -525,6 +621,39 @@ export const zastitiTheme = defineTheme({
           },
         },
       },
+      // Inner-page rows on tablets (600-1023px): splits stay side by side
+      // but in equal halves 32px apart (at 5:7 the text gets too narrow),
+      // rows 64px apart. The hero stops filling the screen: on a portrait
+      // tablet that is mostly empty paper.
+      {
+        when: {width: {from: 'sm', below: 'lg'}},
+        value: {
+          components: {
+            section: {
+              'variant:row': {paddingBlock: 'var(--spacing-8)'},
+              'variant:split': halves,
+              'variant:split-reverse': {...halves, gridTemplateAreas: '"art text"'},
+              'variant:split-hero': {...halves, minHeight: '0'},
+            },
+          },
+        },
+      },
+      // Inner-page rows on phones (under 600px): splits stack, text first,
+      // rows 48px apart (space-12).
+      {
+        when: {width: {below: 'sm'}},
+        value: {
+          components: {
+            section: {
+              'variant:row': {paddingBlock: 'var(--spacing-6)'},
+              'variant:split': stacked,
+              'variant:split-reverse': stacked,
+              'variant:split-hero': {...stacked, minHeight: '0'},
+              'variant:band-muted': {marginBlockStart: 'var(--spacing-6)'},
+            },
+          },
+        },
+      },
       // Reduced motion: the doors and the SOS button keep their shadows and
       // colour changes but no longer move.
       {
@@ -537,6 +666,10 @@ export const zastitiTheme = defineTheme({
             },
             button: {
               'variant:sos': {':active': {transform: 'none'}},
+              'variant:on-band': {
+                ':hover': {transform: 'none'},
+                ':active': {transform: 'none'},
+              },
             },
             // The menu appears in place without sliding.
             dialog: {

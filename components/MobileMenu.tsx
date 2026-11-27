@@ -11,6 +11,7 @@ import {Button} from '@astryxdesign/core/Button';
 import {Icon} from '@astryxdesign/core/Icon';
 import {Logo} from './Logo';
 import {ThemeToggle} from './ThemeToggle';
+import {underlineSeed} from './siteNav';
 
 export type MobileMenuContent = {
   siteName: string;
@@ -118,7 +119,7 @@ export function MobileMenu({
           paddingInline={4}
           paddingBlock={3}
         >
-          {links.map((l) => (
+          {links.map((l, i) => (
             <SideNavItem
               key={l.href}
               label={l.label}
@@ -126,6 +127,7 @@ export function MobileMenu({
               isSelected={l.isCurrent}
               size="lg"
               onClick={onClose}
+              data-underline-seed={underlineSeed(i)}
             />
           ))}
         </VStack>

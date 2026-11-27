@@ -12,7 +12,12 @@ import {locales, type Locale} from '@/lib/i18n';
 import {Logo} from './Logo';
 import {MobileMenu} from './MobileMenu';
 import {ThemeToggle} from './ThemeToggle';
-import {sosPath, type NavLink} from './siteNav';
+import {
+  isCurrentPath,
+  sosPath,
+  underlineSeed,
+  type NavLink,
+} from './siteNav';
 
 export type HeaderContent = {
   siteName: string;
@@ -54,11 +59,6 @@ export function SiteHeader({
     setMenuPath(pathname);
     setMenuOpen(false);
   }
-
-  const isCurrent = (href: string) =>
-    href === home
-      ? pathname === home
-      : pathname === href || pathname.startsWith(`${href}/`);
 
   // The same page in the other language.
   const other = locales.find((l) => l !== locale) ?? locale;
@@ -106,7 +106,7 @@ export function SiteHeader({
           languageHref={languageHref}
           links={content.menu.map(({label, path}) => {
             const href = `${home}${path}`;
-            return {label, href, isCurrent: isCurrent(href)};
+            return {label, href, isCurrent: isCurrentPath(pathname, href)};
           })}
           content={{
             siteName: content.siteName,
@@ -131,14 +131,15 @@ export function SiteHeader({
         // bar (TopNav's centerContent), so the words never crowd the buttons
         // at 1024px. The stretch comes from app/globals.css.
         <HStack hAlign="center" vAlign="center" data-site-nav-links="">
-          {content.primary.map(({label, path}) => {
+          {content.primary.map(({label, path}, i) => {
             const href = `${home}${path}`;
             return (
               <TopNavItem
                 key={path}
                 label={label}
                 href={href}
-                isSelected={isCurrent(href)}
+                isSelected={isCurrentPath(pathname, href)}
+                data-underline-seed={underlineSeed(i)}
               />
             );
           })}

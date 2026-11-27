@@ -34,6 +34,90 @@
     height: var(--spacing-8);
   }
 
+  /* The drawn underline: any link with data-underline-seed (1 to 4) gets a
+     hand-drawn pen line under the word in the accent when it is the current
+     page (aria-current="page"), and faintly on hover, drawn in from the
+     left. The four shapes are theme tokens (--paper-pen-line-1 to -4), each
+     with its own tilt; underlineSeed() in components/siteNav.ts hands them
+     out. Used by the header (TopNavItem), the mobile menu (SideNavItem) and
+     the footer (FooterLinks). A theme override can't style a pseudo-element,
+     so the line is drawn here; the theme removes the nav items' fills.
+
+     Each kind of link only says where the line sits, through
+     --underline-inset and --underline-bottom. */
+  .astryx-top-nav-item {
+    --underline-inset: var(--spacing-3);
+  }
+
+  .astryx-side-nav-item {
+    --underline-inset: var(--spacing-2);
+  }
+
+  .astryx-link[data-underline-seed] {
+    --underline-inset: 0;
+    --underline-bottom: calc(-1 * var(--spacing-1));
+    /* The line replaces Link's own hover underline. */
+    text-decoration: none;
+  }
+
+  .astryx-link[data-underline-seed]:hover {
+    text-decoration: none;
+  }
+
+  [data-underline-seed] {
+    position: relative;
+    isolation: isolate;
+  }
+
+  [data-underline-seed]::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset-inline: var(--underline-inset, 0);
+    bottom: var(--underline-bottom, var(--spacing-1));
+    height: var(--spacing-2);
+    rotate: -1.2deg;
+    background-color: var(--color-accent);
+    mask: var(--paper-pen-line-1) center / 100% 100% no-repeat;
+    opacity: 0;
+    clip-path: inset(0 100% 0 0);
+    transition:
+      clip-path 260ms ease-out,
+      opacity 160ms ease-out;
+    pointer-events: none;
+  }
+
+  [data-underline-seed="2"]::after {
+    mask-image: var(--paper-pen-line-2);
+    rotate: 0.8deg;
+  }
+
+  [data-underline-seed="3"]::after {
+    mask-image: var(--paper-pen-line-3);
+    rotate: -0.5deg;
+  }
+
+  [data-underline-seed="4"]::after {
+    mask-image: var(--paper-pen-line-4);
+    rotate: 1.3deg;
+  }
+
+  [data-underline-seed]:hover::after {
+    opacity: 0.35;
+    clip-path: inset(0);
+  }
+
+  [data-underline-seed][aria-current="page"]::after {
+    opacity: 1;
+    clip-path: inset(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    [data-underline-seed]::after {
+      transition: none;
+    }
+  }
+
   /* The mobile menu unfolding from the top (Dialog variant "menu-sheet" in
      the zastiti theme points at this). */
   @keyframes menu-sheet-down {

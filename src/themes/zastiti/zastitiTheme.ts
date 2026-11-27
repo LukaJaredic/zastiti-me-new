@@ -53,12 +53,18 @@ const doorArt = {kids: '#f9b52e', parents: '#c7e8eb'} as const;
 // text sits over the art's empty corner (top-left for kids, top-right for
 // parents). HomeDoors places its two items with these custom properties.
 const doorLayout = {
-  // Cut paper: 32px corners, a crisp edge under a soft lift, and a 2px rise
-  // on hover (design system, Paper craft).
+  // Cut paper: 32px corners, a crisp edge under a soft lift, a 2px rise on
+  // hover and a 2px press when tapped or clicked (design system, Paper
+  // craft). The press is quicker than the rise so it feels immediate.
   borderRadius: 'var(--radius-page)',
   boxShadow: 'var(--shadow-cut)',
   transition: 'transform 160ms ease-out, box-shadow 160ms ease-out',
   ':hover': {transform: 'translateY(-2px)', boxShadow: 'var(--shadow-cut-hover)'},
+  ':active': {
+    transform: 'translateY(2px)',
+    boxShadow: 'var(--shadow-cut-pressed)',
+    transitionDuration: '80ms',
+  },
   overflow: 'hidden',
   minHeight: '0',
   display: 'grid',
@@ -227,6 +233,17 @@ export const zastitiTheme = defineTheme({
     // A torn paper edge, a 160px tile repeated along a sheet's bottom (used
     // as a mask, so it is the shape, not a colour).
     '--paper-torn-edge': 'url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22160%22%20height%3D%2214%22%20viewBox%3D%220%200%20160%2014%22%3E%3Cpath%20d%3D%22M0%200H160V6L154%209%20147%207%20141%2011%20133%208%20126%2010%20118%206%20111%209%20104%208%2097%2012%2090%209%2083%2010%2076%207%2069%2010%2061%208%2054%2011%2047%208%2040%209%2033%206%2026%2010%2019%208%2012%2011%206%208%200%209Z%22%2F%3E%3C%2Fsvg%3E")',
+    // The current page in the nav: a hand-drawn pen line under the word (a
+    // mask, drawn in the accent by the rule in app/globals.css). Four shapes;
+    // links take them in turn with data-underline-seed (siteNav.ts).
+    // 1: a gentle wave, lifting at the end.
+    '--paper-pen-line-1': 'url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20100%2020%27%20preserveAspectRatio%3D%27none%27%3E%3Cpath%20d%3D%27M1.5%2011.5C12%209.6%2022%2010.4%2033%2010.1S55%208.4%2067%209.6%2088%2010.9%2098.5%208.6%27%20fill%3D%27none%27%20stroke%3D%27%23000%27%20stroke-width%3D%273%27%20stroke-linecap%3D%27round%27%20vector-effect%3D%27non-scaling-stroke%27%2F%3E%3C%2Fsvg%3E")',
+    // 2: a dip in the middle.
+    '--paper-pen-line-2': 'url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20100%2020%27%20preserveAspectRatio%3D%27none%27%3E%3Cpath%20d%3D%27M1.5%208.8C14%2010.4%2027%2012.6%2044%2012.2S76%2010.1%2098.5%209.4%27%20fill%3D%27none%27%20stroke%3D%27%23000%27%20stroke-width%3D%273%27%20stroke-linecap%3D%27round%27%20vector-effect%3D%27non-scaling-stroke%27%2F%3E%3C%2Fsvg%3E")',
+    // 3: rising, then falling away.
+    '--paper-pen-line-3': 'url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20100%2020%27%20preserveAspectRatio%3D%27none%27%3E%3Cpath%20d%3D%27M1.5%2012.2C16%209.4%2033%207.8%2052%208.6S82%2011.6%2098.5%2012%27%20fill%3D%27none%27%20stroke%3D%27%23000%27%20stroke-width%3D%273%27%20stroke-linecap%3D%27round%27%20vector-effect%3D%27non-scaling-stroke%27%2F%3E%3C%2Fsvg%3E")',
+    // 4: a second pass at the end.
+    '--paper-pen-line-4': 'url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20100%2020%27%20preserveAspectRatio%3D%27none%27%3E%3Cpath%20d%3D%27M1.5%2010.9C21%209.8%2042%209.4%2064%2010.1S88%2011.2%2097.5%209.6%27%20fill%3D%27none%27%20stroke%3D%27%23000%27%20stroke-width%3D%273%27%20stroke-linecap%3D%27round%27%20vector-effect%3D%27non-scaling-stroke%27%2F%3E%3Cpath%20d%3D%27M66%2013.2C76%2012.6%2086%2012.9%2095%2012.2%27%20fill%3D%27none%27%20stroke%3D%27%23000%27%20stroke-width%3D%272.2%27%20stroke-linecap%3D%27round%27%20vector-effect%3D%27non-scaling-stroke%27%2F%3E%3C%2Fsvg%3E")',
     // A fold: a crease line, dark then light, like a folded sheet.
     '--paper-fold':
       'linear-gradient(light-dark(rgba(26, 67, 41, 0.1), rgba(0, 0, 0, 0.5)) 0 1px, light-dark(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.05)) 1px 2px)',
@@ -237,6 +254,9 @@ export const zastitiTheme = defineTheme({
       '0 3px 0 light-dark(rgba(26, 67, 41, 0.13), rgba(0, 0, 0, 0.45)), 0 16px 30px -14px light-dark(rgba(26, 67, 41, 0.35), rgba(0, 0, 0, 0.7))',
     '--shadow-cut-hover':
       '0 5px 0 light-dark(rgba(26, 67, 41, 0.13), rgba(0, 0, 0, 0.45)), 0 22px 34px -14px light-dark(rgba(26, 67, 41, 0.38), rgba(0, 0, 0, 0.75))',
+    // Pressed: pushed down onto the page, so the edge and the lift shrink.
+    '--shadow-cut-pressed':
+      '0 1px 0 light-dark(rgba(26, 67, 41, 0.13), rgba(0, 0, 0, 0.45)), 0 6px 12px -8px light-dark(rgba(26, 67, 41, 0.3), rgba(0, 0, 0, 0.6))',
     // One sheet lying on the next: the kids' door over the parents' on phones.
     '--shadow-cut-stack':
       '0 3px 0 light-dark(rgba(26, 67, 41, 0.14), rgba(0, 0, 0, 0.5)), 0 10px 18px -8px light-dark(rgba(26, 67, 41, 0.3), rgba(0, 0, 0, 0.6))',
@@ -330,16 +350,23 @@ export const zastitiTheme = defineTheme({
     },
     // Menu links: 20px semibold rows, 52px tall.
     'side-nav-item': {
+      // No fills: the drawn line marks the current page (app/globals.css).
+      // As wide as the word, so the line matches it.
+      base: {
+        width: 'fit-content',
+        backgroundColor: 'transparent',
+        ':hover': {backgroundColor: 'transparent'},
+      },
       'size:lg': {
         minHeight: '52px',
         fontSize: 'var(--font-size-xl)',
         fontWeight: 'var(--font-weight-semibold)',
         letterSpacing: '-0.01em',
       },
-      // The current page: the brand tint pill, as in the desktop bar.
+      // The current page: ink with the drawn line, as in the desktop bar.
       selected: {
-        backgroundColor: 'var(--color-accent-muted)',
-        color: 'var(--color-text-accent)',
+        backgroundColor: 'transparent',
+        color: 'var(--color-text-primary)',
       },
     },
     // Headings balance their lines so a title breaks evenly ("Za /
@@ -387,15 +414,18 @@ export const zastitiTheme = defineTheme({
     },
     // Nav words: 44px tap targets.
     'top-nav-item': {
+      // No fills on hover or when current: a hand-drawn line under the word
+      // marks both (app/globals.css). The line is a shape, so the state
+      // doesn't rest on colour alone.
       base: {
         minHeight: '44px',
+        backgroundColor: 'transparent',
+        ':hover': {backgroundColor: 'transparent'},
       },
-      // Current page: a soft tint pill in the accent of the door you are in.
-      // The fill carries the state alongside aria-current, not colour alone.
       selected: {
-        backgroundColor: 'var(--color-accent-muted)',
-        color: 'var(--color-text-accent)',
-        borderRadius: 'var(--radius-element)',
+        backgroundColor: 'transparent',
+        color: 'var(--color-text-primary)',
+        fontWeight: 'var(--font-weight-semibold)',
       },
     },
     button: {
@@ -463,6 +493,8 @@ export const zastitiTheme = defineTheme({
                 zIndex: '1',
                 boxShadow: 'var(--shadow-cut-stack)',
                 ':hover': {transform: 'none', boxShadow: 'var(--shadow-cut-stack)'},
+                // Pressed: 1px down, flattening onto the parents' door.
+                ':active': {transform: 'translateY(1px)', boxShadow: 'none'},
                 '--door-text-col': '1',
                 '--door-art-width': '68%',
                 '--door-art-side': 'end',
@@ -473,6 +505,7 @@ export const zastitiTheme = defineTheme({
                 ...doorSideBySide,
                 boxShadow: 'none',
                 ':hover': {transform: 'none', boxShadow: 'none'},
+                ':active': {transform: 'translateY(1px)', boxShadow: 'none'},
                 '--door-text-col': '2',
                 // Mother and son sit on the art's left, against the screen
                 // edge; its right side (the plant) fades out under the text.
@@ -493,8 +526,14 @@ export const zastitiTheme = defineTheme({
         value: {
           components: {
             'clickable-card': {
-              'variant:door-kids': {':hover': {transform: 'none'}},
-              'variant:door-parents': {':hover': {transform: 'none'}},
+              'variant:door-kids': {
+                ':hover': {transform: 'none'},
+                ':active': {transform: 'none'},
+              },
+              'variant:door-parents': {
+                ':hover': {transform: 'none'},
+                ':active': {transform: 'none'},
+              },
             },
             button: {
               'variant:sos': {':active': {transform: 'none'}},

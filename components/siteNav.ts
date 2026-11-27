@@ -1,4 +1,5 @@
 import type {Messages} from '@/app/[locale]/dictionaries';
+import {locales} from '@/lib/i18n';
 
 /**
  * Header and footer link config. Paths are locale-relative and keep the live
@@ -38,6 +39,31 @@ export function primaryLinks(m: Messages): NavLink[] {
  */
 export function menuLinks(m: Messages): NavLink[] {
   return [{label: m.components.header.menu.home, path: ''}, ...primaryLinks(m)];
+}
+
+/**
+ * Whether a link points at the page you're on, for every nav list (header,
+ * mobile menu, footer). A locale's home page matches only itself; any other
+ * link matches its page and everything under it, so a book's page still
+ * marks "Biblioteka".
+ */
+export function isCurrentPath(pathname: string, href: string): boolean {
+  const isHome = locales.some((l) => href === `/${l}`);
+  return isHome
+    ? pathname === href
+    : pathname === href || pathname.startsWith(`${href}/`);
+}
+
+/** How many hand-drawn underline shapes the theme has (--paper-pen-line-N). */
+const underlineShapes = 4;
+
+/**
+ * The hand-drawn underline a link in a list draws (data-underline-seed, 1 to
+ * 4): handed out in turn down the list, so every shape is used equally and
+ * no two neighbours share one.
+ */
+export function underlineSeed(index: number): string {
+  return String((index % underlineShapes) + 1);
 }
 
 export const sosPath = '/sos';

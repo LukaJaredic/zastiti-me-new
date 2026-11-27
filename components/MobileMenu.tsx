@@ -31,9 +31,10 @@ export type MobileMenuContent = {
  * button turned into a close button), then a fold, the six main links,
  * another fold, and the language and theme switches as icons.
  *
- * It's a modal Dialog: focus moves in, Escape or a tap on the dimmed page
- * closes it, and focus returns to the menu button. Every link closes it
- * before navigating.
+ * It's a modal Dialog: Escape or a tap on the dimmed page closes it, and
+ * focus returns to the menu button. Every link closes it before navigating.
+ * On open, focus goes to the sheet itself (data-autofocus), not to its
+ * first link: otherwise the browser focuses the logo.
  *
  * Dialog closes instantly, with no exit motion of its own. So every close
  * first marks the sheet closing (data-closing): it slides back up and the
@@ -41,8 +42,7 @@ export type MobileMenuContent = {
  * close. With reduced motion it closes at once.
  *
  * Switching language keeps the menu open, like switching theme: the other
- * language's menu opens in place (`opensInPlace`, no slide), with focus on
- * the language icon (menuState.carryTo).
+ * language's menu opens in place (`opensInPlace`, no slide; menuState.carryTo).
  *
  * With cacheComponents, Next keeps the page you left mounted but hidden (a
  * React Activity). A menu left open there would stay a modal dialog, unseen,
@@ -124,7 +124,13 @@ export function MobileMenu({
       position={{top: 0, start: 0, end: 0}}
       padding={0}
     >
-      <Section variant="menu-sheet" padding={0} paddingBlockEnd={8}>
+      <Section
+        variant="menu-sheet"
+        padding={0}
+        paddingBlockEnd={8}
+        tabIndex={-1}
+        data-autofocus=""
+      >
         {/* The header row, in the same place as the header's. */}
         <HStack
           minHeight="72px"
@@ -181,7 +187,6 @@ export function MobileMenu({
             href={languageHref}
             icon={<Icon icon={TranslateIcon} />}
             onClick={() => menuState.carryTo(languageHref)}
-            data-autofocus={opensInPlace ? '' : undefined}
           />
           <ThemeToggle
             darkLabel={content.themeDarkLabel}

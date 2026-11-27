@@ -42,3 +42,6 @@ next-env.d.ts
 
 # old site (local reference only)
 /old-site-reference/
+
+# third-party agent skills: restore with `npx skills experimental_install` (skills-lock.json)
+/.claude/skills/design-taste-frontend/

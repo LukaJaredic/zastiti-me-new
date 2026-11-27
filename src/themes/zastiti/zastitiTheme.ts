@@ -312,6 +312,9 @@ export const zastitiTheme = defineTheme({
       },
       // Home: the two doors. Two framed cards side by side, filling the
       // screen under the 72px header, on the same 1120px column as the header.
+      // svh, not dvh: the small viewport (browser toolbars shown) never
+      // changes, so the doors and their art don't resize and shift the page
+      // when a phone browser hides its toolbars on scroll.
       'variant:doors': {
         display: 'grid',
         gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
@@ -319,7 +322,7 @@ export const zastitiTheme = defineTheme({
         paddingBlock: 'var(--spacing-8)',
         paddingInlineStart: 'max(var(--spacing-6), calc((100% - 1120px) / 2))',
         paddingInlineEnd: 'max(var(--spacing-6), calc((100% - 1120px) / 2))',
-        minHeight: 'calc(100dvh - 73px)',
+        minHeight: 'calc(100svh - 73px)',
         boxSizing: 'border-box',
       },
     },

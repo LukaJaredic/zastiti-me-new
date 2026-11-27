@@ -451,10 +451,10 @@ export const zastitiRoditeljiTheme = {
         "padding": "var(--spacing-3)"
       },
       "variant:door-kids": {
-        "backgroundColor": "var(--color-warning)"
+        "backgroundColor": "#f3ba4a"
       },
       "variant:door-parents": {
-        "backgroundColor": "var(--color-info-muted)"
+        "backgroundColor": "#d6eaee"
       }
     },
     "section": {
@@ -474,16 +474,38 @@ export const zastitiRoditeljiTheme = {
     },
     "clickable-card": {
       "variant:door-kids": {
-        "backgroundColor": "var(--color-warning)",
         "borderRadius": "var(--radius-container)",
         "overflow": "hidden",
-        "minHeight": "0"
+        "minHeight": "0",
+        "display": "grid",
+        "gridTemplateColumns": "minmax(0, 1fr)",
+        "gridTemplateRows": "minmax(0, 1fr)",
+        "--door-text-col": "1",
+        "--door-text-align": "start",
+        "--door-text-max": "42%",
+        "--door-art-width": "100%",
+        "--door-art-side": "stretch",
+        "--door-art-position": "right 35%",
+        "--door-art-mask": "none",
+        "--door-art-flip": "none",
+        "backgroundColor": "#f3ba4a"
       },
       "variant:door-parents": {
-        "backgroundColor": "var(--color-info-muted)",
         "borderRadius": "var(--radius-container)",
         "overflow": "hidden",
-        "minHeight": "0"
+        "minHeight": "0",
+        "display": "grid",
+        "gridTemplateColumns": "minmax(0, 1fr)",
+        "gridTemplateRows": "minmax(0, 1fr)",
+        "--door-text-col": "1",
+        "--door-text-align": "start",
+        "--door-text-max": "42%",
+        "--door-art-width": "100%",
+        "--door-art-side": "stretch",
+        "--door-art-position": "right 35%",
+        "--door-art-mask": "none",
+        "--door-art-flip": "none",
+        "backgroundColor": "#d6eaee"
       }
     },
     "top-nav": {
@@ -563,7 +585,8 @@ export const zastitiRoditeljiTheme = {
           "tokens": {
             "--text-display-1-weight": "var(--font-weight-bold)",
             "--text-display-2-weight": "var(--font-weight-bold)",
-            "--text-display-3-weight": "var(--font-weight-bold)"
+            "--text-display-3-weight": "var(--font-weight-bold)",
+            "--text-display-2-size": "var(--font-size-2xl)"
           },
           "components": {
             "section": {
@@ -578,10 +601,27 @@ export const zastitiRoditeljiTheme = {
             },
             "clickable-card": {
               "variant:door-kids": {
-                "borderRadius": "0"
+                "borderRadius": "0",
+                "gridTemplateColumns": "minmax(0, 1fr) minmax(0, 1fr)",
+                "--door-text-align": "center",
+                "--door-text-max": "100%",
+                "--door-text-col": "1",
+                "--door-art-width": "68%",
+                "--door-art-side": "end",
+                "--door-art-position": "70% 60%",
+                "--door-art-mask": "linear-gradient(to right, transparent, #000 45%)"
               },
               "variant:door-parents": {
-                "borderRadius": "0"
+                "borderRadius": "0",
+                "gridTemplateColumns": "minmax(0, 1fr) minmax(0, 1fr)",
+                "--door-text-align": "center",
+                "--door-text-max": "100%",
+                "--door-text-col": "2",
+                "--door-art-flip": "scaleX(-1)",
+                "--door-art-width": "60%",
+                "--door-art-side": "start",
+                "--door-art-position": "100% 60%",
+                "--door-art-mask": "linear-gradient(to right, transparent, #000 26%)"
               }
             }
           }

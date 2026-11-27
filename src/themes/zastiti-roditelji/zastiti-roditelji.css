@@ -311,6 +311,10 @@
     --paper-strip: light-dark(#fffaf0, #17201b);
     --paper-cream: light-dark(#f3e6cb, #0b100d);
     --sos-edge: light-dark(#7a2410, #a8442a);
+    --paper-sheet: light-dark(#f3e6cb, #1b231e);
+    --paper-torn-edge: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22160%22%20height%3D%2214%22%20viewBox%3D%220%200%20160%2014%22%3E%3Cpath%20d%3D%22M0%200H160V6L154%209%20147%207%20141%2011%20133%208%20126%2010%20118%206%20111%209%20104%208%2097%2012%2090%209%2083%2010%2076%207%2069%2010%2061%208%2054%2011%2047%208%2040%209%2033%206%2026%2010%2019%208%2012%2011%206%208%200%209Z%22%2F%3E%3C%2Fsvg%3E");
+    --paper-fold: linear-gradient(light-dark(rgba(26, 67, 41, 0.1), rgba(0, 0, 0, 0.5)) 0 1px, light-dark(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.05)) 1px 2px);
+    --shadow-sheet: drop-shadow(0 3px 0 light-dark(rgba(26, 67, 41, 0.12), rgba(0, 0, 0, 0.45))) drop-shadow(0 14px 14px light-dark(rgba(26, 67, 41, 0.22), rgba(0, 0, 0, 0.6)));
     --shadow-cut: 0 3px 0 light-dark(rgba(26, 67, 41, 0.13), rgba(0, 0, 0, 0.45)), 0 16px 30px -14px light-dark(rgba(26, 67, 41, 0.35), rgba(0, 0, 0, 0.7));
     --shadow-cut-hover: 0 5px 0 light-dark(rgba(26, 67, 41, 0.13), rgba(0, 0, 0, 0.45)), 0 22px 34px -14px light-dark(rgba(26, 67, 41, 0.38), rgba(0, 0, 0, 0.75));
     --shadow-cut-stack: 0 3px 0 light-dark(rgba(26, 67, 41, 0.14), rgba(0, 0, 0, 0.5)), 0 10px 18px -8px light-dark(rgba(26, 67, 41, 0.3), rgba(0, 0, 0, 0.6));
@@ -466,6 +470,15 @@
     border-color: var(--color-border-emphasized);
   }
 
+  .astryx-button[data-variant="menu-setting"] {
+    width: 64px;
+    height: 64px;
+    border-radius: var(--radius-element);
+    background-color: transparent;
+    color: var(--color-text-primary);
+    --_button-radius: var(--radius-element);
+  }
+
   .astryx-button[data-variant="sos"] {
     background-color: var(--color-error);
     color: var(--color-on-error);
@@ -598,6 +611,15 @@
     border-top-color: transparent;
   }
 
+  .astryx-section[data-variant="menu-sheet"] {
+    background-color: var(--paper-sheet);
+    background-image: var(--paper-grain);
+    mask-image: linear-gradient(#000 0 0), var(--paper-torn-edge);
+    mask-size: 100% calc(100% - 13px), 160px 14px;
+    mask-position: top, bottom left;
+    mask-repeat: no-repeat, repeat-x;
+  }
+
   .astryx-section[data-variant="doors"] {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -627,6 +649,36 @@
 
   .astryx-layout-header {
     border-bottom-color: transparent;
+  }
+
+  .astryx-dialog[data-variant="menu-sheet"] {
+    background-color: transparent;
+    border-radius: 0;
+    box-shadow: none;
+    filter: var(--shadow-sheet);
+    max-width: 100%;
+    animation: menu-sheet-down 280ms cubic-bezier(0.2, 0.8, 0.2, 1);
+    --astryx-dialog-padding: 0;
+    --_dialog-radius: 0;
+  }
+
+  .astryx-divider[data-variant="fold"] {
+    height: 2px;
+    background-color: transparent;
+    background-image: var(--paper-fold);
+    border-width: 0;
+  }
+
+  .astryx-side-nav-item[data-size="lg"] {
+    min-height: 52px;
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: -0.01em;
+  }
+
+  .astryx-side-nav-item[data-selected="selected"] {
+    background-color: var(--color-accent-muted);
+    color: var(--color-text-accent);
   }
 
   .astryx-clickable-card[data-variant="door-kids"] {
@@ -923,6 +975,10 @@
   .astryx-button[data-variant="sos"]:is([data-astryx-press="on"], [data-astryx-press="on"] :where(:not([data-astryx-pressable], [data-astryx-press="on"] [data-astryx-pressable] *)), :where(:not([data-astryx-pressable])):has([data-astryx-press="on"])) {
     transform: none;
   }
+  }
+
+    .astryx-dialog[data-variant="menu-sheet"] {
+    animation: none;
   }
   }
 }

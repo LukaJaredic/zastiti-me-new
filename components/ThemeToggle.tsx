@@ -1,7 +1,7 @@
 'use client';
 
 import {MoonIcon, SunIcon} from '@phosphor-icons/react';
-import {Button} from '@astryxdesign/core/Button';
+import {Button, type ButtonVariant} from '@astryxdesign/core/Button';
 import {Icon} from '@astryxdesign/core/Icon';
 import {useColorMode} from './ColorMode';
 
@@ -13,21 +13,22 @@ import {useColorMode} from './ColorMode';
 export function ThemeToggle({
   darkLabel,
   lightLabel,
-  showLabel = false,
+  variant = 'ghost',
 }: {
   darkLabel: string;
   lightLabel: string;
-  /** Show the words beside the icon (the mobile menu). */
-  showLabel?: boolean;
+  /** The button's look: `ghost` in the header bar, `menu-setting` in the
+   * mobile menu. */
+  variant?: ButtonVariant;
 }) {
   const {resolved, setMode} = useColorMode();
   const toDark = resolved === 'light';
   return (
     <Button
       label={toDark ? darkLabel : lightLabel}
-      variant="ghost"
+      variant={variant}
       size="lg"
-      isIconOnly={!showLabel}
+      isIconOnly
       icon={<Icon icon={toDark ? MoonIcon : SunIcon} />}
       onClick={() => setMode(toDark ? 'dark' : 'light')}
     />

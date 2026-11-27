@@ -11,6 +11,7 @@ export {};
 
 declare module '@astryxdesign/core/Button' {
   interface ButtonVariantMap {
+    'menu-setting': true;
     'sos': true;
   }
 }
@@ -30,6 +31,19 @@ declare module '@astryxdesign/core/Card' {
 
 declare module '@astryxdesign/core/Section' {
   interface SectionVariantMap {
+    'menu-sheet': true;
     'doors': true;
+  }
+}
+
+declare module '@astryxdesign/core/Dialog' {
+  interface DialogVariantMap {
+    'menu-sheet': true;
+  }
+}
+
+declare module '@astryxdesign/core/Divider' {
+  interface DividerVariantMap {
+    'fold': true;
   }
 }

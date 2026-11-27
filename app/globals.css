@@ -24,4 +24,21 @@
     flex: 1 1 auto;
     padding-inline-end: var(--spacing-4);
   }
+
+  /* The mobile menu's language and theme buttons (Button variant
+     "menu-setting", MobileMenu): a 32px glyph. Icon sizes stop at 24px and
+     its size type can't be extended, so the size is set here, on the
+     button's data-variant. */
+  .astryx-button[data-variant="menu-setting"] .astryx-icon {
+    width: var(--spacing-8);
+    height: var(--spacing-8);
+  }
+
+  /* The mobile menu unfolding from the top (Dialog variant "menu-sheet" in
+     the zastiti theme points at this). */
+  @keyframes menu-sheet-down {
+    from {
+      transform: translateY(-100%);
+    }
+  }
 }

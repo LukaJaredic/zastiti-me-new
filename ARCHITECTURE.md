@@ -103,7 +103,7 @@ Before every PR: `npm run lint`, `npx tsc --noEmit`, and `npm run build`. Check 
 - **Add a page:** create `app/[locale]/<montenegrin-slug>/page.tsx`, add its messages namespace to both JSON files, and link it from the header or footer config in `components/`.
 - **Change a colour, radius or font:** change it in the design system first, mirror it in `src/themes/zastiti/zastitiTheme.ts`, then rebuild all four themes, since the audience themes extend it: `npx astryx theme build src/themes/zastiti*/*Theme.ts`.
 - **Retire a page:** delete the route and add a permanent redirect in `next.config.ts`.
-- **Upgrade Astryx:** after `npx astryx upgrade`, check that the header links (`data-site-nav-links` in `components/SiteHeader.tsx`) are still centred between the logo and the buttons at 1024px and 1440px. They are stretched by one rule in `app/globals.css`, because TopNav has no option for it; if TopNav's markup changes, the links slide back against the logo.
+- **Upgrade Astryx:** after `npx astryx upgrade`, check that the header links (`data-site-nav-links` in `components/SiteHeader.tsx`) are still centred between the logo and the buttons at 1024px and 1440px. They are stretched by one rule in `app/globals.css`, because TopNav has no option for it; if TopNav's markup changes, the links slide back against the logo. Also open the mobile menu: it replaces Dialog's open animation and sizes its icons through `app/globals.css`, so check it still slides down and its two icons are 32px.
 
 ## Status
 
@@ -113,7 +113,7 @@ Built so far:
 - `content/messages/`, copied verbatim from `old-site-reference/`
 - the home page with the two doors (kids, parents), in both languages
 - the bilingual global 404
-- the header (`components/SiteHeader.tsx`, in AppShell's top nav, with a mobile drawer and a ME/EN link that keeps the current path) and footer (`components/SiteFooter.tsx`); their links live in `components/siteNav.ts`
+- the header (`components/SiteHeader.tsx`, in AppShell's top nav, with a ME/EN link that keeps the current path); below 1024px its menu button opens `components/MobileMenu.tsx`, a paper sheet from the top (an Astryx `Dialog`; AppShell's own drawer is unused) and footer (`components/SiteFooter.tsx`); their links live in `components/siteNav.ts`
 - audience colours: `components/AudienceTheme.tsx` wraps the header and page in a nested Astryx theme by URL (`/roditelji` teal, `/djeca` sun, `/sos` coral; shared pages keep brand green). The three themes in `src/themes/zastiti-{roditelji,djeca,sos}/` extend `zastiti` and swap only the accent family
 
 Not built yet:

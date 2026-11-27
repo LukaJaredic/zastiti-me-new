@@ -8,7 +8,7 @@ import {HStack} from '@astryxdesign/core/HStack';
 import {Button} from '@astryxdesign/core/Button';
 import {Icon} from '@astryxdesign/core/Icon';
 import {locales, type Locale} from '@/lib/i18n';
-import {Wordmark} from './Wordmark';
+import {Logo} from './Logo';
 import {ThemeToggle} from './ThemeToggle';
 import {sosPath, type NavLink} from './siteNav';
 
@@ -24,9 +24,9 @@ export type HeaderContent = {
 };
 
 /**
- * The site header (nav-centre): the wordmark on the left, five plain words in
+ * The site header (nav-centre): the logo on the left, five plain words in
  * the middle, the other language and the one SOS button on the right. Below
- * the md breakpoint AppShell keeps the wordmark, SOS and the menu toggle; the
+ * the md breakpoint AppShell keeps the logo, SOS and the menu toggle; the
  * drawer lists every page, the language and SOS.
  */
 export function SiteHeader({
@@ -103,7 +103,7 @@ export function SiteHeader({
   return (
     <TopNav
       label={content.navLabel}
-      heading={<Wordmark name={content.siteName} href={home} />}
+      heading={<Logo name={content.siteName} href={home} />}
       centerContent={isMobile ? undefined : items(content.primary)}
       startContent={
         isMobile ? (

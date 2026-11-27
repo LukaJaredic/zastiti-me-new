@@ -9,7 +9,7 @@ import {Link} from '@astryxdesign/core/Link';
 import {List, ListItem} from '@astryxdesign/core/List';
 import type {Locale} from '@/lib/i18n';
 import type {Messages} from '@/app/[locale]/dictionaries';
-import {Wordmark} from './Wordmark';
+import {Logo} from './Logo';
 import {footerLinks, legalLinks} from './siteNav';
 
 type FooterMessages = Messages['components']['footer'];
@@ -66,7 +66,7 @@ export async function SiteFooter({
           <VStack gap={10} width="100%" maxWidth={1120}>
             <Grid columns={{minWidth: 240, max: 3}} gap={8}>
               <VStack gap={3}>
-                <Wordmark name={siteName} href={home} size="3xl" />
+                <Logo name={siteName} href={home} size="3xl" />
                 <Text type="large" color="secondary">
                   {tagline}
                 </Text>

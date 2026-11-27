@@ -120,7 +120,7 @@ Not built yet:
 - every page except the home page
 - a remembered language choice (Montenegrin stays the default; the header switch only swaps the locale segment)
 - the forms and `lib/`
-- the logo (the header sets "Zaštiti.me" as a Fraunces wordmark until the SVG is in the design system)
+- the logo as SVG (the header and footer use the old site's PNG, `public/images/logo.png`, through `components/Logo.tsx`)
 - social links (the footer shows none until the client sends the real profile URLs)
 - Montenegrin strings for Astryx's own labels ("Skip to content", "Open navigation"); they fall back to English
 

@@ -8,7 +8,7 @@ import {zastitiIcons} from './icons';
  * [light, dark]. Rebuild after editing: `npx astryx theme build src/themes/zastiti/zastitiTheme.ts`.
  */
 export const c = {
-  paper: ['#f7f5f0', '#101713'],
+  paper: ['#f6efe1', '#101713'],
   surface: ['#ffffff', '#17201b'],
   sunken: ['#efebe2', '#0b100d'],
   ink: ['#16211b', '#ebf0ec'],
@@ -28,6 +28,13 @@ export const c = {
   sos: ['#b33a1e', '#ff8f70'],
   onSos: ['#ffffff', '#2a0c04'],
   sosTint: ['#fbe7e0', '#3a1a11'],
+  // Paper craft (design system, Paper craft): the header strip, the cream
+  // footer band taken from the illustrations' highlights, and the darker
+  // edge under the SOS button. In dark mode the strip and band fall back to
+  // surface and sunken: no cream at night.
+  strip: ['#fffaf0', '#17201b'],
+  cream: ['#f3e6cb', '#0b100d'],
+  sosEdge: ['#7a2410', '#a8442a'],
 } as const;
 
 type Pair = readonly [string, string];
@@ -43,7 +50,12 @@ const doorArt = {kids: '#f9b52e', parents: '#c7e8eb'} as const;
 // text sits over the art's empty corner (top-left for kids, top-right for
 // parents). HomeDoors places its two items with these custom properties.
 const doorLayout = {
-  borderRadius: 'var(--radius-container)',
+  // Cut paper: 32px corners, a crisp edge under a soft lift, and a 2px rise
+  // on hover (design system, Paper craft).
+  borderRadius: 'var(--radius-page)',
+  boxShadow: 'var(--shadow-cut)',
+  transition: 'transform 160ms ease-out, box-shadow 160ms ease-out',
+  ':hover': {transform: 'translateY(-2px)', boxShadow: 'var(--shadow-cut-hover)'},
   overflow: 'hidden',
   minHeight: '0',
   display: 'grid',
@@ -198,20 +210,65 @@ export const zastitiTheme = defineTheme({
       '0 8px 24px light-dark(rgba(22, 33, 27, 0.10), rgba(0, 0, 0, 0.5))',
   },
 
+  // Paper craft. The grain is one transparent mid-grey tile: it darkens the
+  // light paper and lightens the dark one by a few units, so the same file
+  // works in both modes without a blend mode. Shadows are a crisp 2-3px edge
+  // (the paper's thickness) under a soft lift; dark mode swaps the green-ink
+  // shadow for black.
+  localTokens: {
+    '--paper-grain': 'url(/images/paper-grain.webp)',
+    '--paper-strip': t(c.strip),
+    '--paper-cream': t(c.cream),
+    '--sos-edge': t(c.sosEdge),
+    '--shadow-cut':
+      '0 3px 0 light-dark(rgba(26, 67, 41, 0.13), rgba(0, 0, 0, 0.45)), 0 16px 30px -14px light-dark(rgba(26, 67, 41, 0.35), rgba(0, 0, 0, 0.7))',
+    '--shadow-cut-hover':
+      '0 5px 0 light-dark(rgba(26, 67, 41, 0.13), rgba(0, 0, 0, 0.45)), 0 22px 34px -14px light-dark(rgba(26, 67, 41, 0.38), rgba(0, 0, 0, 0.75))',
+    // One sheet lying on the next: the kids' door over the parents' on phones.
+    '--shadow-cut-stack':
+      '0 3px 0 light-dark(rgba(26, 67, 41, 0.14), rgba(0, 0, 0, 0.5)), 0 10px 18px -8px light-dark(rgba(26, 67, 41, 0.3), rgba(0, 0, 0, 0.6))',
+    '--shadow-strip':
+      '0 2px 0 light-dark(rgba(26, 67, 41, 0.07), rgba(0, 0, 0, 0.35)), 0 8px 16px -8px light-dark(rgba(26, 67, 41, 0.22), rgba(0, 0, 0, 0.6))',
+    '--shadow-fold':
+      '0 -2px 0 light-dark(rgba(26, 67, 41, 0.06), rgba(0, 0, 0, 0.35)), inset 0 1px 0 light-dark(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.04))',
+  },
+
   components: {
-    // Headings balance their lines so a title breaks evenly ("Za /
-    // roditelje", not one long line and one word). Running text avoids a
-    // lone last word. Both are progressive: browsers without support wrap
-    // as usual.
-    heading: {
-      base: {textWrap: 'balance'},
+    // The page is grained paper. AppShell's `section` variant paints the
+    // surface colour by default; the page ground is paper.
+    'app-shell': {
+      'variant:section': {
+        backgroundColor: 'var(--color-background-body)',
+        backgroundImage: 'var(--paper-grain)',
+      },
     },
-    text: {
-      base: {textWrap: 'pretty'},
+    // The header is a cream paper strip lying on the page.
+    'app-shell-header': {
+      base: {
+        backgroundColor: 'var(--paper-strip)',
+        backgroundImage: 'var(--paper-grain)',
+        boxShadow: 'var(--shadow-strip)',
+        // Above the stacked doors (z-index 1 on phones), so its shadow falls
+        // on them and they scroll under it.
+        zIndex: '3',
+      },
     },
-    // Home: the two doors. Two framed cards side by side, filling the screen
-    // under the 72px header, on the same 1120px column as the header.
+    // The strip's shadow is its edge: no hairline under it. Only the site
+    // header is a Layout header (AppShell's).
+    'layout-header': {
+      base: {borderBottomColor: 'transparent'},
+    },
+    // Quiet bands (the footer) are cream paper with a folded top edge
+    // instead of a hairline.
     section: {
+      'variant:muted': {
+        backgroundColor: 'var(--paper-cream)',
+        backgroundImage: 'var(--paper-grain)',
+        boxShadow: 'var(--shadow-fold)',
+        borderTopColor: 'transparent',
+      },
+      // Home: the two doors. Two framed cards side by side, filling the
+      // screen under the 72px header, on the same 1120px column as the header.
       'variant:doors': {
         display: 'grid',
         gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
@@ -222,6 +279,16 @@ export const zastitiTheme = defineTheme({
         minHeight: 'calc(100dvh - 73px)',
         boxSizing: 'border-box',
       },
+    },
+    // Headings balance their lines so a title breaks evenly ("Za /
+    // roditelje", not one long line and one word). Running text avoids a
+    // lone last word. Both are progressive: browsers without support wrap
+    // as usual.
+    heading: {
+      base: {textWrap: 'balance'},
+    },
+    text: {
+      base: {textWrap: 'pretty'},
     },
     // ClickableCard takes its variant names from Card's variant map, and the
     // theme build only augments that map from `card` (Astryx 0.7.15). Enrol
@@ -278,9 +345,14 @@ export const zastitiTheme = defineTheme({
         borderColor: 'var(--color-border-emphasized)',
       },
       // The SOS button: reporting violence only.
+      // Paper craft: a darker paper edge underneath that presses flat when
+      // tapped. Still a solid fill: no texture on the one urgent action.
       'variant:sos': {
         backgroundColor: 'var(--color-error)',
         color: 'var(--color-on-error)',
+        boxShadow: '0 3px 0 var(--sos-edge)',
+        transition: 'transform 100ms ease-out, box-shadow 100ms ease-out',
+        ':active': {transform: 'translateY(2px)', boxShadow: '0 1px 0 var(--sos-edge)'},
       },
     },
   },
@@ -315,8 +387,12 @@ export const zastitiTheme = defineTheme({
             // Text and art side by side; the parents' door mirrors the kids'
             // so the two read as a pair down the screen.
             'clickable-card': {
+              // The kids' door lies on the parents' like a stacked sheet.
               'variant:door-kids': {
                 ...doorSideBySide,
+                zIndex: '1',
+                boxShadow: 'var(--shadow-cut-stack)',
+                ':hover': {transform: 'none', boxShadow: 'var(--shadow-cut-stack)'},
                 '--door-text-col': '1',
                 '--door-art-width': '68%',
                 '--door-art-side': 'end',
@@ -325,6 +401,8 @@ export const zastitiTheme = defineTheme({
               },
               'variant:door-parents': {
                 ...doorSideBySide,
+                boxShadow: 'none',
+                ':hover': {transform: 'none', boxShadow: 'none'},
                 '--door-text-col': '2',
                 // Mother and son sit on the art's left, against the screen
                 // edge; its right side (the plant) fades out under the text.
@@ -334,6 +412,22 @@ export const zastitiTheme = defineTheme({
                 '--door-art-position': '0% 60%',
                 '--door-art-mask': 'linear-gradient(to left, transparent, #000 26%)',
               },
+            },
+          },
+        },
+      },
+      // Reduced motion: the doors and the SOS button keep their shadows and
+      // colour changes but no longer move.
+      {
+        when: {motion: 'reduce'},
+        value: {
+          components: {
+            'clickable-card': {
+              'variant:door-kids': {':hover': {transform: 'none'}},
+              'variant:door-parents': {':hover': {transform: 'none'}},
+            },
+            button: {
+              'variant:sos': {':active': {transform: 'none'}},
             },
           },
         },

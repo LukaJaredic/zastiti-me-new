@@ -375,9 +375,10 @@
   },
   "collaborators": {
     "title": "Naš Tim i Partneri",
-    "description": "Upoznajte pojedince i organizacije koje čine naš rad mogućim.",
+    "description": "Upoznajte ljude koji čine naš rad mogućim.",
     "team-title": "Naš Tim",
     "partners-title": "Naši Partneri",
+    "partners-description": "Institucije i organizacije s kojima radimo na zaštiti djece na internetu.",
     "view-details": "Pogledajte detalje",
     "learn-more": "Saznajte više"
   },

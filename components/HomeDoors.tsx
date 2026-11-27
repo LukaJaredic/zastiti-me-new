@@ -92,7 +92,15 @@ export function HomeDoors({doors}: {doors: Door[]}) {
                 pointerEvents: 'none',
               }}
             >
-              <Heading level={2} type="display-2" weight="bold">
+              {/* Door titles never wrap ("Za / roditelje" splits the name);
+                  a long title overflows instead. In the parents' right-aligned
+                  block it overflows to the left, into the empty sky. */}
+              <Heading
+                level={2}
+                type="display-2"
+                weight="bold"
+                style={{whiteSpace: 'nowrap'}}
+              >
                 {d.title}
               </Heading>
               {/* Over the art, the running text stays in the illustration's

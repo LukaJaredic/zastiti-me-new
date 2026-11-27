@@ -7,7 +7,7 @@ import {zastitiIcons} from './icons';
  * Source of truth: the "Zaštiti.me" design system (tokens.json). Each tuple is
  * [light, dark]. Rebuild after editing: `npx astryx theme build src/themes/zastiti/zastitiTheme.ts`.
  */
-const c = {
+export const c = {
   paper: ['#f7f5f0', '#101713'],
   surface: ['#ffffff', '#17201b'],
   sunken: ['#efebe2', '#0b100d'],
@@ -31,7 +31,7 @@ const c = {
 } as const;
 
 type Pair = readonly [string, string];
-const t = (v: Pair | string): [string, string] | string =>
+export const t = (v: Pair | string): [string, string] | string =>
   typeof v === 'string' ? v : [v[0], v[1]];
 
 export const zastitiTheme = defineTheme({
@@ -129,6 +129,9 @@ export const zastitiTheme = defineTheme({
     '--focus-outline-color': t(c.parents),
     '--focus-outline-offset': '2px',
 
+    // Large controls (header buttons, lg inputs) meet the 44px tap target.
+    '--size-element-lg': '44px',
+
     // Shape
     '--radius-inner': '8px',
     '--radius-element': '12px',
@@ -143,6 +146,29 @@ export const zastitiTheme = defineTheme({
   },
 
   components: {
+    // The header bar sits on the same 1120px column as the footer and pages,
+    // 72px tall, the logo and the SOS button on the column's edges.
+    'top-nav': {
+      base: {
+        maxWidth: 'calc(1120px + 2 * var(--spacing-6))',
+        marginInline: 'auto',
+        paddingInline: 'var(--spacing-6)',
+        minHeight: '72px',
+      },
+    },
+    // Nav words: 44px tap targets.
+    'top-nav-item': {
+      base: {
+        minHeight: '44px',
+      },
+      // Current page: a soft tint pill in the accent of the door you are in.
+      // The fill carries the state alongside aria-current, not colour alone.
+      selected: {
+        backgroundColor: 'var(--color-accent-muted)',
+        color: 'var(--color-text-accent)',
+        borderRadius: 'var(--radius-element)',
+      },
+    },
     button: {
       // Secondary: white surface with a 3:1 control border, not a grey fill.
       'variant:secondary': {

@@ -478,8 +478,11 @@
       "logoAlt": "Zaštiti.me logo",
       "menuButtonTitle": "Navigacija/Meni",
       "siteName": "Zaštiti.me",
-      "sheetSubtitle": "SIGURAN DIGITALNI SVIJET | SIGURNO DJETINJSTVO",
+      "sheetSubtitle": "Siguran digitalni svijet | Sigurno djetinjstvo",
       "languageSwitcherAria": "Odaberi jezik",
+      "sosButton": "Prijavi nasilje",
+      "themeDark": "Uključi tamnu temu",
+      "themeLight": "Uključi svijetlu temu",
       "menu": {
         "home": "Početna",
         "about": "O nama",

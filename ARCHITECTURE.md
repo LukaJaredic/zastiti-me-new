@@ -101,7 +101,7 @@ Before every PR: `npm run lint`, `npx tsc --noEmit`, and `npm run build`. Check 
 - **Change copy:** edit the key in `content/messages/me.json` *and* `en.json`. `tsc` fails if you only do one.
 - **Add an activity, guide or book:** append an item to the collection in `content/`, add its image under `public/images/<collection>/`, then build. The detail page appears automatically.
 - **Add a page:** create `app/[locale]/<montenegrin-slug>/page.tsx`, add its messages namespace to both JSON files, and link it from the header or footer config in `components/`.
-- **Change a colour, radius or font:** change it in the design system first, mirror it in `src/themes/zastiti/zastitiTheme.ts`, then rebuild the theme.
+- **Change a colour, radius or font:** change it in the design system first, mirror it in `src/themes/zastiti/zastitiTheme.ts`, then rebuild all four themes, since the audience themes extend it: `npx astryx theme build src/themes/zastiti*/*Theme.ts`.
 - **Retire a page:** delete the route and add a permanent redirect in `next.config.ts`.
 
 ## Status
@@ -112,13 +112,17 @@ Built so far:
 - `content/messages/`, copied verbatim from `old-site-reference/`
 - the home page with the three path cards, in both languages
 - the bilingual global 404
+- the header (`components/SiteHeader.tsx`, in AppShell's top nav, with a mobile drawer and a ME/EN link that keeps the current path) and footer (`components/SiteFooter.tsx`); their links live in `components/siteNav.ts`
+- audience colours: `components/AudienceTheme.tsx` wraps the header and page in a nested Astryx theme by URL (`/roditelji` teal, `/djeca` sun, `/sos` coral; shared pages keep brand green). The three themes in `src/themes/zastiti-{roditelji,djeca,sos}/` extend `zastiti` and swap only the accent family
 
 Not built yet:
 - `content/` collections
 - every page except the home page
-- the language switcher (Montenegrin stays the default; a remembered English choice is a decision for later)
+- a remembered language choice (Montenegrin stays the default; the header switch only swaps the locale segment)
 - the forms and `lib/`
-- the header, footer and logo
+- the logo (the header sets "Zaštiti.me" as a Fraunces wordmark until the SVG is in the design system)
+- social links (the footer shows none until the client sends the real profile URLs)
+- Montenegrin strings for Astryx's own labels ("Skip to content", "Open navigation"); they fall back to English
 
 Open decisions:
 - the email provider

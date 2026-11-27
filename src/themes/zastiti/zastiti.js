@@ -226,7 +226,8 @@ export const zastitiTheme = {
     "--shadow-inset-warning": "inset 0px 0px 0px 2px #f8d36a4D",
     "--shadow-inset-error": "inset 0px 0px 0px 2px #de47454D",
     "--focus-outline-color": "light-dark(#1b6478, #7fc2d4)",
-    "--focus-outline-offset": "2px"
+    "--focus-outline-offset": "2px",
+    "--size-element-lg": "44px"
   },
   localTokens: {
     "--astryx-theme-neutral-color-status-fill-accent": "light-dark(#0074e2, #6d9cfe)"
@@ -453,6 +454,24 @@ export const zastitiTheme = {
     "section": {
       "base": {
         "padding": "var(--spacing-3)"
+      }
+    },
+    "top-nav": {
+      "base": {
+        "maxWidth": "calc(1120px + 2 * var(--spacing-6))",
+        "marginInline": "auto",
+        "paddingInline": "var(--spacing-6)",
+        "minHeight": "72px"
+      }
+    },
+    "top-nav-item": {
+      "base": {
+        "minHeight": "44px"
+      },
+      "selected": {
+        "backgroundColor": "var(--color-accent-muted)",
+        "color": "var(--color-text-accent)",
+        "borderRadius": "var(--radius-element)"
       }
     }
   },

@@ -4,6 +4,11 @@ import "../globals.css";
 import "@astryxdesign/core/reset.css";
 import "@astryxdesign/core/astryx.css";
 import { htmlLang, locales } from "@/lib/i18n";
+import { AppShell } from "@astryxdesign/core/AppShell";
+import { SiteHeader } from "@/components/SiteHeader";
+import { SiteFooter } from "@/components/SiteFooter";
+import { AudienceTheme } from "@/components/AudienceTheme";
+import { allLinks, primaryLinks } from "@/components/siteNav";
 import { Providers } from "../providers";
 import { getDictionary, getLocale } from "./dictionaries";
 
@@ -38,13 +43,50 @@ export default async function RootLayout({
   children,
 }: LayoutProps<"/[locale]">) {
   const locale = await getLocale();
+  const messages = await getDictionary();
+  const { components } = messages;
   return (
     <html
       lang={htmlLang[locale]}
       className={`${onest.variable} ${fraunces.variable}`}
     >
       <body>
-        <Providers>{children}</Providers>
+        <Providers>
+          <AudienceTheme>
+            <AppShell
+              height="auto"
+              variant="section"
+              // Under 1024px the words, language and theme switch no longer
+              // fit beside the name: keep the name, SOS and the menu.
+              // SiteHeader renders its own 44px, labelled menu toggle.
+              mobileNav={{ breakpoint: "lg", hasToggle: false }}
+              topNav={
+                <SiteHeader
+                  locale={locale}
+                  content={{
+                    siteName: components.header.siteName,
+                    navLabel: components.header.menuButtonTitle,
+                    sosLabel: components.header.sosButton,
+                    languageLabel: components.header.languageSwitcherAria,
+                    themeDarkLabel: components.header.themeDark,
+                    themeLightLabel: components.header.themeLight,
+                    primary: primaryLinks(messages),
+                    all: allLinks(messages),
+                  }}
+                />
+              }
+            >
+              {children}
+            </AppShell>
+          </AudienceTheme>
+          <SiteFooter
+            locale={locale}
+            siteName={components.header.siteName}
+            tagline={components.header.sheetSubtitle}
+            contactLabel={components.header.menu.contact}
+            footer={components.footer}
+          />
+        </Providers>
       </body>
     </html>
   );

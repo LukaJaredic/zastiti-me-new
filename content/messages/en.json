@@ -478,8 +478,11 @@
       "logoAlt": "Protect.me logo",
       "menuButtonTitle": "Navigation/Menu",
       "siteName": "Protect.me",
-      "sheetSubtitle": "SAFE DIGITAL WORLD | SECURE CHILDHOOD",
+      "sheetSubtitle": "Safe digital world | Secure childhood",
       "languageSwitcherAria": "Select language",
+      "sosButton": "Report abuse",
+      "themeDark": "Switch to dark theme",
+      "themeLight": "Switch to light theme",
       "menu": {
         "home": "Home",
         "about": "About Us",

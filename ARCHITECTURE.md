@@ -103,6 +103,7 @@ Before every PR: `npm run lint`, `npx tsc --noEmit`, and `npm run build`. Check 
 - **Add a page:** create `app/[locale]/<montenegrin-slug>/page.tsx`, add its messages namespace to both JSON files, and link it from the header or footer config in `components/`.
 - **Change a colour, radius or font:** change it in the design system first, mirror it in `src/themes/zastiti/zastitiTheme.ts`, then rebuild all four themes, since the audience themes extend it: `npx astryx theme build src/themes/zastiti*/*Theme.ts`.
 - **Retire a page:** delete the route and add a permanent redirect in `next.config.ts`.
+- **Upgrade Astryx:** after `npx astryx upgrade`, check that the header links (`data-site-nav-links` in `components/SiteHeader.tsx`) are still centred between the logo and the buttons at 1024px and 1440px. They are stretched by one rule in `app/globals.css`, because TopNav has no option for it; if TopNav's markup changes, the links slide back against the logo.
 
 ## Status
 

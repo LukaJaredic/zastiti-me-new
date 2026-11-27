@@ -56,10 +56,11 @@ const doorLayout = {
   // Cut paper: 32px corners, a crisp edge under a soft lift, a 2px rise on
   // hover and a 2px press when tapped or clicked (design system, Paper
   // craft). The press is quicker than the rise so it feels immediate.
+  // The rise is in app/globals.css: it only applies on devices that can
+  // hover (@media (hover: hover)), which a theme override can't express.
   borderRadius: 'var(--radius-page)',
   boxShadow: 'var(--shadow-cut)',
   transition: 'transform 160ms ease-out, box-shadow 160ms ease-out',
-  ':hover': {transform: 'translateY(-2px)', boxShadow: 'var(--shadow-cut-hover)'},
   ':active': {
     transform: 'translateY(2px)',
     boxShadow: 'var(--shadow-cut-pressed)',
@@ -495,7 +496,6 @@ export const zastitiTheme = defineTheme({
                 ...doorSideBySide,
                 zIndex: '1',
                 boxShadow: 'var(--shadow-cut-stack)',
-                ':hover': {transform: 'none', boxShadow: 'var(--shadow-cut-stack)'},
                 // Pressed: 1px down, flattening onto the parents' door.
                 ':active': {transform: 'translateY(1px)', boxShadow: 'none'},
                 '--door-text-col': '1',
@@ -507,7 +507,6 @@ export const zastitiTheme = defineTheme({
               'variant:door-parents': {
                 ...doorSideBySide,
                 boxShadow: 'none',
-                ':hover': {transform: 'none', boxShadow: 'none'},
                 ':active': {transform: 'translateY(1px)', boxShadow: 'none'},
                 '--door-text-col': '2',
                 // Mother and son sit on the art's left, against the screen
@@ -529,14 +528,8 @@ export const zastitiTheme = defineTheme({
         value: {
           components: {
             'clickable-card': {
-              'variant:door-kids': {
-                ':hover': {transform: 'none'},
-                ':active': {transform: 'none'},
-              },
-              'variant:door-parents': {
-                ':hover': {transform: 'none'},
-                ':active': {transform: 'none'},
-              },
+              'variant:door-kids': {':active': {transform: 'none'}},
+              'variant:door-parents': {':active': {transform: 'none'}},
             },
             button: {
               'variant:sos': {':active': {transform: 'none'}},

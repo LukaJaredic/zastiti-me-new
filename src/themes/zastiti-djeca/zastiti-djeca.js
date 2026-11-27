@@ -288,6 +288,9 @@ export const zastitiDjecaTheme = {
         "fontFamily": "var(--font-family-heading)",
         "fontSize": "var(--text-display-3-size)",
         "lineHeight": "var(--text-display-3-leading)"
+      },
+      "base": {
+        "textWrap": "balance"
       }
     },
     "text": {
@@ -330,6 +333,9 @@ export const zastitiDjecaTheme = {
         "fontFamily": "var(--font-family-heading)",
         "fontSize": "var(--text-display-3-size)",
         "lineHeight": "var(--text-display-3-leading)"
+      },
+      "base": {
+        "textWrap": "pretty"
       }
     },
     "item": {
@@ -454,7 +460,7 @@ export const zastitiDjecaTheme = {
         "backgroundColor": "#f9b52e"
       },
       "variant:door-parents": {
-        "backgroundColor": "#cae4eb"
+        "backgroundColor": "#c7e8eb"
       }
     },
     "section": {
@@ -482,12 +488,15 @@ export const zastitiDjecaTheme = {
         "gridTemplateRows": "minmax(0, 1fr)",
         "--door-text-col": "1",
         "--door-text-align": "start",
+        "--door-text-side": "start",
+        "--door-text-width": "100%",
+        "--door-text-items": "flex-start",
+        "--door-text-anchor": "start",
         "--door-text-max": "42%",
         "--door-art-width": "100%",
         "--door-art-side": "stretch",
         "--door-art-position": "right 35%",
         "--door-art-mask": "none",
-        "--door-art-flip": "none",
         "backgroundColor": "#f9b52e"
       },
       "variant:door-parents": {
@@ -499,13 +508,16 @@ export const zastitiDjecaTheme = {
         "gridTemplateRows": "minmax(0, 1fr)",
         "--door-text-col": "1",
         "--door-text-align": "start",
-        "--door-text-max": "42%",
+        "--door-text-side": "end",
+        "--door-text-width": "64%",
+        "--door-text-items": "flex-end",
+        "--door-text-anchor": "end",
+        "--door-text-max": "62%",
         "--door-art-width": "100%",
         "--door-art-side": "stretch",
-        "--door-art-position": "right 35%",
+        "--door-art-position": "left 35%",
         "--door-art-mask": "none",
-        "--door-art-flip": "none",
-        "backgroundColor": "#cae4eb"
+        "backgroundColor": "#c7e8eb"
       }
     },
     "top-nav": {
@@ -604,6 +616,10 @@ export const zastitiDjecaTheme = {
                 "borderRadius": "0",
                 "gridTemplateColumns": "minmax(0, 1fr) minmax(0, 1fr)",
                 "--door-text-align": "center",
+                "--door-text-side": "start",
+                "--door-text-width": "100%",
+                "--door-text-items": "flex-start",
+                "--door-text-anchor": "start",
                 "--door-text-max": "100%",
                 "--door-text-col": "1",
                 "--door-art-width": "68%",
@@ -615,13 +631,16 @@ export const zastitiDjecaTheme = {
                 "borderRadius": "0",
                 "gridTemplateColumns": "minmax(0, 1fr) minmax(0, 1fr)",
                 "--door-text-align": "center",
+                "--door-text-side": "start",
+                "--door-text-width": "100%",
+                "--door-text-items": "flex-start",
+                "--door-text-anchor": "start",
                 "--door-text-max": "100%",
                 "--door-text-col": "2",
-                "--door-art-flip": "scaleX(-1)",
                 "--door-art-width": "60%",
                 "--door-art-side": "start",
-                "--door-art-position": "100% 60%",
-                "--door-art-mask": "linear-gradient(to right, transparent, #000 26%)"
+                "--door-art-position": "0% 60%",
+                "--door-art-mask": "linear-gradient(to left, transparent, #000 26%)"
               }
             }
           }

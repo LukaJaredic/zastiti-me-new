@@ -39,7 +39,7 @@ export default async function Home() {
             description: home.parentsDescription,
             action: home.parentsAction,
             href: `/${locale}/roditelji`,
-            image: '/images/home/roditelji-papir.webp',
+            image: '/images/home/roditelji-kauc.webp',
           },
         ]}
       />

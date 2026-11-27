@@ -373,6 +373,10 @@
     line-height: var(--text-display-3-leading);
   }
 
+  .astryx-heading {
+    text-wrap: balance;
+  }
+
   .astryx-text[data-type="body"] {
     font-family: var(--font-family-body);
     font-size: var(--text-body-size);
@@ -419,6 +423,10 @@
     font-family: var(--font-family-heading);
     font-size: var(--text-display-3-size);
     line-height: var(--text-display-3-leading);
+  }
+
+  .astryx-text {
+    text-wrap: pretty;
   }
 
   .astryx-item[data-selected="selected"] {
@@ -551,7 +559,7 @@
   }
 
   .astryx-card[data-variant="door-parents"] {
-    background-color: #cae4eb;
+    background-color: #c7e8eb;
   }
 
   .astryx-section {
@@ -579,12 +587,15 @@
     grid-template-rows: minmax(0, 1fr);
     --door-text-col: 1;
     --door-text-align: start;
+    --door-text-side: start;
+    --door-text-width: 100%;
+    --door-text-items: flex-start;
+    --door-text-anchor: start;
     --door-text-max: 42%;
     --door-art-width: 100%;
     --door-art-side: stretch;
     --door-art-position: right 35%;
     --door-art-mask: none;
-    --door-art-flip: none;
     background-color: #f9b52e;
   }
 
@@ -597,13 +608,16 @@
     grid-template-rows: minmax(0, 1fr);
     --door-text-col: 1;
     --door-text-align: start;
-    --door-text-max: 42%;
+    --door-text-side: end;
+    --door-text-width: 64%;
+    --door-text-items: flex-end;
+    --door-text-anchor: end;
+    --door-text-max: 62%;
     --door-art-width: 100%;
     --door-art-side: stretch;
-    --door-art-position: right 35%;
+    --door-art-position: left 35%;
     --door-art-mask: none;
-    --door-art-flip: none;
-    background-color: #cae4eb;
+    background-color: #c7e8eb;
   }
 
   .astryx-top-nav {
@@ -781,6 +795,10 @@
     border-radius: 0;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     --door-text-align: center;
+    --door-text-side: start;
+    --door-text-width: 100%;
+    --door-text-items: flex-start;
+    --door-text-anchor: start;
     --door-text-max: 100%;
     --door-text-col: 1;
     --door-art-width: 68%;
@@ -793,13 +811,16 @@
     border-radius: 0;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     --door-text-align: center;
+    --door-text-side: start;
+    --door-text-width: 100%;
+    --door-text-items: flex-start;
+    --door-text-anchor: start;
     --door-text-max: 100%;
     --door-text-col: 2;
-    --door-art-flip: scaleX(-1);
     --door-art-width: 60%;
     --door-art-side: start;
-    --door-art-position: 100% 60%;
-    --door-art-mask: linear-gradient(to right, transparent, #000 26%);
+    --door-art-position: 0% 60%;
+    --door-art-mask: linear-gradient(to left, transparent, #000 26%);
   }
   }
 }

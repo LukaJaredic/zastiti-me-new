@@ -24,8 +24,9 @@ export type HeaderContent = {
 };
 
 /**
- * The site header (nav-centre): the logo on the left, five plain words in
- * the middle, the other language and the one SOS button on the right. Below
+ * The site header: the logo and five plain words on the left, read as one
+ * line; on the right only buttons, the language and theme switches as one
+ * pair and, set apart on the far right, the one SOS button. Below
  * the md breakpoint AppShell keeps the logo, SOS and the menu toggle; the
  * drawer lists every page, the language and SOS.
  */
@@ -104,7 +105,6 @@ export function SiteHeader({
     <TopNav
       label={content.navLabel}
       heading={<Logo name={content.siteName} href={home} />}
-      centerContent={isMobile ? undefined : items(content.primary)}
       startContent={
         isMobile ? (
           <>
@@ -113,7 +113,14 @@ export function SiteHeader({
             {themeToggle}
             {sos}
           </>
-        ) : undefined
+        ) : (
+          // Centred in the room between the logo and the buttons, not in
+          // the bar (TopNav's centerContent), so the words never crowd the
+          // buttons at 1024px. The stretch comes from app/globals.css.
+          <HStack hAlign="center" vAlign="center" data-site-nav-links="">
+            {items(content.primary)}
+          </HStack>
+        )
       }
       endContent={
         isMobile ? (
@@ -131,9 +138,16 @@ export function SiteHeader({
             />
           </HStack>
         ) : (
-          <HStack gap={2} vAlign="center">
-            {language}
-            {themeToggle}
+          // The two settings sit together as a pair (4px apart), set 24px
+          // back from SOS so they never read as part of it. SOS keeps the
+          // column's right edge: the same place on every page and at every
+          // width, beside the menu on phones. The centred nav words re-centre
+          // in the room left, so this gap doesn't crowd them at 1024px.
+          <HStack gap={6} vAlign="center">
+            <HStack gap={1} vAlign="center">
+              {language}
+              {themeToggle}
+            </HStack>
             {sos}
           </HStack>
         )

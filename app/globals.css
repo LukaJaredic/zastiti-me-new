@@ -7,4 +7,21 @@
     color: var(--color-text-primary);
     font-family: var(--font-family-body);
   }
+
+  /* Header links, centred between the logo and the buttons (SiteHeader).
+     TopNav centres its centerContent in the whole bar, and its start slot
+     only hugs its content, with no prop or theme target to make it grow.
+     So the links' own stack is marked, and whatever holds it fills the free
+     space. The end padding matches TopNav's 16px gap after the logo, so the
+     space on both sides of the links is equal. If Astryx changes TopNav's
+     markup, the links fall back to sitting after the logo. */
+  :has(> [data-site-nav-links]) {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+
+  [data-site-nav-links] {
+    flex: 1 1 auto;
+    padding-inline-end: var(--spacing-4);
+  }
 }

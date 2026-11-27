@@ -1,51 +1,35 @@
 import type {Locale} from '@/lib/i18n';
 
 /**
- * Partners on the About page: companies and organisations that help.
- *
- * SEED DATA: invented examples until the client sends the real partners.
+ * Partners on the About page, in the client's order, each linking to its
+ * own site. Names are proper names; the ministry, the association and the
+ * .ME registry also have English names.
  */
 
 type Localized = Record<Locale, string>;
 
-export type Partner = {
-  name: string;
-  /** What kind of help: shown small, above the name. */
-  kind: Localized;
-  help: Localized;
-};
+export type Partner = {name: Localized; href: string};
+
+const same = (name: string): Localized => ({me: name, en: name});
 
 export const partners: Partner[] = [
   {
-    name: 'Lovćen Tech',
-    kind: {me: 'Tehnička podrška', en: 'Technical support'},
-    help: {
-      me: 'Održava našu platformu i pomaže u digitalnoj forenzici.',
-      en: 'Runs our platform and helps with digital forensics.',
+    name: {
+      me: 'Ministarstvo prosvjete, nauke i inovacija',
+      en: 'Ministry of Education, Science and Innovation',
     },
+    href: 'https://www.gov.me/mps',
   },
+  {name: same('INHOPE'), href: 'https://www.inhope.org/EN'},
+  {name: same('UNICEF'), href: 'https://www.unicef.org/montenegro/'},
+  {name: same('UNDP'), href: 'https://www.undp.org/cnr/montenegro'},
   {
-    name: 'Fondacija Zeta',
-    kind: {me: 'Donator', en: 'Donor'},
-    help: {
-      me: 'Finansira besplatnu pomoć žrtvama digitalnog nasilja.',
-      en: 'Funds free help for victims of digital violence.',
+    name: {
+      me: 'Udruženje psihologa Crne Gore',
+      en: 'Association of Psychologists of Montenegro',
     },
+    href: 'https://udruzenjepsihologa.me/',
   },
-  {
-    name: 'Škola koda',
-    kind: {me: 'Edukacija', en: 'Education'},
-    help: {
-      me: 'Vodi radionice o sigurnosti na internetu u školama.',
-      en: 'Runs online safety workshops in schools.',
-    },
-  },
-  {
-    name: 'Ars Media',
-    kind: {me: 'Medijski partner', en: 'Media partner'},
-    help: {
-      me: 'Širi naše vodiče i kampanje kroz svoje kanale.',
-      en: 'Shares our guides and campaigns through its channels.',
-    },
-  },
+  {name: same('Roditelji.me'), href: 'https://roditelji.me/'},
+  {name: {me: '.ME domen', en: '.ME domain'}, href: 'https://domen.me/'},
 ];

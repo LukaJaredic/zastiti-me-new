@@ -1,13 +1,13 @@
 import {VStack} from '@astryxdesign/core/VStack';
-import {Heading, Text} from '@astryxdesign/core/Text';
+import {Text} from '@astryxdesign/core/Text';
+import {Link} from '@astryxdesign/core/Link';
 import {listGrid} from './listGrid';
 
-type Partner = {name: string; kind: string; help: string};
+type Partner = {name: string; href: string};
 
 /**
- * Partners, two to a row where they fit. Each is its name, the kind of
- * help it gives (small, above the name: drawn first by `order`, after the
- * name in the markup) and one line on what it does.
+ * Partners, two to a row where they fit, each name linking to the
+ * partner's own site.
  */
 export function PartnerList({partners}: {partners: Partner[]}) {
   return (
@@ -17,18 +17,16 @@ export function PartnerList({partners}: {partners: Partner[]}) {
         minColumn: 'calc(55 * var(--spacing-1))',
         maxColumns: 2,
         columnGap: 'var(--spacing-8)',
+        rowGap: 'var(--spacing-5)',
       })}
     >
       {partners.map((partner) => (
-        <VStack as="li" key={partner.name} gap={3}>
-          <VStack gap={1}>
-            <Heading level={3}>{partner.name}</Heading>
-            <Text type="supporting" style={{order: -1}}>
-              {partner.kind}
-            </Text>
-          </VStack>
-          <Text color="secondary" as="p">
-            {partner.help}
+        <VStack as="li" key={partner.href}>
+          <Text type="large">
+            {/* Underlined, so it reads as a link by more than its colour. */}
+            <Link href={partner.href} hasUnderline>
+              {partner.name}
+            </Link>
           </Text>
         </VStack>
       ))}

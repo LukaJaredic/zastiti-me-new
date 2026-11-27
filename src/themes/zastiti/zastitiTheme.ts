@@ -37,11 +37,11 @@ export const t = (v: Pair | string): [string, string] | string =>
 // The home illustrations' own background colours, sampled from the files.
 // The doors are painted in them in both modes: the art is always light, so
 // the door around it must match it exactly, and the text on it stays dark.
-const doorArt = {kids: '#f9b52e', parents: '#cae4eb'} as const;
+const doorArt = {kids: '#f9b52e', parents: '#c7e8eb'} as const;
 
 // A door is a grid. On wide screens it is one cell: the art fills it and the
-// text sits over the art's empty left side. HomeDoors places its two items
-// with these custom properties.
+// text sits over the art's empty corner (top-left for kids, top-right for
+// parents). HomeDoors places its two items with these custom properties.
 const doorLayout = {
   borderRadius: 'var(--radius-container)',
   overflow: 'hidden',
@@ -51,12 +51,15 @@ const doorLayout = {
   gridTemplateRows: 'minmax(0, 1fr)',
   '--door-text-col': '1',
   '--door-text-align': 'start',
+  '--door-text-side': 'start',
+  '--door-text-width': '100%',
+  '--door-text-items': 'flex-start',
+  '--door-text-anchor': 'start',
   '--door-text-max': '42%',
   '--door-art-width': '100%',
   '--door-art-side': 'stretch',
   '--door-art-position': 'right 35%',
   '--door-art-mask': 'none',
-  '--door-art-flip': 'none',
 } as const;
 
 // Below lg the door splits into two columns, text beside the art, so the
@@ -67,6 +70,10 @@ const doorSideBySide = {
   borderRadius: '0',
   gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 1fr)',
   '--door-text-align': 'center',
+  '--door-text-side': 'start',
+  '--door-text-width': '100%',
+  '--door-text-items': 'flex-start',
+  '--door-text-anchor': 'start',
   '--door-text-max': '100%',
 } as const;
 
@@ -192,6 +199,16 @@ export const zastitiTheme = defineTheme({
   },
 
   components: {
+    // Headings balance their lines so a title breaks evenly ("Za /
+    // roditelje", not one long line and one word). Running text avoids a
+    // lone last word. Both are progressive: browsers without support wrap
+    // as usual.
+    heading: {
+      base: {textWrap: 'balance'},
+    },
+    text: {
+      base: {textWrap: 'pretty'},
+    },
     // Home: the two doors. Two framed cards side by side, filling the screen
     // under the 72px header, on the same 1120px column as the header.
     section: {
@@ -215,7 +232,19 @@ export const zastitiTheme = defineTheme({
     },
     'clickable-card': {
       'variant:door-kids': {...doorLayout, backgroundColor: doorArt.kids},
-      'variant:door-parents': {...doorLayout, backgroundColor: doorArt.parents},
+      // The parents' art has mother and son on the left and open sky top
+      // right: the text goes there, right-aligned against the edge so its
+      // short lines stay clear of the speech bubbles, the art anchored left.
+      'variant:door-parents': {
+        ...doorLayout,
+        backgroundColor: doorArt.parents,
+        '--door-text-side': 'end',
+        '--door-text-width': '64%',
+        '--door-text-items': 'flex-end',
+        '--door-text-anchor': 'end',
+        '--door-text-max': '62%',
+        '--door-art-position': 'left 35%',
+      },
     },
     // The header bar sits on the same 1120px column as the footer and pages,
     // 72px tall, the logo and the SOS button on the column's edges.
@@ -297,17 +326,13 @@ export const zastitiTheme = defineTheme({
               'variant:door-parents': {
                 ...doorSideBySide,
                 '--door-text-col': '2',
-                // Mirrored, so mother and son sit against the screen edge
-                // and the art's empty side faces the text. The image is
-                // flipped, so position and mask are in its own (unflipped)
-                // coordinates: 100% keeps the figures, "to right" fades the
-                // edge that ends up beside the text. Two figures, so a little
-                // narrower than the kids' art.
-                '--door-art-flip': 'scaleX(-1)',
+                // Mother and son sit on the art's left, against the screen
+                // edge; its right side (the plant) fades out under the text.
+                // Two figures, so a little narrower than the kids' art.
                 '--door-art-width': '60%',
                 '--door-art-side': 'start',
-                '--door-art-position': '100% 60%',
-                '--door-art-mask': 'linear-gradient(to right, transparent, #000 26%)',
+                '--door-art-position': '0% 60%',
+                '--door-art-mask': 'linear-gradient(to left, transparent, #000 26%)',
               },
             },
           },

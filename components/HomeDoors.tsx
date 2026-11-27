@@ -26,8 +26,9 @@ const variant = {kids: 'door-kids', parents: 'door-parents'} as const;
  * framed cards on wide screens, stacked edge to edge under 1024px (the
  * `doors` and `door-*` variants in the zastiti theme). Each whole card is
  * one link. On wide screens the text sits in the illustration's empty
- * top-left; under 1024px text and art sit side by side, the parents' door
- * mirroring the kids', so the text never lands on the drawing.
+ * corner (top-left for kids, top-right for parents); under 1024px text and
+ * art sit side by side, the parents' door the other way round from the
+ * kids', so the text never lands on the drawing.
  */
 export function HomeDoors({doors}: {doors: Door[]}) {
   return (
@@ -41,11 +42,10 @@ export function HomeDoors({doors}: {doors: Door[]}) {
           padding={0}
         >
           {/* The art spans the door. On wide screens it fills it and the text
-              sits over its empty left side; below lg the theme puts the text
-              in one column and sizes the art to the other side, fading it
-              out under the text's edge, parents mirrored (doorLayout in
-              zastitiTheme.ts). Neither takes pointer events, so the whole
-              door is one link. */}
+              sits over its empty corner; below lg the theme puts the text in
+              one column and sizes the art to the other side, fading it out
+              under the text's edge (doorLayout in zastitiTheme.ts). Neither
+              takes pointer events, so the whole door is one link. */}
           <VStack
             style={{
               gridRow: '1',
@@ -71,7 +71,6 @@ export function HomeDoors({doors}: {doors: Door[]}) {
                 objectFit: 'cover',
                 objectPosition: 'var(--door-art-position)',
                 maskImage: 'var(--door-art-mask)',
-                transform: 'var(--door-art-flip)',
               }}
             />
           </VStack>
@@ -84,6 +83,10 @@ export function HomeDoors({doors}: {doors: Door[]}) {
                 gridRow: '1',
                 gridColumn: 'var(--door-text-col)',
                 alignSelf: 'var(--door-text-align)',
+                justifySelf: 'var(--door-text-side)',
+                width: 'var(--door-text-width)',
+                alignItems: 'var(--door-text-items)',
+                textAlign: 'var(--door-text-anchor)' as 'start',
                 position: 'relative',
                 minWidth: '0',
                 pointerEvents: 'none',
@@ -94,8 +97,15 @@ export function HomeDoors({doors}: {doors: Door[]}) {
               </Heading>
               {/* Over the art, the running text stays in the illustration's
                   empty left side; in its own column it fills the column. */}
-              <VStack gap={3} maxWidth="var(--door-text-max)">
-                <Text>{d.description}</Text>
+              <VStack
+                gap={3}
+                maxWidth="var(--door-text-max)"
+                style={{alignItems: 'var(--door-text-items)'}}
+              >
+                {/* Short blurbs balance their lines: the theme's site-wide
+                    "pretty" wins over the textWrap prop (a later CSS layer),
+                    so this is set inline. */}
+                <Text style={{textWrap: 'balance'}}>{d.description}</Text>
                 <HStack gap={2} vAlign="center">
                   <Text weight="semibold">{d.action}</Text>
                   <Icon icon={ArrowRightIcon} />

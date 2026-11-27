@@ -1,0 +1,681 @@
+{
+  "home": {
+    "sosAlt": "Report violence",
+    "sosTitle": "SOS - report violence",
+    "sosDescription": "Urgent help and support in case of digital violence",
+    "sosAction": "Report now",
+    "parentsAlt": "For parents",
+    "parentsTitle": "For parents",
+    "parentsDescription": "Guides and advice for protecting children online",
+    "parentsAction": "Learn more",
+    "kidsAlt": "For kids",
+    "kidsTitle": "For kids",
+    "kidsDescription": "Internet safety for the youngest",
+    "kidsAction": "Learn more"
+  },
+  "library": {
+    "heading": "LIBRARY",
+    "subheading": "Electronic publications on protection from digital violence, available to read.",
+    "readButton": "Read",
+    "alt-cover": "Cover image for \"{title}\"",
+    "publications": {
+      "digitalnoNasilje": {
+        "title": "DIGITALNO NASILJE",
+        "author": "Bojana Dinić",
+        "publisher": "Faculty of Philosophy in Novi Sad, 2022",
+        "description": "A handbook on the phenomenon of digital violence with analysis of forms, consequences, and strategies for overcoming."
+      },
+      "vodicZaPrevenciju": {
+        "title": "GUIDE TO PREVENTING RISKY SOCIAL MEDIA USE",
+        "author": "Bojana Dinić",
+        "publisher": "Faculty of Philosophy in Novi Sad, 2021",
+        "description": "A practical guide for parents and teachers on preventing risky behavior."
+      },
+      "rizicnaUpotreba": {
+        "title": "RISKY SOCIAL MEDIA USE AMONG ADOLESCENTS",
+        "author": "Bojana Dinić et al.",
+        "publisher": "Faculty of Philosophy in Novi Sad, 2021",
+        "description": "A study of the causes and effects of excessive social media use among young people."
+      }
+    }
+  },
+  "digital-violence": {
+    "heroAlt": "Many angry, sad, or scared faces of bullied people on the internet",
+    "pageTitle": "Digital Violence",
+    "introLine1": "Violence on the internet is any form of violence that arises through digital technologies. It can occur on social networks, gaming platforms, and mobile phones.",
+    "introLine2": "Leaving a digital trail, online violence retains evidence that helps with protection and justice.",
+    "examples": {
+      "spreadingFalse": {
+        "title": "Spreading Falsehoods",
+        "description": "Posting false or embarrassing photos on social networks."
+      },
+      "threats": {
+        "title": "Threats",
+        "description": "Sending threats via messaging apps."
+      },
+      "impersonation": {
+        "title": "Impersonation",
+        "description": "Sending inappropriate messages on behalf of someone else, pretending to be another person."
+      }
+    },
+    "faqSectionTitle": "Top 10 Questions",
+    "faqs": {
+      "faq1": {
+        "question": "Am I a victim of online violence? How can I distinguish a bad joke from violence?",
+        "answer": "<p>If you feel hurt or think others are no longer respecting your boundaries, the joke has gone too far.</p><p>If you asked them to stop and they keep harassing you, that is violence.</p>"
+      },
+      "faq2": {
+        "question": "What are the consequences of digital violence?",
+        "answer": "<ul class=\"list-disc pl-5 space-y-1\"><li><strong>Mental:</strong> Feeling upset, angry, or inadequate.</li><li><strong>Emotional:</strong> Shame or loss of interest in favorite activities.</li><li><strong>Physical:</strong> Fatigue, headaches, or stomach pain.</li></ul>"
+      },
+      "faq3": {
+        "question": "Who should I talk to if I’m a victim of online violence?",
+        "answer": "<p>The first step is trust: a parent, school psychologist, or counselor.</p><p>If you don’t want to talk to someone in your circle, call 19833 – the free National Child Internet Safety Hotline.</p>"
+      },
+      "faq4": {
+        "question": "I’m experiencing violence but I’m afraid to talk to my parents. How do I start the conversation?",
+        "answer": "<p>Choose a calm moment – find a time when your parents are relaxed and not in a hurry. Prepare – you can write down what is happening, when, and how it makes you feel. Be honest and direct – for example, say: “Something/someone is hurting me online, and I think I need your help.”</p><p>If it’s hard with parents, find another trusted adult.</p>"
+      },
+      "faq5": {
+        "question": "How can I help friends report violence, especially if they are afraid to do it themselves?",
+        "answer": "<p>Listen to your friends and explain that it’s not mandatory to file an official report immediately, but that it’s important to talk to someone who can help.</p><p>Offer support, help them think through what to say, and offer to accompany them when they report violence. The most important thing is they know they’re not alone.</p>"
+      },
+      "faq6": {
+        "question": "The internet gives me access to all sorts of information, but also exposes me to possible violence. How do we stop violence while still using digital technologies?",
+        "answer": "<p>Being online offers many advantages, but also risks that need recognition.</p><p>Logging off can help short-term, but it’s not a permanent solution; reporting violence and community support are key for change.</p><p>We must be careful about what we share, because our words can harm others.</p><p>Maintaining kindness online and offline contributes to a safer digital space for everyone.</p>"
+      },
+      "faq7": {
+        "question": "How do I prevent someone from misusing my personal data online?",
+        "answer": "<p>Think carefully before sharing information like your address or phone number.</p><ul class=\"list-disc pl-5 space-y-1\"><li>Set your account privacy so only approved followers can message or comment.</li><li>Report and remove harmful comments or photos.</li><li>Block people who misuse your data.</li><li>Hide or delete posts that contain sensitive information.</li></ul><p>Remember: anything you post may remain permanently accessible to search engines.</p>"
+      },
+      "faq8": {
+        "question": "Is there a punishment for digital violence?",
+        "answer": "<p>Schools often launch disciplinary actions against students who engage in online violence.</p><p>Victims have a right to justice: the perpetrator may face criminal charges or device bans.</p><p>Legislation on digital violence is evolving; many countries use harassment laws to penalize online violence.</p><p>Penalties include communication bans, fines, or other protective measures.</p>"
+      },
+      "faq9": {
+        "question": "Can tech companies be held responsible for digital violence?",
+        "answer": "<p>Companies introduce tools and guidelines for reporting, but still need to improve user protection.</p><p>Responsibility lies with tech giants to protect children and youth online.</p><p>Users and regulators must demand transparency and faster responses to violence reports.</p>"
+      },
+      "faq10": {
+        "question": "Are there online tools to protect children and youth from digital violence?",
+        "answer": "<p>Social networks offer options to limit who can interact or view posts.</p><p>Platforms provide educational guides and guidelines for parents, teachers, and children.</p><p>Active advocacy and community support help build a safer internet.</p><p>If you’re worried, talk to an adult right away or call 19833.</p>"
+      }
+    },
+    "reportLinks": {
+      "link1": {
+        "name": "Facebook",
+        "href": "https://www.facebook.com/help/1753719584844061?locale=en_US"
+      },
+      "link2": {
+        "name": "Instagram",
+        "href": "https://help.instagram.com/165828726894770?locale=en_US"
+      },
+      "link3": {
+        "name": "YouTube",
+        "href": "https://support.google.com/youtube/answer/2802027?hl=en"
+      },
+      "link4": {
+        "name": "X (Twitter)",
+        "href": "https://help.x.com/en/safety-and-security/report-abusive-behavior?locale=en"
+      },
+      "link5": {
+        "name": "WhatsApp",
+        "href": "https://faq.whatsapp.com/1142481766359885?lang=en"
+      },
+      "link6": {
+        "name": "Snapchat",
+        "href": "https://help.snapchat.com/hc/en-us/articles/7012399221652-How-do-I-report-abuse-or-illegal-content-on-Snapchat"
+      }
+    },
+    "reportSectionTitle": "Where to Report?",
+    "footerText": "Source:",
+    "footerLink": {
+      "name": "UNICEF",
+      "href": "https://www.unicef.org/serbia/zaustavimo-digitalno-nasilje"
+    }
+  },
+  "contact": {
+    "heroTitle": "Contact Us",
+    "addressTitle": "Our Address",
+    "addressLine1": "Radosava Burića Street 191",
+    "addressLine2": "81000 Podgorica, Montenegro",
+    "regNumberLabel": "Registration Number",
+    "regNumberValue": "11208",
+    "pibLabel": "Tax ID (PIB)",
+    "pibValue": "11103227",
+    "accountLabel": "Bank Account",
+    "accountValue": "510000000019650591",
+    "accountBank": "CKB Banka otp group",
+    "emailValue": "nvu.zastiti.me@gmail.com",
+    "phoneValue": "+3822019833",
+    "phoneValueFormatted": "+382 20 198 33",
+    "socials": {
+      "facebook": {
+        "aria": "Facebook page"
+      },
+      "instagram": {
+        "aria": "Instagram profile"
+      },
+      "twitter": {
+        "aria": "Twitter page"
+      },
+      "linkedin": {
+        "aria": "LinkedIn page"
+      }
+    }
+  },
+  "about": {
+    "hero": {
+      "title": "PROTECT.ME",
+      "subtitle": "We create a safer digital world for the children of Montenegro.",
+      "alt": "Group of volunteers discussing children’s online safety"
+    },
+    "mission": {
+      "title": "Our Mission",
+      "para1": "The NGO Protect.me was founded in 2024 to fight all forms of digital violence and child exploitation online.",
+      "para2": "We believe every child deserves a safe environment to grow and thrive—both in the real world and online.",
+      "imageAlt": "Illustration of children laughing"
+    },
+    "history": {
+      "title": "Our Story",
+      "para": "Protect.me was started by a group of parents and professionals in digital forensics, psychology, and law. Our team combines expertise and passion to combat the rising number of online abuse cases.",
+      "imageAlt": "A group of professionals planning online child protection"
+    },
+    "activities": {
+      "title": "Our Activities",
+      "freeHelp": {
+        "title": "Free Help",
+        "description": "Technical, legal, and psychological support for victims of digital violence",
+        "imageAlt": "Two friends hugging"
+      },
+      "education": {
+        "title": "Education",
+        "description": "Programs for parents, teachers, and children on digital safety",
+        "imageAlt": "Teacher showing a drawing to children on a board"
+      },
+      "workshops": {
+        "title": "Workshops",
+        "description": "Hands‐on sessions in schools with experts",
+        "imageAlt": "Professional giving a lecture"
+      },
+      "research": {
+        "title": "Research",
+        "description": "Ongoing monitoring of digital habits and risks",
+        "imageAlt": "Person standing atop a stack of research papers"
+      }
+    },
+    "support": {
+      "title": "Support Our Work",
+      "donate": {
+        "title": "Donate",
+        "description": "Your donation directly supports our programs",
+        "imageAlt": "Woman putting money into a donation box"
+      },
+      "volunteer": {
+        "title": "Volunteer",
+        "description": "Join our team of experts and enthusiasts",
+        "imageAlt": "Determined woman rolling up her sleeves"
+      },
+      "spread": {
+        "title": "Spread the Word",
+        "description": "Share our resources within your community",
+        "imageAlt": "Person shouting through a megaphone"
+      },
+      "ctaText": "Become Part of the Change",
+      "ctaHref": "/kontakt"
+    }
+  },
+  "parents": {
+    "hero-title": "Protecting Children Online",
+    "hero-subtitle": "Tips & tools for parents in the fight against digital abuse",
+    "key-advice-title": "Key Advice",
+    "advice1-title": {
+      "part1": "Don’t take",
+      "highlight": "digital abuse",
+      "part2": "lightly"
+    },
+    "advice1-item1": {
+      "part1": "The issue online isn’t \"kids’ stuff\"",
+      "highlight": "“kids’ stuff”",
+      "part2": "but a problem requiring the whole family’s involvement"
+    },
+    "advice1-item2-intro": "Educate yourself about platforms:",
+    "platform": {
+      "Snapchat": "Snapchat",
+      "Facebook": "Facebook",
+      "Instagram": "Instagram",
+      "Twitter": "Twitter"
+    },
+    "advice1-item3": {
+      "highlight": "Keep computers",
+      "part2": "in shared spaces, not bedrooms"
+    },
+    "advice2-title": {
+      "highlight": "Control",
+      "part2": "devices & accounts"
+    },
+    "advice2-item1": {
+      "part1": "Set",
+      "highlight": "time limits",
+      "part2": "with explanations and safety-rule discussions"
+    },
+    "advice2-item2": {
+      "highlight": "Regular conversations",
+      "part2": "about specific online issues"
+    },
+    "advice2-item3": {
+      "highlight": "Save all evidence",
+      "part2": "(screenshots, messages, profiles) for any reports"
+    },
+    "advice2-item4": {
+      "part1": "Teach children to",
+      "highlight": "not respond",
+      "part2": "to threats, but never delete messages"
+    },
+    "advice3-title": {
+      "part1": "Support the",
+      "highlight": "child victim"
+    },
+    "advice3-item1": {
+      "highlight": "Never blame the child",
+      "part2": "- reassure them it’s not their fault"
+    },
+    "advice3-item2": {
+      "highlight": "Avoid threats of taking devices away",
+      "part2": "which may lead to hiding the problem"
+    },
+    "advice3-item3": {
+      "highlight": "Collaborate with the school",
+      "part2": "- inform teachers and staff about the situation"
+    },
+    "advice3-item4": {
+      "part1": "Remember -",
+      "highlight": "emotional pain is real",
+      "part2": "and can have long-term effects"
+    },
+    "emergency-title": "Emergency Situations",
+    "emergency-description": {
+      "part1": "If there are",
+      "highlight": "threats of physical violence",
+      "part2": "or violence escalates:"
+    },
+    "emergency-item1": "Contact the police",
+    "emergency-item2": "Report on Protect.me",
+    "emergency-item3": "Seek psychological help",
+    "emergency-item4": "Notify school authorities",
+    "emergency-button": "Emergency Report",
+    "resources-tech-title": "Technical Guides",
+    "resources-tech-desc": {
+      "part1": "Guides for setting up parental controls and",
+      "highlight": "safety settings"
+    },
+    "resources-legal-title": "Legal Advice",
+    "resources-legal-desc": {
+      "part1": "Your rights and",
+      "highlight": "legal provisions",
+      "part2": "against cyberbullying"
+    },
+    "resources-psych-title": "Psychological Support",
+    "resources-psych-desc": {
+      "part1": "Tips for",
+      "highlight": "emotional support",
+      "part2": "for child victims"
+    },
+    "source-label": "Source:",
+    "source-link": "Ministry of IT & Telecommunications"
+  },
+  "sos": {
+    "hero-title": "Report Abuse",
+    "hero-subtitle": "Your report is safe with us— we won’t share your information!",
+    "hero-image-alt": "Dispatcher answering an abuse-report phone call",
+    "form-title": "Emergency Report Form",
+    "form-description": "Please provide all necessary details below"
+  },
+  "kids": {
+    "hero-title": "Digital Safety for Younger Kids",
+    "hero-subtitle": "Explore the internet safely with educational materials tailored to your age!",
+    "videos-title": "Video Guides",
+    "videos-desc": "Fun educational clips featuring our digital heroes. Learn through stories and animations!",
+    "interactive-title": "Interactive Learning",
+    "interactive-desc": "Become a cyber defender with fun games and quizzes. Test your skills!",
+    "ebookstore-title": "E-Bookstore",
+    "ebookstore-desc": "Books, comics and tips for every age. Download and learn anytime!"
+  },
+  "technical-guides": {
+    "pageTitle": "Technical Guides",
+    "introLine1": "Practical guides for parents on setting up parental controls and safety settings.",
+    "introLine2": "Learn how to protect your children online with step-by-step instructions."
+  },
+  "legal-guides": {
+    "pageTitle": "Legal Advice",
+    "introLine1": "Your rights and legal provisions against cyberbullying.",
+    "introLine2": "Understand the legal framework to protect yourself and your children online."
+  },
+  "psychological-support": {
+    "pageTitle": "Psychological Support",
+    "introLine1": "Emotional support for children affected by digital violence.",
+    "introLine2": "Find resources and professionals to help your child cope."
+  },
+  "video-guides": {
+    "pageTitle": "Video Vodiči",
+    "introLine1": "Zabavni edukativni spotovi sa našim digitalnim herojima.",
+    "introLine2": "Naučite kroz priče i animacije!"
+  },
+  "book-guides": {
+    "pageTitle": "E-Bookstore",
+    "introLine1": "Books, comics and tips for every age.",
+    "introLine2": "Download and learn anytime!",
+    "downloadBook": "Download",
+    "readOnline": "Read Online",
+    "unavailable": "Not Available"
+  },
+  "collaborators": {
+    "title": "Our Team & Partners",
+    "description": "Meet the individuals and organizations that make our work possible.",
+    "team-title": "Our Team",
+    "partners-title": "Our Partners",
+    "view-details": "View details",
+    "learn-more": "Learn more"
+  },
+  "activities": {
+    "pageTitle": "Activities",
+    "introLine1": "Explore our range of activities designed to engage and educate children.",
+    "introLine2": "Find resources and tools to help your child learn and grow."
+  },
+  "rest": {
+    "title": "More Resources",
+    "description": "Links to additional resources and information.",
+    "core-pages": "Core Pages",
+    "other-pages": "Other Pages",
+    "sos": "SOS - Report Abuse",
+    "parents": "For Parents",
+    "kids": "For Kids",
+    "techGuides": "Technical Guides",
+    "legalAdvice": "Legal Advice",
+    "psychSupport": "Psychological Support",
+    "videoGuides": "Video Guides",
+    "childrenLibrary": "E-Bookstore For Kids",
+    "library": "Library",
+    "team": "Team & Partners",
+    "view-more": "View more",
+    "search-placeholder": "Search pages...",
+    "no-results": "No results for \"{query}\""
+  },
+  "not-found": {
+    "title": "Page Not Found",
+    "description": "Sorry, we couldn't find the page you're looking for.",
+    "backToHome": "Back to Home",
+    "reportIssue": "Report Issue",
+    "helpText": "Need help or can't find what you're looking for? Let us know in the chat.",
+    "getHelp": "Get Support"
+  },
+  "components": {
+    "comingSoonTitle": "Coming soon",
+    "comingSoonDescription": "This page is currently under construction. We’re working to bring you the best experience.",
+    "backToHome": "Back to home",
+    "contactUs": "Contact us",
+    "contactForm": {
+      "title": "Send a Message",
+      "description": "We’ll be happy to answer your questions.",
+      "nameLabel": "Your Name",
+      "namePlaceholder": "Enter your name",
+      "emailLabel": "Email Address",
+      "emailPlaceholder": "Enter your email address",
+      "messageLabel": "Message",
+      "messagePlaceholder": "Your message",
+      "submitButton": "Submit",
+      "alert": "The site is still under construction; this form is not yet functional!",
+      "nameMinError": "Name must be at least 2 characters long.",
+      "nameMaxError": "Name cannot exceed 100 characters.",
+      "emailInvalidError": "Please enter a valid email address.",
+      "messageMinError": "Message must be at least 10 characters long.",
+      "messageMaxError": "Message cannot exceed 10 000 characters.",
+      "submitSuccessToast": "Thank you for contacting us! Your message has been successfully sent.",
+      "submitErrorToast": "There was an error sending your message. Please try again later."
+    },
+    "fileUpload": {
+      "label": "Attach files – screenshots, images (optional)",
+      "button": "Choose files"
+    },
+    "footer": {
+      "organizationName": "NGO \"Protect.me\"",
+      "addressLabel": "Address:",
+      "addressLine1": "Radosav Burić Street 191",
+      "addressLine2": "81000 Podgorica, Montenegro",
+      "registrationNumberLabel": "Registration No.:",
+      "registrationNumber": "11208",
+      "pibLabel": "PIB:",
+      "pib": "11103227",
+      "bankAccountLabel": "Bank Account:",
+      "bankAccount": "510000000019650591",
+      "bankName": "(CKB Banka otp group)",
+      "emailLabel": "Email:",
+      "emailAddress": "nvu.zastiti.me@gmail.com",
+      "quickLinksTitle": "Quick Links",
+      "quickLinks": {
+        "about": "About Us",
+        "digitalAbuse": "Digital Abuse",
+        "activities": "Activities",
+        "library": "Library",
+        "contact": "Contact"
+      },
+      "legalLinksTitle": "Legal",
+      "legalLinks": {
+        "terms": "Terms of Use",
+        "privacy": "Privacy Policy",
+        "accessibility": "Accessibility Statement"
+      },
+      "followUs": "Follow Us",
+      "social": {
+        "Facebook": "Facebook",
+        "Instagram": "Instagram",
+        "X": "X (Twitter)",
+        "YouTube": "YouTube"
+      },
+      "copyright": "© Protect.me {year} | All rights reserved"
+    },
+    "header": {
+      "logoAlt": "Protect.me logo",
+      "menuButtonTitle": "Navigation/Menu",
+      "siteName": "Protect.me",
+      "sheetSubtitle": "SAFE DIGITAL WORLD | SECURE CHILDHOOD",
+      "languageSwitcherAria": "Select language",
+      "menu": {
+        "home": "Home",
+        "about": "About Us",
+        "digitalAbuse": "Digital Violence",
+        "activities": "Activities",
+        "library": "Library",
+        "team": "Team & Partners",
+        "contact": "Contact",
+        "rest": "More"
+      }
+    },
+    "reportForm": {
+      "descriptionLabel": "Describe the problem",
+      "descriptionPlaceholder": "Tell us what happened...",
+      "fileUploadLabel": "Attach files",
+      "anonymousOption": {
+        "anonymousLabel": "Send anonymously",
+        "contactLabel": "Leave contact"
+      },
+      "contactInfoHeader": "Contact information (optional)",
+      "nameLabel": "Name",
+      "namePlaceholder": "Your name",
+      "emailLabel": "Email",
+      "emailPlaceholder": "you@example.com",
+      "phoneLabel": "Phone number",
+      "phonePlaceholder": "069123456",
+      "submitButton": "Submit report",
+      "submitErrorToast": "There was an error submitting your report. Please try again later.",
+      "submitSuccessToast": "Thank you for your report, it has been successfully submitted.",
+      "descriptionRequired": "Please provide a description of the issue."
+    },
+    "tips": {
+      "ageGroups": {
+        "under8": "Children under 8",
+        "8-12": "Children 9–12",
+        "13-plus": "Teens 13+"
+      },
+      "advice": {
+        "title": "Safe Browsing",
+        "under8": "Always ask a parent before clicking unknown links!",
+        "8-12": "Check with an adult before sharing any personal information",
+        "13-plus": "Use two-factor authentication for all important accounts"
+      }
+    },
+    "quiz": {
+      "title": "QUIZ: How Safe Are You Online?",
+      "questionLabel": "Question {current}/{total}",
+      "remaining": "{remaining} remaining",
+      "previousButton": "← Previous",
+      "resultTitle": "Your Result",
+      "tryAgain": "Try Again",
+      "questions": [
+        {
+          "question": "What do you do when a stranger sends you a friend request?",
+          "options": {
+            "a": "Accept without thinking.",
+            "b": "Check their profile first.",
+            "c": "Decline and report if suspicious."
+          }
+        },
+        {
+          "question": "Who has your social media password?",
+          "options": {
+            "a": "My best friends.",
+            "b": "A family member.",
+            "c": "Only me, and I change it regularly."
+          }
+        },
+        {
+          "question": "Have you ever shared personal data online?",
+          "options": {
+            "a": "Yes, multiple times.",
+            "b": "Only in private messages.",
+            "c": "No, it’s risky."
+          }
+        },
+        {
+          "question": "What do you do when someone shares your photo without permission?",
+          "options": {
+            "a": "I don’t mind.",
+            "b": "Ask them to remove it.",
+            "c": "Demand deletion and report."
+          }
+        },
+        {
+          "question": "Who usually helps you when you have an internet problem?",
+          "options": {
+            "a": "I solve it myself.",
+            "b": "Sometimes I ask my family.",
+            "c": "I always talk to an adult."
+          }
+        },
+        {
+          "question": "Do you use the same username and password for multiple accounts?",
+          "options": {
+            "a": "Yes, it’s easier.",
+            "b": "I use two or three passwords.",
+            "c": "Always different strong passwords."
+          }
+        },
+        {
+          "question": "What do you do when you see hate speech online?",
+          "options": {
+            "a": "I stay out of it.",
+            "b": "Try to calm things down.",
+            "c": "Report it and support the victim."
+          }
+        },
+        {
+          "question": "How much do you think before posting something?",
+          "options": {
+            "a": "Not at all.",
+            "b": "Sometimes I think.",
+            "c": "I always think carefully."
+          }
+        },
+        {
+          "question": "Has someone sent you an inappropriate message or image online?",
+          "options": {
+            "a": "Yes, and I stay silent.",
+            "b": "I block them.",
+            "c": "Report it and talk to an adult."
+          }
+        },
+        {
+          "question": "Do you have privacy settings on the apps you use?",
+          "options": {
+            "a": "Everything is public.",
+            "b": "I’ve set some settings.",
+            "c": "Private profile and access control."
+          }
+        }
+      ],
+      "results": {
+        "good": {
+          "message": "Well done! You’re highly secure online. Keep it up!"
+        },
+        "average": {
+          "message": "You’re on the right track. With a bit more caution, you’ll be a digital hero!"
+        },
+        "bad": {
+          "message": "It’s time to learn more about online safety. Visit or contact Protect.me!"
+        }
+      }
+    },
+    "cardGrid": {
+      "readMore": "Read more",
+      "searchPlaceholder": "Search by title...",
+      "emptyState": {
+        "title": "No cards yet",
+        "description": "Add some items to get started.",
+        "noMatches": "We couldn't find any titles similar to “{query}”. Try different keywords.",
+        "tryDifferent": "Try searching for a different keyword."
+      }
+    }
+  },
+  "metadata": {
+    "default-title": "Protect.me",
+    "default-description": "An NGO dedicated to protecting children on the Internet",
+    "library-title": "Protect.me – Library",
+    "library-description": "Electronic publications about protection from digital violence, available to read.",
+    "digital-violence-title": "Protect.me – Digital Violence",
+    "digital-violence-description": "Violence on the internet is any form of violence that arises through digital technologies. It can occur on social networks, gaming platforms, and mobile phones.",
+    "contact-title": "Protect.me – Contact",
+    "contact-description": "Send us a message; we will be happy to answer your inquiries.",
+    "about-title": "Protect.me – About Us",
+    "about-description": "We create a safer digital world for the children of Montenegro.",
+    "parents-title": "Protect.me – For Parents",
+    "parents-description": "Advice & tools for parents combating digital abuse",
+    "sos-title": "Protect.me – SOS",
+    "sos-description": "Report abuse immediately!",
+    "team-title": "Protect.me – Team & Partners",
+    "team-description": "This page is still under construction",
+    "activities-title": "Protect.me – Activities",
+    "activities-description": "All activities of the NGO",
+    "kids-title": "Protect.me – For Kids",
+    "kids-description": "Explore the internet safely with educational materials tailored to your age!",
+    "technical-guides-title": "Protect.me – Technical Guides",
+    "technical-guides-description": "Practical guides for parents on setting up parental controls and safety settings.",
+    "legal-guides-title": "Protect.me – Legal Advice",
+    "legal-guides-description": "Your rights and legal provisions against cyberbullying.",
+    "psychological-support-title": "Protect.me – Psychological Support",
+    "psychological-support-description": "Emotional support for children affected by digital violence.",
+    "video-guides-title": "Protect.me – Video Guides For Kids",
+    "video-guides-description": "Fun educational clips featuring our digital heroes. Learn through stories and animations!",
+    "book-guides-title": "Protect.me – E-Bookstore For Kids",
+    "book-guides-description": "Books, comics and tips for every age. Download and learn anytime!",
+    "collaborators": {
+      "title": "Protect.me {type} – {name}",
+      "description": "Protect.me {type} - Learn more about {name}. {description}",
+      "types": {
+        "Član tima": "team member",
+        "Partner": "partner"
+      }
+    },
+    "rest-title": "Protect.me - More",
+    "rest-description": "Links to additional resources and information."
+  }
+}

@@ -1,0 +1,681 @@
+{
+  "home": {
+    "sosAlt": "Prijavi nasilje",
+    "sosTitle": "SOS - prijavi nasilje",
+    "sosDescription": "Hitna pomoć i podrška u slučaju digitalnog nasilja",
+    "sosAction": "Prijavi odmah",
+    "parentsAlt": "Za roditelje",
+    "parentsTitle": "Za roditelje",
+    "parentsDescription": "Vodiči i savjeti za zaštitu djece na internetu",
+    "parentsAction": "Saznaj više",
+    "kidsAlt": "Za djecu",
+    "kidsTitle": "Za djecu",
+    "kidsDescription": "Sigurnost na internetu za najmlađe",
+    "kidsAction": "Saznaj više"
+  },
+  "library": {
+    "heading": "BIBLIOTEKA",
+    "subheading": "Elektronske publikacije o zaštiti od digitalnog nasilja dostupne za čitanje",
+    "readButton": "Čitaj",
+    "alt-cover": "Naslovna strana: „{title}”",
+    "publications": {
+      "digitalnoNasilje": {
+        "title": "DIGITALNO NASILJE",
+        "author": "Bojana Dinić",
+        "publisher": "Filozofski fakultet u Novom Sadu, 2022",
+        "description": "Priručnik o fenomenu digitalnog nasilja sa analizom oblika, posljedica i strategija prevazilaženja."
+      },
+      "vodicZaPrevenciju": {
+        "title": "VODIČ ZA PREVENCIJU RIZIČNE UPOTREBE DRUŠTVENIH MREŽA",
+        "author": "Bojana Dinić",
+        "publisher": "Filozofski fakultet u Novom Sadu, 2021",
+        "description": "Praktični vodič za roditelje i nastavnike o prevenciji rizičnog ponašanja."
+      },
+      "rizicnaUpotreba": {
+        "title": "RIZIČNA UPOTREBA DRUŠTVENIH MREŽA KOD ADOLESCENATA",
+        "author": "Bojana Dinić et al.",
+        "publisher": "Filozofski fakultet u Novom Sadu, 2021",
+        "description": "Studija o uzrocima i efektima prekomjerne upotrebe društvenih mreža kod mladih."
+      }
+    }
+  },
+  "digital-violence": {
+    "heroAlt": "Mnogo ljutitih, tužnih ili uplašenih lica zlostavljanih ljudi na internetu",
+    "pageTitle": "Digitalno nasilje",
+    "introLine1": "Nasilje na internetu je svaki oblik nasilja koje nastaje upotrebom digitalnih tehnologija. Nasilje može da se odvija na društvenim mrežama, gejming platformama i mobilnim telefonima.",
+    "introLine2": "Ostavljajući digitalni trag, nasilje na mreži zadržava dokaz koji pomaže u zaštiti i pravdi.",
+    "examples": {
+      "spreadingFalse": {
+        "title": "Širenje neistina",
+        "description": "Objavljivanje lažnih ili sramotnih fotografija na društvenim mrežama."
+      },
+      "threats": {
+        "title": "Prijetnje",
+        "description": "Slanje prijetnji putem aplikacija za razmjenu poruka."
+      },
+      "impersonation": {
+        "title": "Lažno predstavljanje",
+        "description": "Slanje neprikladnih poruka u tuđe ime, predstavljajući se kao druga osoba."
+      }
+    },
+    "faqSectionTitle": "10 najčešćih pitanja",
+    "faqs": {
+      "faq1": {
+        "question": "Da li sam žrtva nasilja na internetu? Kako da razlikujem neslanu šalu od nasilja?",
+        "answer": "<p>Ako se osjećaš povrijeđeno ili misliš da drugi ne shvataju tvoje granice, šala je otišla predaleko.</p><p>Ako si tražio/la da prestanu, a ružno ponašanje se i dalje nastavlja i jednako te uznemirava – radi se o nasilju.</p>"
+      },
+      "faq2": {
+        "question": "Koje su posljedice digitalnog nasilja?",
+        "answer": "<ul class=\"list-disc pl-5 space-y-1\"><li><strong>Mentalno:</strong> osjećaj uznemirenosti, ljutnje ili neadekvatnosti.</li><li><strong>Emocionalno:</strong> sram ili gubitak interesa za omiljene aktivnosti.</li><li><strong>Fizički:</strong> umor, glavobolje ili bol u stomaku.</li></ul>"
+      },
+      "faq3": {
+        "question": "Sa kim bi trebalo da razgovaram ako sam žrtva nasilja na internetu?",
+        "answer": "<p>Prvi korak je povjerenje: roditelj, školski psiholog ili pedagog.</p><p>Ako ne želiš razgovor sa ljudima iz svog okruženja, nazovi 19833 – besplatni Nacionalni kontakt centar za bezbjednost djece na internetu.</p>"
+      },
+      "faq4": {
+        "question": "Doživljavam nasilje, ali se bojim da pričam s roditeljima. Kako da započnem razgovor?",
+        "answer": "<p>Izaberi miran trenutak – nađi trenutak kada su roditelji smireni i ne žure. Pripremi se – možeš zapisati šta se događa, kada i kako se osjećaš. Budi iskren/a i direktan/a – reci npr.: „Nešto / neko me povrjeđuje na internetu i mislim da bi trebalo da mi pomognete.”.</p><p>Ako je teško s roditeljima, pronađi drugu odraslu osobu kojoj vjeruješ.</p>"
+      },
+      "faq5": {
+        "question": "Kako mogu da pomognem prijateljima da prijave nasilje, naročito ako se oni boje da ga sami prijave?",
+        "answer": "<p>Saslušaj prijatelje i objasni im da nije obavezno odmah prijaviti službeno, ali da je važno da razgovaraju s nekim ko može pomoći.</p><p>Pruži im podršku, pomogni im da razmisle šta će reći i ponudi se da ih pratiš pri prijavi nasilja. Najbitnije je da znaju da nijesu sami.</p>"
+      },
+      "faq6": {
+        "question": "Internet mi omogućava pristup raznim informacijama, ali me i izlaže mogućem nasilju. Kako da zaustavimo nasilje, a da nastavimo da koristimo digitalne tehnologije?",
+        "answer": "<p>Biti umrežen pruža brojne prednosti, ali i rizike koje treba prepoznati.</p><p>Izlazak s interneta može pomoći na kratko, ali nije trajno rešenje; prijavljivanje nasilja i podrška zajednice ključni su za promjenu.</p><p>Moramo biti pažljivi o onome što dijelimo, jer naše riječi mogu naštetiti drugima.</p><p>Održavanje ljubaznosti online i offline doprinosi sigurnijem digitalnom prostoru za sve.</p>"
+      },
+      "faq7": {
+        "question": "Kako da sprečim da neko zloupotrebi moje lične podatke na internetu?",
+        "answer": "<p>Pažljivo razmisli prije nego što podijeliš informacije kao što su adresa ili broj telefona.</p><ul class=\"list-disc pl-5 space-y-1\"><li>Podesi privatnost naloga tako da samo provjereni pratioci mogu slati poruke ili komentarisati.</li><li>Prijavi i ukloni štetne komentare ili fotografije.</li><li>Blokiraj osobe koje zloupotrebljavaju tvoje podatke.</li><li>Sakrij ili izbriši postove koji sadrže osjetljive informacije.</li></ul><p>Zapamti, sve što postaviš može ostati trajno dostupno internet pretraživačima.</p>"
+      },
+      "faq8": {
+        "question": "Da li postoji kazna za digitalno nasilje?",
+        "answer": "<p>Škole često pokreću disciplinske postupke protiv učenika koji se služe nasiljem na mreži.</p><p>Nasilnik može odgovarati krivično ili kroz zabrane korišćenja uređaja.</p><p>Zakonodavstvo o digitalnom nasilju se razvija; mnoge države koriste zakone protiv uznemiravanja za sankcionisanje online nasilja.</p><p>Kazne uključuju zabrane komunikacije, novčane ili druge mjere zaštite.</p>"
+      },
+      "faq9": {
+        "question": "Da li se tehnološke kompanije mogu smatrati odgovornim za digitalno nasilje?",
+        "answer": "<p>Kompanije uvode alate i smjernice za prijavu, ali još uvijek moraju unaprijediti zaštitu korisnika.</p><p>Odgovornost leži na tehnološkim gigantima da štite djecu i mlade online.</p><p>Korisnici i regulatorna tijela trebaju da zahtijevaju transparentnost i brže reakcije na prijave nasilja.</p>"
+      },
+      "faq10": {
+        "question": "Da li postoje onlajn alati za zaštitu djece i mladih od digitalnog nasilja?",
+        "answer": "<p>Društvene mreže nude opcije ograničavanja, npr. ko može komunicirati ili gledati objave.</p><p>Platforme nude edukativne vodiče i smjernice za roditelje, nastavnike i djecu.</p><p>Aktivno zagovaranje i podrška lokalne zajednice pomažu u izgradnji sigurnijeg interneta.</p><p>Ako si zabrinut/a, odmah razgovaraj s odraslom osobom ili nazovi 19833.</p>"
+      }
+    },
+    "reportSectionTitle": "Gdje prijaviti?",
+    "reportLinks": {
+      "link1": {
+        "name": "Facebook",
+        "href": "https://www.facebook.com/help/1753719584844061?locale=sr_RS"
+      },
+      "link2": {
+        "name": "Instagram",
+        "href": "https://help.instagram.com/165828726894770?locale=sr_RS"
+      },
+      "link3": {
+        "name": "YouTube",
+        "href": "https://support.google.com/youtube/answer/2802027?hl=sr"
+      },
+      "link4": {
+        "name": "X (Twitter)",
+        "href": "https://help.x.com/en/safety-and-security/report-abusive-behavior?locale=sr"
+      },
+      "link5": {
+        "name": "WhatsApp",
+        "href": "https://faq.whatsapp.com/1142481766359885?lang=sr"
+      },
+      "link6": {
+        "name": "Snapchat",
+        "href": "https://help.snapchat.com/hc/en-us/articles/7012399221652-How-do-I-report-abuse-or-illegal-content-on-Snapchat"
+      }
+    },
+    "footerText": "Izvor:",
+    "footerLink": {
+      "name": "UNICEF",
+      "href": "https://www.unicef.org/serbia/zaustavimo-digitalno-nasilje"
+    }
+  },
+  "parents": {
+    "hero-title": "Zaštita Djece na Internetu",
+    "hero-subtitle": "Savjeti i alati za roditelje u borbi protiv digitalnog nasilja",
+    "key-advice-title": "Ključni Savjeti",
+    "advice1-title": {
+      "part1": "Ne shvatajte",
+      "highlight": "digitalno nasilje",
+      "part2": "olako"
+    },
+    "advice1-item1": {
+      "part1": "Problem na mreži nijesu",
+      "highlight": "\"dječija posla\"",
+      "part2": "već problem koji zahtijeva uključivanje cijele porodice"
+    },
+    "advice1-item2-intro": "Edukujte se o platformama:",
+    "platform": {
+      "Snapchat": "Snapchat",
+      "Facebook": "Facebook",
+      "Instagram": "Instagram",
+      "Twitter": "Twitter"
+    },
+    "advice1-item3": {
+      "highlight": "Držite računare",
+      "part2": "u zajedničkim prostorima, ne u dječijim sobama"
+    },
+    "advice2-title": {
+      "highlight": "Kontrola",
+      "part2": "uređaja i naloga"
+    },
+    "advice2-item1": {
+      "part1": "Postavite",
+      "highlight": "vremenska ograničenja",
+      "part2": "uz objašnjenje razloga i razgovor o pravilima sigurnosti"
+    },
+    "advice2-item2": {
+      "highlight": "Redovni razgovori",
+      "part2": "o konkretnim problemima na mreži"
+    },
+    "advice2-item3": {
+      "highlight": "Sačuvajte sve dokaze",
+      "part2": "(screenshots, poruke, profile) za eventualne prijave"
+    },
+    "advice2-item4": {
+      "part1": "Podučite djecu da",
+      "highlight": "ne reaguju",
+      "part2": "na prijetnje, ali da nikad ne brišu poruke"
+    },
+    "advice3-title": {
+      "part1": "Podrška",
+      "highlight": "djetetu žrtvi"
+    },
+    "advice3-item1": {
+      "highlight": "Nikako ne krivite dijete",
+      "part2": "- ponovite im da nisu krivi što su žrtve"
+    },
+    "advice3-item2": {
+      "highlight": "prijetnje oduzimanjem uređaja",
+      "part2": "koje mogu dovesti do skrivanja problema"
+    },
+    "advice3-item3": {
+      "highlight": "Saradnja sa školom",
+      "part2": "- obavijestite učitelje i nastavnike o situaciji"
+    },
+    "advice3-item4": {
+      "part1": "Zapamtite -",
+      "highlight": "emotivna bol je stvarna",
+      "part2": "i može imati dugotrajne posljedice"
+    },
+    "emergency-title": "Hitne Situacije",
+    "emergency-description": {
+      "part1": "Ukoliko postoje",
+      "highlight": "prijetnje fizičkim nasiljem",
+      "part2": "ili nasilje eskalira:"
+    },
+    "emergency-item1": "Kontaktirajte policiju",
+    "emergency-item2": "Prijavite na Zaštiti.me",
+    "emergency-item3": "Zatražite psihološku pomoć",
+    "emergency-item4": "Obavijestite školske službe",
+    "emergency-button": "Hitna Prijava",
+    "resources-tech-title": "Tehnička Upustva",
+    "resources-tech-desc": {
+      "part1": "Vodiči za postavljanje parental kontrola i",
+      "highlight": "sigurnosnih postavki"
+    },
+    "resources-legal-title": "Pravni Savjeti",
+    "resources-legal-desc": {
+      "part1": "Vaša prava i",
+      "highlight": "zakonske odredbe",
+      "part2": "protiv cyber nasilja"
+    },
+    "resources-psych-title": "Psihološka Podrška",
+    "resources-psych-desc": {
+      "part1": "Savjeti za",
+      "highlight": "emocionalnu podršku",
+      "part2": "djeci žrtvama"
+    },
+    "source-label": "Izvor:",
+    "source-link": "Ministarstvo za IT i telekomunikacije"
+  },
+  "contact": {
+    "heroTitle": "Kontaktirajte nas",
+    "addressTitle": "Naša adresa",
+    "addressLine1": "Ulica Radosava Burića 191",
+    "addressLine2": "81000 Podgorica, Crna Gora",
+    "regNumberLabel": "Matični broj",
+    "regNumberValue": "11208",
+    "pibLabel": "PIB",
+    "pibValue": "11103227",
+    "accountLabel": "Žiro račun",
+    "accountValue": "510000000019650591",
+    "accountBank": "CKB Banka otp group",
+    "emailValue": "nvu.zastiti.me@gmail.com",
+    "phoneValue": "+3822019833",
+    "phoneValueFormatted": "+382 20 198 33",
+    "socials": {
+      "facebook": {
+        "aria": "Facebook stranica"
+      },
+      "instagram": {
+        "aria": "Instagram profil"
+      },
+      "twitter": {
+        "aria": "Twitter stranica"
+      },
+      "linkedin": {
+        "aria": "LinkedIn stranica"
+      }
+    }
+  },
+  "about": {
+    "hero": {
+      "title": "ZAŠTITI.ME",
+      "subtitle": "Stvaramo sigurniji digitalni svijet za djecu Crne Gore",
+      "alt": "Grupa volontera priča o sigurnosti djece na internetu"
+    },
+    "mission": {
+      "title": "Naša Misija",
+      "para1": "Nevladino udruženje Zastiti.me osnovano je 2024. godine u cilju borbe protiv svih oblika digitalnog nasilja i zloupotreba djece u internet prostoru.",
+      "para2": "Borimo se da svako dijete ima sigurno okruženje za rast i razvoj - kako u stvarnom svijetu, tako i u virtualnom.",
+      "imageAlt": "Crtež djece koja se smiju"
+    },
+    "history": {
+      "title": "Naša Priča",
+      "para": "Zaštiti.me je pokrenula grupa roditelja i profesionalaca iz oblasti digitalne forenzike, psihologije i prava. Naš tim kombinuje stručnost i strast u borbi protiv sve većeg broja slučajeva online nasilja.",
+      "imageAlt": "Grupa odraslih planira zaštitu djece na internetu"
+    },
+    "activities": {
+      "title": "Naše Aktivnosti",
+      "freeHelp": {
+        "title": "Besplatna pomoć",
+        "description": "Tehnička, pravna i psihološka podrška žrtvama digitalnog nasilja",
+        "imageAlt": "Dva prijatelja se grle"
+      },
+      "education": {
+        "title": "Edukacija",
+        "description": "Programi za roditelje, nastavnike i djecu o digitalnoj sigurnosti",
+        "imageAlt": "Učiteljica djeci pokazuje crtež na tabli"
+      },
+      "workshops": {
+        "title": "Radionice",
+        "description": "Praktične sesije u školama sa stručnjacima",
+        "imageAlt": "Profesionalac drži lekciju"
+      },
+      "research": {
+        "title": "Istraživanje",
+        "description": "Kontinuirano praćenje digitalnih navika i rizika",
+        "imageAlt": "Čovjek stoji na brdu istraživačkih radova"
+      }
+    },
+    "support": {
+      "title": "Podržite Naš Rad",
+      "donate": {
+        "title": "Donirajte",
+        "description": "Vaša donacija direktno podržava naše programe",
+        "imageAlt": "Žena stavlja novac u kutiju za donacije"
+      },
+      "volunteer": {
+        "title": "Volontirajte",
+        "description": "Postanite dio našeg tima stručnjaka i entuzijasta",
+        "imageAlt": "Odlučna žena zavrće rukave na košulji"
+      },
+      "spread": {
+        "title": "Širite Riječ",
+        "description": "Podijelite naše resurse u vašoj zajednici",
+        "imageAlt": "Čovjek viče uz pomoć megafona"
+      },
+      "ctaText": "Postanite Dio Promjene",
+      "ctaHref": "/kontakt"
+    }
+  },
+  "sos": {
+    "hero-title": "Prijavi nasilje",
+    "hero-subtitle": "Tvoja prijava je sigurna sa nama, nećemo dijeliti tvoje informacije!",
+    "hero-image-alt": "Dispečer prima poziv za prijavu nasilja",
+    "form-title": "Obrazac za hitnu prijavu",
+    "form-description": "Molimo te da navedeš sve potrebne detalje ispod"
+  },
+  "kids": {
+    "hero-title": "Digitalna Sigurnost za Mlađe",
+    "hero-subtitle": "Upoznaj svijet interneta na siguran način kroz edukativne materijale prilagođene tvojim godinama!",
+    "videos-title": "Video Vodiči",
+    "videos-desc": "Zabavni edukativni spotovi sa našim digitalnim herojima. Nauči kroz priče i animacije!",
+    "interactive-title": "Interaktivno učenje",
+    "interactive-desc": "Postani cyber branitelj kroz zabavne igre i kvizove. Testiraj svoje vještine!",
+    "ebookstore-title": "E-Knjižara",
+    "ebookstore-desc": "Knjige, stripovi i savjeti prilagođeni svakom uzrastu. Preuzmi i uči bilo kada!"
+  },
+  "technical-guides": {
+    "pageTitle": "Tehnička Upustva",
+    "introLine1": "Praktična uputstva za roditelje o postavljanju roditeljskih kontrola i bezbjednosnih postavki.",
+    "introLine2": "Saznajte kako da zaštitite svoju djecu na mreži uz korak-po-korak uputstva."
+  },
+  "legal-guides": {
+    "pageTitle": "Pravni Savjeti",
+    "introLine1": "Vaša prava i zakonske odredbe protiv cyber nasilja.",
+    "introLine2": "Razumite pravni okvir za zaštitu sebe i svoje djece na mreži."
+  },
+  "psychological-support": {
+    "pageTitle": "Psihološka Podrška",
+    "introLine1": "Emotivna podrška za djecu pogođenu digitalnim nasiljem.",
+    "introLine2": "Pronađite resurse i stručnjake koji mogu pomoći vašem djetetu da se nosi sa situacijom."
+  },
+  "video-guides": {
+    "pageTitle": "Video Vodiči",
+    "introLine1": "Zabavni edukativni spotovi sa našim digitalnim herojima.",
+    "introLine2": "Naučite kroz priče i animacije!"
+  },
+  "book-guides": {
+    "pageTitle": "E-Knjižara",
+    "introLine1": "Knjige, stripovi i savjeti prilagođeni svakom uzrastu.",
+    "introLine2": "Preuzmite i učite bilo kada!",
+    "downloadBook": "Preuzmi",
+    "readOnline": "Čitaj online",
+    "unavailable": "Nije dostupno"
+  },
+  "collaborators": {
+    "title": "Naš Tim i Partneri",
+    "description": "Upoznajte pojedince i organizacije koje čine naš rad mogućim.",
+    "team-title": "Naš Tim",
+    "partners-title": "Naši Partneri",
+    "view-details": "Pogledajte detalje",
+    "learn-more": "Saznajte više"
+  },
+  "activities": {
+    "pageTitle": "Aktivnosti",
+    "introLine1": "Istražite našu ponudu aktivnosti osmišljenih za angažovanje i obrazovanje djece.",
+    "introLine2": "Pronađite resurse i alate koji će pomoći vašem djetetu da uči i raste."
+  },
+  "rest": {
+    "title": "Dodatni resursi",
+    "description": "Linkovi ka dodatnim resursima i informacijama.",
+    "core-pages": "Osnovne stranice",
+    "other-pages": "Ostale stranice",
+    "sos": "SOS - Prijavi nasilje",
+    "parents": "Za roditelje",
+    "kids": "Za djecu",
+    "techGuides": "Tehnička uputstva",
+    "legalAdvice": "Pravni savjeti",
+    "psychSupport": "Psihološka podrška",
+    "videoGuides": "Video vodiči",
+    "childrenLibrary": "E-Knjižara za djecu",
+    "library": "Biblioteka",
+    "team": "Tim i partneri",
+    "view-more": "Pogledaj više",
+    "search-placeholder": "Pretraži stranice...",
+    "no-results": "Nema rezultata za \"{query}\""
+  },
+  "not-found": {
+    "title": "Stranica nije pronađena",
+    "description": "Žao nam je, nismo mogli pronaći stranicu koju tražite.",
+    "backToHome": "Nazad na početnu",
+    "reportIssue": "Prijavi problem",
+    "helpText": "Trebate pomoć ili ne možete pronaći ono što tražite? Javite nam se u chatu!",
+    "getHelp": "Dobijte podršku"
+  },
+  "components": {
+    "comingSoonTitle": "Stranica u izradi",
+    "comingSoonDescription": "Ova stranica je trenutno u pripremi. Radimo na tome da vam pružimo najbolje iskustvo.",
+    "backToHome": "Nazad na početnu",
+    "contactUs": "Kontaktirajte nas",
+    "contactForm": {
+      "title": "Pošaljite poruku",
+      "description": "Rado ćemo odgovoriti na vaše upite.",
+      "nameLabel": "Vaše ime",
+      "namePlaceholder": "Unesite vaše ime",
+      "emailLabel": "Email adresa",
+      "emailPlaceholder": "Unesite email adresu",
+      "messageLabel": "Poruka",
+      "messagePlaceholder": "Vaša poruka",
+      "submitButton": "Pošalji",
+      "alert": "Sajt je i dalje u izradi, ova forma još uvijek nije funkcionalna!",
+      "nameMinError": "Ime mora imati najmanje 2 karaktera.",
+      "nameMaxError": "Ime ne može imati više od 100 karaktera.",
+      "emailInvalidError": "Molimo unesite validnu email adresu.",
+      "messageMinError": "Poruka mora imati najmanje 10 karaktera.",
+      "messageMaxError": "Poruka ne može imati više od 10 000 karaktera.",
+      "submitSuccessToast": "Hvala što ste nas kontaktirali! Vaša poruka je uspješno poslata.",
+      "submitErrorToast": "Došlo je do greške prilikom slanja poruke. Molimo pokušajte ponovo."
+    },
+    "fileUpload": {
+      "label": "Priloži fajlove – screenshot, slike (opciono)",
+      "button": "Izaberi fajlove"
+    },
+    "footer": {
+      "organizationName": "Nevladino udruženje \"Zaštiti.me\"",
+      "addressLabel": "Adresa:",
+      "addressLine1": "Ulica Radosava Burića 191",
+      "addressLine2": "81000 Podgorica, Crna Gora",
+      "registrationNumberLabel": "Matični broj:",
+      "registrationNumber": "11208",
+      "pibLabel": "PIB:",
+      "pib": "11103227",
+      "bankAccountLabel": "Žiro račun:",
+      "bankAccount": "510000000019650591",
+      "bankName": "(CKB Banka otp group)",
+      "emailLabel": "Email:",
+      "emailAddress": "nvu.zastiti.me@gmail.com",
+      "quickLinksTitle": "Brzi linkovi",
+      "quickLinks": {
+        "about": "O nama",
+        "digitalAbuse": "Digitalno nasilje",
+        "activities": "Aktivnosti",
+        "library": "Biblioteka",
+        "contact": "Kontakt"
+      },
+      "legalLinksTitle": "Dokumenti",
+      "legalLinks": {
+        "terms": "Uslovi korištenja",
+        "privacy": "Politika privatnosti",
+        "accessibility": "Izjava o pristupačnosti"
+      },
+      "followUs": "Pratite nas",
+      "social": {
+        "Facebook": "Facebook",
+        "Instagram": "Instagram",
+        "X": "X (Twitter)",
+        "YouTube": "YouTube"
+      },
+      "copyright": "© Zastiti.me {year} | Sva prava zadržana"
+    },
+    "header": {
+      "logoAlt": "Zaštiti.me logo",
+      "menuButtonTitle": "Navigacija/Meni",
+      "siteName": "Zaštiti.me",
+      "sheetSubtitle": "SIGURAN DIGITALNI SVIJET | SIGURNO DJETINJSTVO",
+      "languageSwitcherAria": "Odaberi jezik",
+      "menu": {
+        "home": "Početna",
+        "about": "O nama",
+        "digitalAbuse": "Digitalno nasilje",
+        "activities": "Aktivnosti",
+        "library": "Biblioteka",
+        "team": "Tim i partneri",
+        "contact": "Kontakt",
+        "rest": "Ostalo"
+      }
+    },
+    "reportForm": {
+      "descriptionLabel": "Opiši nam problem",
+      "descriptionPlaceholder": "Reci nam šta se desilo...",
+      "fileUploadLabel": "Priloži fajlove",
+      "anonymousOption": {
+        "anonymousLabel": "Pošalji anonimno",
+        "contactLabel": "Ostavi kontakt"
+      },
+      "contactInfoHeader": "Kontakt informacije (opciono)",
+      "nameLabel": "Ime",
+      "namePlaceholder": "Tvoje ime",
+      "emailLabel": "E-pošta",
+      "emailPlaceholder": "ti@primjer.me",
+      "phoneLabel": "Broj telefona",
+      "phonePlaceholder": "069123456",
+      "submitButton": "Pošalji prijavu",
+      "submitErrorToast": "Došlo je do greške prilikom slanja prijave. Molimo pokušajte ponovo.",
+      "submitSuccessToast": "Hvala što ste nas kontaktirali! Vaša prijava je uspješno poslata.",
+      "descriptionRequired": "Opis je obavezan."
+    },
+    "tips": {
+      "ageGroups": {
+        "under8": "Djeca do 8 godina",
+        "8-12": "Djeca 9-12 godina",
+        "13-plus": "Tinejdžeri 13+"
+      },
+      "advice": {
+        "title": "Sigurno Surfanje",
+        "under8": "Uvijek pitaj roditelje prije klika na nepoznate linkove!",
+        "8-12": "Provjeri sa odraslima prije dijeljenja bilo kakvih podataka",
+        "13-plus": "Koristi dvofaktorsku autentifikaciju za sve važne naloge (dodatni sloj zaštite pored lozinke)"
+      }
+    },
+    "quiz": {
+      "title": "KVIZ: Koliko Si Siguran na Internetu?",
+      "questionLabel": "Pitanje {current}/{total}",
+      "remaining": "{remaining} preostalo",
+      "previousButton": "← Prethodno",
+      "resultTitle": "Tvoj Rezultat",
+      "tryAgain": "Pokušaj Ponovo",
+      "questions": [
+        {
+          "question": "Šta radiš kada ti nepoznata osoba pošalje zahtjev za prijateljstvo?",
+          "options": {
+            "a": "Prihvatam bez razmišljanja.",
+            "b": "Pogledam profil pa odlučim.",
+            "c": "Odbijam i prijavim ako djeluje sumnjivo."
+          }
+        },
+        {
+          "question": "Ko ima tvoju lozinku za društvene mreže?",
+          "options": {
+            "a": "Najbolji prijatelji.",
+            "b": "Član porodice.",
+            "c": "Samo ja, i redovno je mijenjam."
+          }
+        },
+        {
+          "question": "Da li si ikada podijelio lične podatke online?",
+          "options": {
+            "a": "Da, više puta.",
+            "b": "Samo u privatnim porukama.",
+            "c": "Ne, to je rizično."
+          }
+        },
+        {
+          "question": "Šta radiš kada neko podijeli tvoju sliku bez dozvole?",
+          "options": {
+            "a": "Ne smeta mi.",
+            "b": "Pitam da je ukloni.",
+            "c": "Tražim da je obriše i prijavim."
+          }
+        },
+        {
+          "question": "Ko ti najčešće pomaže kada imaš problem na internetu?",
+          "options": {
+            "a": "Sam/a rješavam.",
+            "b": "Ponekad pitam porodicu.",
+            "c": "Uvijek razgovaram sa odraslima."
+          }
+        },
+        {
+          "question": "Da li koristiš isto korisničko ime i lozinku za više naloga?",
+          "options": {
+            "a": "Da, lakše mi je.",
+            "b": "Dvije-tri lozinke.",
+            "c": "Svuda drugačije i jake lozinke."
+          }
+        },
+        {
+          "question": "Šta radiš kada vidiš govor mržnje online?",
+          "options": {
+            "a": "Ne miješam se.",
+            "b": "Pokušam da smirim.",
+            "c": "Prijavim i podržim žrtvu."
+          }
+        },
+        {
+          "question": "Koliko razmisliš prije nego što nešto objaviš?",
+          "options": {
+            "a": "Bez razmišljanja.",
+            "b": "Ponekad razmislim.",
+            "c": "Uvijek dobro razmislim."
+          }
+        },
+        {
+          "question": "Da li ti je neko online poslao nepristojnu poruku ili sliku?",
+          "options": {
+            "a": "Da i ćutim.",
+            "b": "Blokiram.",
+            "c": "Prijavim i pričam sa odraslima."
+          }
+        },
+        {
+          "question": "Da li imaš ograničenja na aplikacijama koje koristiš?",
+          "options": {
+            "a": "Sve mi je javno.",
+            "b": "Nešto sam podesio.",
+            "c": "Privatan profil i kontrola pristupa."
+          }
+        }
+      ],
+      "results": {
+        "good": {
+          "message": "Svaka čast! Odlično se štitiš na internetu. Nastavi tako!"
+        },
+        "average": {
+          "message": "Na dobrom si putu. Uz još malo pažnje, bićeš pravi digitalni heroj!"
+        },
+        "bad": {
+          "message": "Vrijeme je da naučiš više o sigurnosti na internetu. Posjeti ili kontaktiraj Zastiti.me!"
+        }
+      }
+    },
+    "cardGrid": {
+      "readMore": "Pročitaj više",
+      "searchPlaceholder": "Pretraži...",
+      "emptyState": {
+        "title": "Nema kartica za prikaz",
+        "description": "Trenutno nema dodatih stavki.",
+        "noMatches": "Nismo mogli pronaći naslove slične “{query}”. Pokušajte s različitim ključnim riječima.",
+        "tryDifferent": "Pokušajte pretraživati s drugom ključnom riječi."
+      }
+    }
+  },
+  "metadata": {
+    "default-title": "Zaštiti me",
+    "default-description": "NVO posvećen zaštiti djece na internetu",
+    "library-title": "Zaštiti.me – Biblioteka",
+    "library-description": "Elektronske publikacije o zaštiti od digitalnog nasilja dostupne za čitanje.",
+    "digital-violence-title": "Zaštiti.me – Digitalno nasilje",
+    "digital-violence-description": "Nasilje na internetu je svaki oblik nasilja koje nastaje upotrebom digitalnih tehnologija. Ono može da se odvija na društvenim mrežama, gejming platformama i mobilnim telefonima.",
+    "contact-title": "Zaštiti.me – Kontakt",
+    "contact-description": "Pošaljite poruku, rado ćemo odgovoriti na vaše upite.",
+    "about-title": "Zaštiti.me – O nama",
+    "about-description": "Stvaramo sigurniji digitalni svijet za djecu Crne Gore.",
+    "parents-title": "Zaštiti.me - Za roditelje",
+    "parents-description": "Savjeti i alati za roditelje u borbi protiv digitalnog nasilja",
+    "sos-title": "Zaštiti.me - SOS",
+    "sos-description": "Prijavi nasilje odmah!",
+    "team-title": "Zaštiti.me - Tim i partneri",
+    "team-description": "Stranica je još uvijek u izradi",
+    "activities-title": "Zaštiti.me - Aktivnosti",
+    "activities-description": "Sve aktivnosti NVO-a",
+    "kids-title": "Zaštiti.me - Za djecu",
+    "kids-description": "Upoznaj svijet interneta na siguran način kroz edukativne materijale prilagođene tvojim godinama!",
+    "technical-guides-title": "Zaštiti.me - Tehnička upustva",
+    "technical-guides-description": "Praktična uputstva za roditelje o postavljanju roditeljskih kontrola i bezbjednosnih postavki.",
+    "legal-guides-title": "Zaštiti.me - Pravni savjeti",
+    "legal-guides-description": "Vaša prava i zakonske odredbe protiv cyber nasilja",
+    "psychological-support-title": "Zaštiti.me - Psihološka podrška",
+    "psychological-support-description": "Emotivna podrška za djecu pogođenu digitalnim nasiljem.",
+    "video-guides-title": "Zaštiti.me - Video vodiči",
+    "video-guides-description": "Zabavni edukativni spotovi sa našim digitalnim herojima. Nauči kroz priče i animacije!",
+    "book-guides-title": "Zaštiti.me - E-knjižara",
+    "book-guides-description": "Knjige, stripovi i savjeti prilagođeni svakom uzrastu. Preuzmi i uči bilo kada!",
+    "collaborators": {
+      "title": "Zaštiti.me {type} – {name}",
+      "description": "Zaštiti.me {type} - Saznaj više o {name}. {description}",
+      "types": {
+        "Član tima": "član tima",
+        "Partner": "partner"
+      }
+    },
+    "rest-title": "Zaštiti.me - Dodatni resursi",
+    "rest-description": "Linkovi ka dodatnim resursima i informacijama."
+  }
+}

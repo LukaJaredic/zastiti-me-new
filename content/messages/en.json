@@ -375,9 +375,10 @@
   },
   "collaborators": {
     "title": "Our Team & Partners",
-    "description": "Meet the individuals and organizations that make our work possible.",
+    "description": "Meet the people who make our work possible.",
     "team-title": "Our Team",
     "partners-title": "Our Partners",
+    "partners-description": "The institutions and organisations we work with to keep children safe online.",
     "view-details": "View details",
     "learn-more": "Learn more"
   },

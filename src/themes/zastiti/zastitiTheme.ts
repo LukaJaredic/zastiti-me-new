@@ -116,6 +116,26 @@ const splitReverse = {
   gridTemplateAreas: '"art text"',
 } as const;
 
+// A partner's logo on a tile (About page). White in both modes: partners'
+// logos are drawn for a light ground. A sheet of paper like the doors, a
+// smaller lift on hover; the logo sits centred inside.
+const logoTile = {
+  backgroundColor: '#ffffff',
+  color: c.ink[0],
+  borderRadius: 'var(--radius-container)',
+  boxShadow: 'var(--shadow-cut)',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  transition: 'transform 160ms ease-out, box-shadow 160ms ease-out',
+  ':hover': {transform: 'translateY(-2px)', boxShadow: 'var(--shadow-cut-hover)'},
+  ':active': {
+    transform: 'translateY(1px)',
+    boxShadow: 'var(--shadow-cut-pressed)',
+    transitionDuration: '80ms',
+  },
+} as const;
+
 // Tablets: equal halves, 32px apart.
 const halves = {
   paddingBlock: 'var(--spacing-8)',
@@ -472,6 +492,7 @@ export const zastitiTheme = defineTheme({
     card: {
       'variant:door-kids': {backgroundColor: doorArt.kids},
       'variant:door-parents': {backgroundColor: doorArt.parents},
+      'variant:logo': {backgroundColor: logoTile.backgroundColor},
     },
     'clickable-card': {
       'variant:door-kids': {...doorLayout, backgroundColor: doorArt.kids},
@@ -488,6 +509,7 @@ export const zastitiTheme = defineTheme({
         '--door-text-max': '62%',
         '--door-art-position': 'left 35%',
       },
+      'variant:logo': logoTile,
     },
     // The header bar sits on the same 1120px column as the footer and pages,
     // 72px tall, the logo and the SOS button on the column's edges.
@@ -663,6 +685,10 @@ export const zastitiTheme = defineTheme({
             'clickable-card': {
               'variant:door-kids': {':active': {transform: 'none'}},
               'variant:door-parents': {':active': {transform: 'none'}},
+              'variant:logo': {
+                ':hover': {transform: 'none'},
+                ':active': {transform: 'none'},
+              },
             },
             button: {
               'variant:sos': {':active': {transform: 'none'}},

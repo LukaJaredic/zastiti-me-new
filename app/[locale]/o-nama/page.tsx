@@ -98,7 +98,12 @@ export default async function AboutPage() {
           </Text>
         </SplitText>
         <SplitArt>
-          <TeamList members={team.map((m) => ({name: m.name, role: m.role[locale]}))} />
+          <TeamList
+            fields={team.map((field) => ({
+              label: field.label[locale],
+              members: field.members.map((m) => ({name: m.name, role: m.role[locale]})),
+            }))}
+          />
         </SplitArt>
       </Section>
 
@@ -106,9 +111,14 @@ export default async function AboutPage() {
         <Section variant="split-reverse">
           <SplitText>
             <Heading level={2}>{sentenceCase(collaborators['partners-title'])}</Heading>
+            <Text type="large" color="secondary" as="p">
+              {collaborators['partners-description']}
+            </Text>
           </SplitText>
           <SplitArt>
-            <PartnerList partners={partners.map((p) => ({name: p.name[locale], href: p.href}))} />
+            <PartnerList
+              partners={partners.map((p) => ({...p, name: p.name[locale]}))}
+            />
           </SplitArt>
         </Section>
       </Section>

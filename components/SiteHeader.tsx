@@ -1,6 +1,6 @@
 'use client';
 
-import {useState} from 'react';
+import {useEffect} from 'react';
 import {usePathname} from 'next/navigation';
 import {TranslateIcon, WarningCircleIcon} from '@phosphor-icons/react';
 import {useAppShellMobile} from '@astryxdesign/core/AppShell';
@@ -11,6 +11,7 @@ import {Icon} from '@astryxdesign/core/Icon';
 import {locales, type Locale} from '@/lib/i18n';
 import {Logo} from './Logo';
 import {MobileMenu} from './MobileMenu';
+import {menuState, useMenuState} from './menuState';
 import {ThemeToggle} from './ThemeToggle';
 import {
   isCurrentPath,
@@ -50,15 +51,14 @@ export function SiteHeader({
 }) {
   const pathname = usePathname();
   const {isMobile} = useAppShellMobile();
-  const [isMenuOpen, setMenuOpen] = useState(false);
+  // The menu's state is shared by both languages' headers (menuState), so
+  // a language switch from the menu arrives with the menu still open. Any
+  // other change of page closes it.
+  const menu = useMenuState();
+  useEffect(() => {
+    menuState.arrivedAt(pathname);
+  }, [pathname]);
   const home = `/${locale}`;
-
-  // Close the menu when the page changes. Past lg it isn't rendered at all.
-  const [menuPath, setMenuPath] = useState(pathname);
-  if (menuPath !== pathname) {
-    setMenuPath(pathname);
-    setMenuOpen(false);
-  }
 
   // The same page in the other language.
   const other = locales.find((l) => l !== locale) ?? locale;
@@ -90,8 +90,8 @@ export function SiteHeader({
                 size="lg"
                 isIconOnly
                 icon={<Icon icon="menu" />}
-                onClick={() => setMenuOpen(true)}
-                aria-expanded={isMenuOpen}
+                onClick={menuState.open}
+                aria-expanded={menu.isOpen}
                 aria-controls={menuId}
               />
             </HStack>
@@ -99,8 +99,9 @@ export function SiteHeader({
         />
         <MobileMenu
           id={menuId}
-          isOpen={isMenuOpen}
-          onClose={() => setMenuOpen(false)}
+          isOpen={menu.isOpen}
+          opensInPlace={menu.opensInPlace}
+          onClose={menuState.close}
           home={home}
           sosHref={sosHref}
           languageHref={languageHref}

@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import { useEffect, useMemo, useState } from "react";
-import { MagnifyingGlassIcon } from "@phosphor-icons/react";
-import { VStack } from "@astryxdesign/core/VStack";
-import { Heading, Text } from "@astryxdesign/core/Text";
-import { TextInput } from "@astryxdesign/core/TextInput";
+import {useEffect, useMemo, useState} from 'react';
+import {MagnifyingGlassIcon} from '@phosphor-icons/react';
+import {VStack} from '@astryxdesign/core/VStack';
+import {Heading, Text} from '@astryxdesign/core/Text';
+import {TextInput} from '@astryxdesign/core/TextInput';
 
-export type GlossaryItem = { slug: string; term: string; definition: string };
+export type GlossaryItem = {slug: string; term: string; definition: string};
 
 /**
  * Folds text for matching, so a phone keyboard without š, č, ć, ž or đ
@@ -14,11 +14,11 @@ export type GlossaryItem = { slug: string; term: string; definition: string };
  */
 function fold(text: string) {
   return text
-    .toLocaleLowerCase("sr-Latn")
-    .replace(/đ/g, "d")
-    .normalize("NFD")
-    .replace(/\p{M}/gu, "")
-    .replace(/dj/g, "d");
+    .toLocaleLowerCase('sr-Latn')
+    .replace(/đ/g, 'd')
+    .normalize('NFD')
+    .replace(/\p{M}/gu, '')
+    .replace(/dj/g, 'd');
 }
 
 /** "Blokiranje (block)" → ["Blokiranje", "(block)"]. */
@@ -29,8 +29,9 @@ function splitTerm(term: string): [string, string | null] {
 
 /**
  * The glossary page's body, a split row: on the left the title, the search
- * field and the result count (it stays in view on desktop, from
- * app/globals.css); on the right the terms under their first letter. The
+ * field and the result count, on the right the terms under their first
+ * letter. From tablets up the left side stays in view; on phones, where it
+ * stacks above the list, only the search field does (app/globals.css). The
  * search narrows the list as you type, over terms and definitions alike;
  * terms whose name matches come first. Every term has its own anchor, so a
  * glossary popover can link straight to it.
@@ -48,18 +49,17 @@ export function GlossaryBrowser({
     empty: string;
   };
 }) {
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState('');
 
   // The term a link arrived at (#slug) glows once (app/globals.css). Read
   // from the hash rather than CSS :target, which client-side navigation
   // doesn't update.
   const [arrived, setArrived] = useState<string | null>(null);
   useEffect(() => {
-    const read = () =>
-      setArrived(decodeURIComponent(window.location.hash.slice(1)) || null);
+    const read = () => setArrived(decodeURIComponent(window.location.hash.slice(1)) || null);
     read();
-    window.addEventListener("hashchange", read);
-    return () => window.removeEventListener("hashchange", read);
+    window.addEventListener('hashchange', read);
+    return () => window.removeEventListener('hashchange', read);
   }, []);
 
   const indexed = useMemo(
@@ -76,9 +76,7 @@ export function GlossaryBrowser({
   const visible = needle
     ? [
         ...indexed.filter((item) => item.name.includes(needle)),
-        ...indexed.filter(
-          (item) => !item.name.includes(needle) && item.text.includes(needle),
-        ),
+        ...indexed.filter((item) => !item.name.includes(needle) && item.text.includes(needle)),
       ]
     : indexed;
 
@@ -86,48 +84,44 @@ export function GlossaryBrowser({
   // whole, name matches first while searching.
   const groups = new Map<string, typeof visible>();
   for (const item of visible) {
-    const letter = item.term[0].toLocaleUpperCase("sr-Latn");
+    const letter = item.term[0].toLocaleUpperCase('sr-Latn');
     groups.set(letter, [...(groups.get(letter) ?? []), item]);
   }
 
   return (
     <>
-      <VStack gap={6} style={{ gridArea: "text" }} data-glossary-aside="">
+      <VStack gap={6} style={{gridArea: 'text'}} data-glossary-aside="">
         <Heading level={1}>{messages.title}</Heading>
-        <TextInput
-          type="search"
-          label={messages.searchLabel}
-          placeholder={messages.searchPlaceholder}
-          size="lg"
-          value={query}
-          onChange={setQuery}
-          startIcon={MagnifyingGlassIcon}
-          hasClear
-          enterKeyHint="search"
-          autoComplete="off"
-          hasAutoCorrect={false}
-          width="100%"
-        />
-        <Text color="secondary" role="status">
-          {needle
-            ? messages.found.replace("{count}", String(visible.length))
-            : ""}
-        </Text>
+        {/* On phones only this part sticks under the header (globals.css). */}
+        <VStack gap={2} data-glossary-search="">
+          <TextInput
+            type="search"
+            label={messages.searchLabel}
+            placeholder={messages.searchPlaceholder}
+            size="lg"
+            value={query}
+            onChange={setQuery}
+            startIcon={MagnifyingGlassIcon}
+            hasClear
+            enterKeyHint="search"
+            autoComplete="off"
+            hasAutoCorrect={false}
+            width="100%"
+          />
+          <Text color="secondary" role="status">
+            {needle ? messages.found.replace('{count}', String(visible.length)) : ''}
+          </Text>
+        </VStack>
       </VStack>
 
-      <VStack gap={10} style={{ gridArea: "art" }}>
+      <VStack gap={10} style={{gridArea: 'art'}} data-glossary-list="">
         {visible.length === 0 ? (
           <Text type="large" color="secondary">
-            {messages.empty.replace("{query}", query.trim())}
+            {messages.empty.replace('{query}', query.trim())}
           </Text>
         ) : (
           [...groups].map(([letter, entries]) => (
-            <VStack
-              as="section"
-              key={letter}
-              gap={3}
-              aria-labelledby={`slovo-${letter}`}
-            >
+            <VStack as="section" key={letter} gap={3} aria-labelledby={`slovo-${letter}`}>
               <Heading level={2} id={`slovo-${letter}`} color="accent">
                 {letter}
               </Heading>
@@ -140,13 +134,13 @@ export function GlossaryBrowser({
                       id={item.slug}
                       gap={1}
                       data-glossary-entry=""
-                      data-arrived={item.slug === arrived ? "" : undefined}
+                      data-arrived={item.slug === arrived ? '' : undefined}
                     >
                       <Heading level={3}>
                         {name}
                         {aside && (
                           <Text as="span" color="secondary" weight="normal">
-                            {" "}
+                            {' '}
                             {aside}
                           </Text>
                         )}

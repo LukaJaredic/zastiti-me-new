@@ -12,6 +12,15 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 
 Read `ARCHITECTURE.md` before changing code. It covers the code map, the invariants and how content changes work. There is no CMS: content lives in `content/`.
 
+## Designs: one canvas for the whole site
+
+Every page design lives in one Design canvas: **Zaštiti.me — sajt**, https://claude.ai/artifact/BffRbARYVa2W6dQxcpiJsw (private, ask the project owner for access). It has one canvas page per site page: Header i footer, Početna, O nama, Aplikacija. Add new pages there.
+
+- **Building or changing a page:** read its artboard first (the Artifact tool, `read` with a `path` such as `project/Aplikacija.dc.html`). Match its layout, then build it with Astryx and the theme. Don't copy its inline styles.
+- **Designing:** add a page and artboards to this canvas. Never start a new Design artifact for one page. Reuse the shared `project/zastiti.css` and the header and footer from the O nama or Aplikacija artboards.
+- **Which header and footer are current:** the ones on O nama and Aplikacija. The "Header i footer" page is the older version.
+- **Copy on canvas pages:** the canvas notes list any headings that still need approval.
+
 ## Design direction
 
 The full brand book is the Zaštiti.me design system: https://claude.ai/artifact/75auidVZA9ptP9FnkiqcVh (private, ask the project owner for access). The short version:

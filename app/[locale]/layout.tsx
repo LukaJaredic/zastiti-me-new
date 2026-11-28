@@ -63,11 +63,14 @@ export default async function RootLayout({
             keeps it under this key), applied before the first paint. Pages
             are static, so the server can't render it; React only reads it
             after hydration. Without a pick the page follows the OS. */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `try{var m=localStorage.getItem("zastiti-color-mode");if(m==="light"||m==="dark")document.documentElement.setAttribute("data-theme",m)}catch(e){}`,
-          }}
-        />
+        <script>{`
+          try {
+            const mode = localStorage.getItem("zastiti-color-mode");
+            if (mode === "light" || mode === "dark") {
+              document.documentElement.setAttribute("data-theme", mode);
+            }
+          } catch {}
+        `}</script>
       </head>
       <body>
         <Providers>

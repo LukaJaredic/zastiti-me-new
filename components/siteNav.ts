@@ -1,5 +1,6 @@
 import type {Messages} from '@/app/[locale]/dictionaries';
-import {locales} from '@/lib/i18n';
+import {locales, type Locale} from '@/lib/i18n';
+import {hasGlossary} from '@/content/glossary';
 
 /**
  * Header and footer link config. Paths are locale-relative and keep the live
@@ -68,12 +69,16 @@ export function underlineSeed(index: number): string {
 
 export const sosPath = '/sos';
 
-export function footerLinks(f: Footer): NavLink[] {
+export const glossaryPath = '/sta-znaci';
+
+/** The glossary's link only where the glossary has its page. */
+export function footerLinks(f: Footer, locale: Locale): NavLink[] {
   return [
     {label: f.quickLinks.about, path: '/o-nama'},
     {label: f.quickLinks.digitalAbuse, path: '/digitalno-nasilje'},
     {label: f.quickLinks.activities, path: '/aktivnosti'},
     {label: f.quickLinks.library, path: '/biblioteka'},
+    ...(hasGlossary(locale) ? [{label: f.quickLinks.glossary, path: glossaryPath}] : []),
     {label: f.quickLinks.contact, path: '/kontakt'},
   ];
 }

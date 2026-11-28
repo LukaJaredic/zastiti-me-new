@@ -6,6 +6,7 @@ import {HStack} from '@astryxdesign/core/HStack';
 import {Button} from '@astryxdesign/core/Button';
 import {Heading, Text} from '@astryxdesign/core/Text';
 import {SplitArt, SplitText} from '@/components/Split';
+import {GlossedText} from '@/components/GlossedText';
 import {Illustration} from '@/components/Illustration';
 import {ActivityList} from '@/components/ActivityList';
 import {TeamList} from '@/components/TeamList';
@@ -44,7 +45,7 @@ export default async function AboutPage() {
         <SplitText>
           <Heading level={1}>{about.hero.subtitle}</Heading>
           <Text type="large" color="secondary" as="p">
-            {about.mission.para1}
+            <GlossedText text={about.mission.para1} locale={locale} />
           </Text>
         </SplitText>
         <SplitArt>

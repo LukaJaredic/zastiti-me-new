@@ -75,7 +75,7 @@ export async function SiteFooter({
               <Column label={footer.quickLinksTitle}>
                 <FooterLinks
                   layout="column"
-                  links={footerLinks(footer).map((l) => ({
+                  links={footerLinks(footer, locale).map((l) => ({
                     label: l.label,
                     href: `${home}${l.path}`,
                   }))}

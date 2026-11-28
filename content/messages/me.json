@@ -271,7 +271,7 @@
     },
     "mission": {
       "title": "Naša Misija",
-      "para1": "Nevladino udruženje Zastiti.me osnovano je 2024. godine u cilju borbe protiv svih oblika digitalnog nasilja i zloupotreba djece u internet prostoru.",
+      "para1": "Nevladino udruženje Zastiti.me osnovano je 2024. godine u cilju borbe protiv svih oblika [[digitalnog nasilja|digitalno-nasilje]] i zloupotreba djece u internet prostoru.",
       "para2": "Borimo se da svako dijete ima sigurno okruženje za rast i razvoj - kako u stvarnom svijetu, tako i u virtualnom.",
       "imageAlt": "Crtež djece koja se smiju"
     },
@@ -462,7 +462,8 @@
         "digitalAbuse": "Digitalno nasilje",
         "activities": "Aktivnosti",
         "library": "Biblioteka",
-        "contact": "Kontakt"
+        "contact": "Kontakt",
+        "glossary": "Šta znači"
       },
       "legalLinksTitle": "Dokumenti",
       "legalLinks": {
@@ -685,6 +686,15 @@
       }
     },
     "rest-title": "Zaštiti.me - Dodatni resursi",
-    "rest-description": "Linkovi ka dodatnim resursima i informacijama."
+    "rest-description": "Linkovi ka dodatnim resursima i informacijama.",
+    "glossary-title": "Zaštiti.me – Šta znači",
+    "glossary-description": "Objašnjenja pojmova o sigurnosti djece na internetu."
+  },
+  "glossary": {
+    "title": "Šta znači",
+    "searchLabel": "Pretraži pojmove",
+    "found": "Pronađeno pojmova: {count}",
+    "empty": "Nijedan pojam ne odgovara pretrazi „{query}“.",
+    "allTerms": "Svi pojmovi"
   }
 }

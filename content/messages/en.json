@@ -462,7 +462,8 @@
         "digitalAbuse": "Digital Abuse",
         "activities": "Activities",
         "library": "Library",
-        "contact": "Contact"
+        "contact": "Contact",
+        "glossary": "What it means"
       },
       "legalLinksTitle": "Legal",
       "legalLinks": {
@@ -685,6 +686,15 @@
       }
     },
     "rest-title": "Protect.me - More",
-    "rest-description": "Links to additional resources and information."
+    "rest-description": "Links to additional resources and information.",
+    "glossary-title": "Zaštiti.me – What it means",
+    "glossary-description": "Plain explanations of words about children's safety online."
+  },
+  "glossary": {
+    "title": "What it means",
+    "searchLabel": "Search terms",
+    "found": "Terms found: {count}",
+    "empty": "No term matches “{query}”.",
+    "allTerms": "All terms"
   }
 }

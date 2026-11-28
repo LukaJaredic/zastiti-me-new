@@ -141,6 +141,44 @@
     }
   }
 
+  /* The glossary page (/sta-znaci). On desktop the title and search stay in
+     view beside the long list; below 1024px they stack above it and scroll
+     away. A term reached by its anchor (a popover's link) clears the
+     header and glows once in the accent wash, so the eye finds it
+     (data-arrived, set by GlossaryBrowser from the URL hash). */
+  @media (width >= 1024px) {
+    [data-glossary-aside] {
+      position: sticky;
+      top: calc(73px + var(--spacing-10));
+      align-self: start;
+    }
+  }
+
+  [data-glossary-entry] {
+    scroll-margin-top: calc(73px + var(--spacing-8));
+    border-radius: var(--radius-container);
+  }
+
+  [data-glossary-entry][data-arrived] {
+    animation: glossary-arrive 2.4s ease-out;
+  }
+
+  @keyframes glossary-arrive {
+    from,
+    40% {
+      background-color: var(--color-accent-muted);
+      box-shadow: 0 0 0 var(--spacing-3) var(--color-accent-muted);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    [data-glossary-entry][data-arrived] {
+      animation: none;
+      background-color: var(--color-accent-muted);
+      box-shadow: 0 0 0 var(--spacing-3) var(--color-accent-muted);
+    }
+  }
+
   /* The mobile menu unfolding from the top (Dialog variant "menu-sheet" in
      the zastiti theme points at this). */
   @keyframes menu-sheet-down {

@@ -141,6 +141,76 @@
     }
   }
 
+  /* The glossary page (/sta-znaci). From tablets up the title and search
+     stay in view beside the long list. On phones, where they stack above
+     it, only the search field sticks, under the header: its wrapper joins
+     the section's grid (display: contents) so it can stick the whole way
+     down the list, on a strip of page paper the terms scroll under. A term
+     reached by its anchor (a popover's link) clears the header and glows
+     once in the accent wash, so the eye finds it (data-arrived, set by
+     GlossaryBrowser from the URL hash). */
+  @media (width >= 600px) {
+    [data-glossary-aside] {
+      position: sticky;
+      top: calc(73px + var(--spacing-8));
+      align-self: start;
+    }
+  }
+
+  @media (width < 600px) {
+    [data-glossary-aside] {
+      display: contents;
+    }
+
+    /* In DOM order under the title, not in the stacked "art" row. */
+    [data-glossary-list] {
+      grid-area: auto !important;
+    }
+
+    [data-glossary-search] {
+      position: sticky;
+      top: 73px;
+      z-index: 1;
+      margin-block: calc(-1 * var(--spacing-3));
+      padding-block: var(--spacing-3);
+      background-color: var(--color-background-body);
+      background-image: var(--paper-grain);
+    }
+  }
+
+  [data-glossary-entry] {
+    scroll-margin-top: calc(73px + var(--spacing-8));
+    border-radius: var(--radius-container);
+  }
+
+  /* On phones the sticky search field (label, field and count, about
+     104px) sits under the header too. */
+  @media (width < 600px) {
+    [data-glossary-entry] {
+      scroll-margin-top: calc(73px + 32 * var(--spacing-1));
+    }
+  }
+
+  [data-glossary-entry][data-arrived] {
+    animation: glossary-arrive 2.4s ease-out;
+  }
+
+  @keyframes glossary-arrive {
+    from,
+    40% {
+      background-color: var(--color-accent-muted);
+      box-shadow: 0 0 0 var(--spacing-3) var(--color-accent-muted);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    [data-glossary-entry][data-arrived] {
+      animation: none;
+      background-color: var(--color-accent-muted);
+      box-shadow: 0 0 0 var(--spacing-3) var(--color-accent-muted);
+    }
+  }
+
   /* The mobile menu unfolding from the top (Dialog variant "menu-sheet" in
      the zastiti theme points at this). */
   @keyframes menu-sheet-down {

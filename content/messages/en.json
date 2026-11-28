@@ -172,7 +172,7 @@
     },
     "mission": {
       "title": "Our Mission",
-      "para1": "The NGO Protect.me was founded in 2024 to fight all forms of digital violence and child exploitation online.",
+      "para1": "The NGO Protect.me was founded in 2024 to fight all forms of [[digital violence|digitalno-nasilje]] and child exploitation online.",
       "para2": "We believe every child deserves a safe environment to grow and thrive—both in the real world and online.",
       "imageAlt": "Illustration of children laughing"
     },
@@ -462,7 +462,8 @@
         "digitalAbuse": "Digital Abuse",
         "activities": "Activities",
         "library": "Library",
-        "contact": "Contact"
+        "contact": "Contact",
+        "glossary": "What it means"
       },
       "legalLinksTitle": "Legal",
       "legalLinks": {
@@ -685,6 +686,16 @@
       }
     },
     "rest-title": "Protect.me - More",
-    "rest-description": "Links to additional resources and information."
+    "rest-description": "Links to additional resources and information.",
+    "glossary-title": "Zaštiti.me – What it means",
+    "glossary-description": "Plain explanations of words about children's safety online."
+  },
+  "glossary": {
+    "title": "What it means",
+    "searchLabel": "Search terms",
+    "searchPlaceholder": "e.g. grooming, fake account, phishing",
+    "found": "Terms found: {count}",
+    "empty": "No term matches “{query}”.",
+    "allTerms": "All terms"
   }
 }

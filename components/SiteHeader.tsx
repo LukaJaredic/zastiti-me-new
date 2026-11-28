@@ -3,7 +3,7 @@
 import {useEffect} from 'react';
 import {usePathname} from 'next/navigation';
 import {TranslateIcon, WarningCircleIcon} from '@phosphor-icons/react';
-import {useAppShellMobile} from '@astryxdesign/core/AppShell';
+import {useMediaQuery} from '@astryxdesign/core/hooks';
 import {TopNav, TopNavItem} from '@astryxdesign/core/TopNav';
 import {HStack} from '@astryxdesign/core/HStack';
 import {Button} from '@astryxdesign/core/Button';
@@ -33,14 +33,21 @@ export type HeaderContent = {
 };
 
 const menuId = 'site-menu';
+/** Keep in step with the data-site-header rules in app/globals.css. */
+const desktopQuery = '(width >= 1024px)';
 
 /**
  * The site header: the logo and four plain words on the left, read as one
  * line; on the right only buttons, the language and theme switches as one
- * pair and, set apart on the far right, the one SOS button. Below lg (the
- * AppShell mobile breakpoint) the bar keeps the logo, SOS and the menu
- * button, which opens MobileMenu, the paper sheet. AppShell's own drawer
- * gets no content, so it stays off.
+ * pair and, set apart on the far right, the one SOS button. Below 1024px
+ * the bar keeps the logo, SOS and the menu button, which opens MobileMenu,
+ * the paper sheet.
+ *
+ * Both bars are always rendered and app/globals.css shows one of them by
+ * width (data-site-header). A JavaScript media query can't run on the
+ * server, so choosing in React sent phones the desktop bar first: two lines
+ * tall, and the whole page jumped up 48px when it loaded. AppShell's own
+ * mobile switch is off (layout.tsx) for the same reason.
  */
 export function SiteHeader({
   locale,
@@ -50,7 +57,7 @@ export function SiteHeader({
   content: HeaderContent;
 }) {
   const pathname = usePathname();
-  const {isMobile} = useAppShellMobile();
+  const isDesktop = useMediaQuery(desktopQuery);
   // The menu's state is shared by both languages' headers (menuState), so
   // a language switch from the menu arrives with the menu still open. Any
   // other change of page closes it.
@@ -58,6 +65,11 @@ export function SiteHeader({
   useEffect(() => {
     menuState.arrivedAt(pathname);
   }, [pathname]);
+  // The sheet belongs to the phone bar: widening the window past it closes
+  // it, as unmounting the phone bar used to.
+  useEffect(() => {
+    if (isDesktop) menuState.close();
+  }, [isDesktop]);
   const home = `/${locale}`;
 
   // The same page in the other language.
@@ -75,101 +87,98 @@ export function SiteHeader({
     />
   );
 
-  if (isMobile) {
-    return (
-      <>
-        <TopNav
-          label={content.navLabel}
-          heading={<Logo name={content.siteName} href={home} />}
-          endContent={
-            <HStack gap={2} vAlign="center">
-              {sos}
-              <Button
-                label={content.navLabel}
-                variant="ghost"
-                size="lg"
-                isIconOnly
-                icon={<Icon icon="menu" />}
-                onClick={menuState.open}
-                aria-expanded={menu.isOpen}
-                aria-controls={menuId}
-              />
-            </HStack>
-          }
-        />
-        <MobileMenu
-          id={menuId}
-          isOpen={menu.isOpen}
-          opensInPlace={menu.opensInPlace}
-          onClose={menuState.close}
-          home={home}
-          sosHref={sosHref}
-          languageHref={languageHref}
-          links={content.menu.map(({label, path}) => {
-            const href = `${home}${path}`;
-            return {label, href, isCurrent: isCurrentPath(pathname, href)};
-          })}
-          content={{
-            siteName: content.siteName,
-            navLabel: content.navLabel,
-            closeLabel: content.closeMenuLabel,
-            sosLabel: content.sosLabel,
-            languageLabel: content.languageLabel,
-            themeDarkLabel: content.themeDarkLabel,
-            themeLightLabel: content.themeLightLabel,
-          }}
-        />
-      </>
-    );
-  }
-
   return (
-    <TopNav
-      label={content.navLabel}
-      heading={<Logo name={content.siteName} href={home} />}
-      startContent={
-        // Centred in the room between the logo and the buttons, not in the
-        // bar (TopNav's centerContent), so the words never crowd the buttons
-        // at 1024px. The stretch comes from app/globals.css.
-        <HStack hAlign="center" vAlign="center" data-site-nav-links="">
-          {content.primary.map(({label, path}, i) => {
-            const href = `${home}${path}`;
-            return (
-              <TopNavItem
-                key={path}
-                label={label}
-                href={href}
-                isSelected={isCurrentPath(pathname, href)}
-                data-underline-seed={underlineSeed(i)}
-              />
-            );
-          })}
-        </HStack>
-      }
-      endContent={
-        // The two settings sit together as a pair (4px apart), set 24px back
-        // from SOS so they never read as part of it. SOS keeps the column's
-        // right edge: the same place on every page and at every width,
-        // beside the menu on phones. The centred nav words re-centre in the
-        // room left, so this gap doesn't crowd them at 1024px.
-        <HStack gap={6} vAlign="center">
-          <HStack gap={1} vAlign="center">
+    <>
+      <TopNav
+        data-site-header="mobile"
+        label={content.navLabel}
+        heading={<Logo name={content.siteName} href={home} />}
+        endContent={
+          <HStack gap={2} vAlign="center">
+            {sos}
             <Button
-              label={content.languageLabel}
+              label={content.navLabel}
               variant="ghost"
               size="lg"
               isIconOnly
-              href={languageHref}
-              icon={<Icon icon={TranslateIcon} />}
-            />
-            <ThemeToggle
-              darkLabel={content.themeDarkLabel}
-              lightLabel={content.themeLightLabel}
+              icon={<Icon icon="menu" />}
+              onClick={menuState.open}
+              aria-expanded={menu.isOpen}
+              aria-controls={menuId}
             />
           </HStack>
-          {sos}
-        </HStack>
-      }
-    />
+        }
+      />
+      <MobileMenu
+        id={menuId}
+        isOpen={menu.isOpen}
+        opensInPlace={menu.opensInPlace}
+        onClose={menuState.close}
+        home={home}
+        sosHref={sosHref}
+        languageHref={languageHref}
+        links={content.menu.map(({label, path}) => {
+          const href = `${home}${path}`;
+          return {label, href, isCurrent: isCurrentPath(pathname, href)};
+        })}
+        content={{
+          siteName: content.siteName,
+          navLabel: content.navLabel,
+          closeLabel: content.closeMenuLabel,
+          sosLabel: content.sosLabel,
+          languageLabel: content.languageLabel,
+          themeDarkLabel: content.themeDarkLabel,
+          themeLightLabel: content.themeLightLabel,
+        }}
+      />
+      <TopNav
+        data-site-header="desktop"
+        label={content.navLabel}
+        heading={<Logo name={content.siteName} href={home} />}
+        startContent={
+          // Centred in the room between the logo and the buttons, not in the
+          // bar (TopNav's centerContent), so the words never crowd the buttons
+          // at 1024px. The stretch comes from app/globals.css.
+          <HStack hAlign="center" vAlign="center" data-site-nav-links="">
+            {content.primary.map(({label, path}, i) => {
+              const href = `${home}${path}`;
+              return (
+                <TopNavItem
+                  key={path}
+                  label={label}
+                  href={href}
+                  isSelected={isCurrentPath(pathname, href)}
+                  data-underline-seed={underlineSeed(i)}
+                />
+              );
+            })}
+          </HStack>
+        }
+        endContent={
+          // The two settings sit together as a pair (4px apart), set 24px back
+          // from SOS so they never read as part of it. SOS keeps the column's
+          // right edge: the same place on every page and at every width,
+          // beside the menu on phones. The centred nav words re-centre in the
+          // room left, so this gap doesn't crowd them at 1024px.
+          <HStack gap={6} vAlign="center">
+            <HStack gap={1} vAlign="center">
+              <Button
+                label={content.languageLabel}
+                variant="ghost"
+                size="lg"
+                isIconOnly
+                href={languageHref}
+                icon={<Icon icon={TranslateIcon} />}
+              />
+              <ThemeToggle
+                darkLabel={content.themeDarkLabel}
+                lightLabel={content.themeLightLabel}
+              />
+            </HStack>
+            {sos}
+          </HStack>
+        }
+      />
+    </>
   );
 }

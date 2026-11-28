@@ -11,6 +11,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { AudienceTheme } from "@/components/AudienceTheme";
 import { menuLinks, primaryLinks } from "@/components/siteNav";
 import { Providers } from "../providers";
+import { colorModeScript } from "@/components/colorModeScript";
 import { getDictionary, getLocale } from "./dictionaries";
 
 // One family, Onest, for headings and text. Latin Extended covers š, đ, č,
@@ -46,20 +47,31 @@ export default async function RootLayout({
   const messages = await getDictionary();
   const { components } = messages;
   return (
+    // data-astryx-theme: the theme's tokens (page paper, Onest) are scoped
+    // to it. The root Theme only copies it here after hydration, so <body>
+    // painted in Astryx's defaults until then. data-theme is set before the
+    // first paint by colorModeScript, from the reader's saved pick, hence
+    // suppressHydrationWarning.
     <html
       lang={htmlLang[locale]}
       className={onest.variable}
+      data-astryx-theme="zastiti"
+      suppressHydrationWarning
     >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: colorModeScript }} />
+      </head>
       <body>
         <Providers>
           <AudienceTheme>
             <AppShell
               height="auto"
               variant="section"
-              // Under 1024px the words, language and theme switch no longer
-              // fit beside the name: keep the name, SOS and the menu.
-              // SiteHeader renders its own 44px, labelled menu toggle.
-              mobileNav={{ breakpoint: "lg", hasToggle: false }}
+              // Off: AppShell picks its mobile bar with a JavaScript media
+              // query, which the server can't run, so phones got the desktop
+              // bar first. SiteHeader renders both bars and CSS picks one
+              // (under 1024px: the name, SOS and its own menu toggle).
+              mobileNav={false}
               topNav={
                 <SiteHeader
                   locale={locale}

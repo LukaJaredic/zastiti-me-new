@@ -36,3 +36,12 @@ export function SplitArt({
     </VStack>
   );
 }
+
+/**
+ * A full-width strip under both halves of a split row, such as a note under
+ * the row's list. It spans every column on a row of its own, so it works
+ * the same side by side and stacked.
+ */
+export function SplitBelow({children}: {children: ReactNode}) {
+  return <VStack style={{gridColumn: '1 / -1'}}>{children}</VStack>;
+}

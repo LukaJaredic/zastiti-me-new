@@ -28,7 +28,7 @@ export type MobileMenuContent = {
  * The menu on phones and tablets (design system, MobileMenu): a full-width
  * sheet of cream paper that unfolds down from the header, with a torn bottom
  * edge. Its first row repeats the header in place (logo, SOS, and the menu
- * button turned into a close button), then a fold, the six main links,
+ * button turned into a close button), then a fold, the five main links,
  * another fold, and the language and theme switches as icons.
  *
  * It's a modal Dialog: Escape or a tap on the dimmed page closes it, and

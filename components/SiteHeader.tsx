@@ -35,7 +35,7 @@ export type HeaderContent = {
 const menuId = 'site-menu';
 
 /**
- * The site header: the logo and five plain words on the left, read as one
+ * The site header: the logo and four plain words on the left, read as one
  * line; on the right only buttons, the language and theme switches as one
  * pair and, set apart on the far right, the one SOS button. Below lg (the
  * AppShell mobile breakpoint) the bar keeps the logo, SOS and the menu

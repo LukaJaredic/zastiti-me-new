@@ -22,12 +22,14 @@ export function audienceOf(pathname: string): Audience | null {
 
 export type NavLink = {label: string; path: string};
 
-/** The five words in the middle of the desktop bar: the two doors first. */
+/**
+ * The four words in the middle of the desktop bar. The two doors (parents,
+ * kids) are the home page itself, so the bar doesn't repeat them.
+ */
 export function primaryLinks(m: Messages): NavLink[] {
   const menu = m.components.header.menu;
   return [
-    {label: m.rest.parents, path: '/roditelji'},
-    {label: m.rest.kids, path: '/djeca'},
+    {label: menu.app, path: '/aplikacija'},
     {label: menu.activities, path: '/aktivnosti'},
     {label: menu.library, path: '/biblioteka'},
     {label: menu.about, path: '/o-nama'},
@@ -35,7 +37,7 @@ export function primaryLinks(m: Messages): NavLink[] {
 }
 
 /**
- * The mobile menu: home and the same five words as the desktop bar. The
+ * The mobile menu: home and the same four words as the desktop bar. The
  * other pages are linked from the footer (design system, MobileMenu).
  */
 export function menuLinks(m: Messages): NavLink[] {
@@ -74,6 +76,7 @@ export const glossaryPath = '/sta-znaci';
 /** The glossary's link only where the glossary has its page. */
 export function footerLinks(f: Footer, locale: Locale): NavLink[] {
   return [
+    {label: f.quickLinks.app, path: '/aplikacija'},
     {label: f.quickLinks.about, path: '/o-nama'},
     {label: f.quickLinks.digitalAbuse, path: '/digitalno-nasilje'},
     {label: f.quickLinks.activities, path: '/aktivnosti'},

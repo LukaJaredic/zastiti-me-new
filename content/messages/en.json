@@ -229,6 +229,131 @@
       "shield": "Six hands assembling a shield from puzzle pieces"
     }
   },
+  "app": {
+    "hero": {
+      "title": "Smart, free support for parents in their children's digital world",
+      "lead": "Children can't know every danger in the digital world. Parents and guardians can't always know when their children are in danger.",
+      "body": "The Zaštiti.me app is designed as essential help for parents and children in the digital world, with the greatest respect for privacy and full trust kept intact."
+    },
+    "images": {
+      "hero": "A father and son walk hand in hand, smiling at each other",
+      "close": "A mother hugs her son and daughter, all three smiling"
+    },
+    "purpose": {
+      "title": "What the app is for",
+      "para1": "The Zaštiti.me app recognises suspicious and dangerous communication in the digital world.",
+      "para2": "Using advanced technology and artificial intelligence, the app analyses the content of communication on the most widely used digital platforms, such as:",
+      "social": {
+        "title": "Social networks",
+        "description": "Facebook, Instagram, X/Twitter…"
+      },
+      "messaging": {
+        "title": "Messaging apps",
+        "description": "Viber, WhatsApp, Snapchat, Telegram, Messenger…"
+      },
+      "email": {
+        "title": "Email services",
+        "description": "Gmail, Outlook, Yahoo Mail…"
+      },
+      "games": {
+        "title": "Online games and in-game chat",
+        "description": "Roblox, Fortnite, Minecraft, Among Us… and similar platforms for chatting and playing."
+      }
+    },
+    "detects": {
+      "title": "What the app recognises",
+      "intro": "The app is designed to recognise communication that may point to:",
+      "grooming": {
+        "title": "Grooming",
+        "description": "Contact being made between children and sexual predators."
+      },
+      "sexting": {
+        "title": "Sexting",
+        "description": "Exchanging messages with sexual content involving minors."
+      },
+      "abuse": {
+        "title": "Online abuse",
+        "description": "Insults, harassment and humiliation in the digital world."
+      },
+      "other": {
+        "title": "And more",
+        "description": "Other forms of risky or upsetting digital behaviour."
+      },
+      "note": "The app does not process the platforms and contacts that parents and guardians choose: it lets them pick the apps and contacts they trust completely. That way parents and guardians protect their child's privacy even further and strengthen the trust between them."
+    },
+    "shows": {
+      "title": "What the app shows",
+      "para1": "Parents and guardians only get a warning that there may be a danger in their child's digital world.",
+      "para2": "So no one sees the child's full communication, and it stays entirely part of their privacy."
+    },
+    "warns": {
+      "title": "When the app sends a warning",
+      "para1": "The app warns parents and guardians when there is communication above a higher threshold of assessed risk.",
+      "para2": "Communication above that threshold is communication with a more than 75 percent likelihood that some form of [[digital violence|digitalno-nasilje]] is under way."
+    },
+    "stats": {
+      "title": "Statistics",
+      "intro": "Every day, every three days or every week, parents and guardians can receive separate statistics on:",
+      "phoneTime": "Time the child spends on the phone",
+      "appTime": "Time the child spends in apps",
+      "messages": "Number of messages exchanged in apps",
+      "note": "The statistics help you understand the child's digital habits better, without, of course, any access to the content of private conversations."
+    },
+    "sos": {
+      "title": "SOS support",
+      "para1": "After parents and guardians receive a warning, they should talk with their children and find out more about the possible digital violence.",
+      "para2": "If they judge that there is serious and immediate danger, they are encouraged to use the Zaštiti.me SOS line.",
+      "para3": "With a single button, parents and guardians can get in touch with members of the Zaštiti.me team:",
+      "psychologist": {
+        "title": "A psychologist",
+        "description": "Conversation, support and recovery after a difficult experience"
+      },
+      "forensics": {
+        "title": "A digital forensics expert",
+        "description": "Collecting and keeping evidence safely"
+      },
+      "lawyer": {
+        "title": "A lawyer",
+        "description": "Legal advice and next steps"
+      },
+      "note": "The SOS line is help in a crisis. It does not replace institutions or emergency services."
+    },
+    "privacy": {
+      "title": "Data privacy",
+      "intro": "Protecting children's privacy is the core principle of the Zaštiti.me app.",
+      "encrypted": {
+        "title": "Encrypted messages",
+        "description": "All messages sent to the server for analysis are encrypted. That means no one can see what the messages say: not the NGO's members, not third parties, not institutions."
+      },
+      "automated": {
+        "title": "Automated analysis only",
+        "description": "The data the app processes is used only for automated analysis, to recognise possible dangers."
+      },
+      "deleted": {
+        "title": "Deleted every week",
+        "description": "On top of that, all messages and data are deleted from the server automatically every week."
+      }
+    },
+    "install": {
+      "title": "Installing the app",
+      "para": "The Zaštiti.me app is made for Android phones used by children. The parents' side can be installed on both Android and iOS devices.",
+      "child": {
+        "label": "Child's phone",
+        "value": "Android"
+      },
+      "parent": {
+        "label": "Parent's device",
+        "value": "Android and iOS"
+      }
+    },
+    "close": {
+      "title": "You don't have to read every message to protect your child.",
+      "para1": "What matters is knowing when there is real danger and who to turn to.",
+      "para2": "Zaštiti.me is a tool that helps adults react in time, while respecting children's privacy, family trust and modern safety standards.",
+      "ctaText": "Download the app",
+      "ctaHref": "https://play.google.com/store/apps"
+    }
+  },
   "parents": {
     "hero-title": "Protecting Children Online",
     "hero-subtitle": "Tips & tools for parents in the fight against digital abuse",
@@ -458,6 +583,7 @@
       "emailAddress": "nvu.zastiti.me@gmail.com",
       "quickLinksTitle": "Quick Links",
       "quickLinks": {
+        "app": "The app",
         "about": "About Us",
         "digitalAbuse": "Digital Abuse",
         "activities": "Activities",
@@ -491,6 +617,7 @@
       "themeDark": "Switch to dark theme",
       "themeLight": "Switch to light theme",
       "menu": {
+        "app": "The app",
         "home": "Home",
         "about": "About Us",
         "digitalAbuse": "Digital Violence",
@@ -657,6 +784,8 @@
     "contact-description": "Send us a message; we will be happy to answer your inquiries.",
     "about-title": "Protect.me – About Us",
     "about-description": "We create a safer digital world for the children of Montenegro.",
+    "app-title": "Zaštiti.me – The app",
+    "app-description": "Smart, free support for parents in their children's digital world.",
     "parents-title": "Protect.me – For Parents",
     "parents-description": "Advice & tools for parents combating digital abuse",
     "sos-title": "Protect.me – SOS",

@@ -328,6 +328,131 @@
       "shield": "Šest ruku zajedno slaže štit od dijelova slagalice"
     }
   },
+  "app": {
+    "hero": {
+      "title": "Pametna i besplatna podrška roditeljima u digitalnom svijetu djece",
+      "lead": "Djeca ne mogu znati sve opasnosti u digitalnom svijetu. Roditelji i staratelji ne mogu uvijek znati kada su im djeca u opasnosti.",
+      "body": "Aplikacija Zaštiti.me osmišljena je kao neophodna pomoć roditeljima i djeci u digitalnom svijetu, uz maksimalno poštovanje privatnosti i održavanje punog povjerenja."
+    },
+    "images": {
+      "hero": "Otac i sin šetaju držeći se za ruke i smiješe se jedan drugom",
+      "close": "Majka grli sina i kćerku, sve troje se smiješe"
+    },
+    "purpose": {
+      "title": "Čemu služi aplikacija",
+      "para1": "Aplikacija Zaštiti.me prepoznaje sumnjive i opasne komunikacije u digitalnom okruženju.",
+      "para2": "Uz naprednu tehnologiju i uz pomoć vještačke inteligencije, aplikacija analizira sadržaje komunikacije koji se odvijaju na najčešće korišćenim digitalnim platformama, kao što su:",
+      "social": {
+        "title": "Društvene mreže",
+        "description": "Facebook, Instagram, X/Twitter…"
+      },
+      "messaging": {
+        "title": "Aplikacije za razmjenu poruka",
+        "description": "Viber, WhatsApp, Snapchat, Telegram, Messenger…"
+      },
+      "email": {
+        "title": "E-mail servisi",
+        "description": "Gmail, Outlook, Yahoo Mail…"
+      },
+      "games": {
+        "title": "Platforme za online igre i komunikaciju u igrama",
+        "description": "Roblox, Fortnite, Minecraft, Among Us… I slične platforme za komunikaciju i igranje."
+      }
+    },
+    "detects": {
+      "title": "Šta aplikacija prepoznaje",
+      "intro": "Aplikacija je osmišljena da prepozna komunikacije koje mogu ukazivati na:",
+      "grooming": {
+        "title": "Grooming",
+        "description": "Uspostavljanje kontakta između djece i seksualnih predatora."
+      },
+      "sexting": {
+        "title": "Seksting",
+        "description": "Razmjena poruka sa seksualnim sadržajem koji se odnosi na maloljetnike."
+      },
+      "abuse": {
+        "title": "Online nasilje",
+        "description": "Vrijeđanje, uznemiravanje i ponižavanje u digitalnom svijetu."
+      },
+      "other": {
+        "title": "I drugo",
+        "description": "Druge oblike rizičnog ili uznemirujućeg digitalnog ponašanja."
+      },
+      "note": "Aplikacija neće obrađivati platforme i kontakte koje roditelji i staratelji odaberu, odnosno aplikacija omogućava da se izaberu aplikacije i kontakti u koje roditelji i staratelji imaju potpuno povjerenje. Na taj način roditelji i staratelji dodatno štite privatnost svog djeteta i jačaju međusobno povjerenje."
+    },
+    "shows": {
+      "title": "Šta aplikacija prikazuje",
+      "para1": "Roditelji i staratelji dobijaju samo upozorenje da postoji potencijalna opasnost u digitalnom svijetu djeteta.",
+      "para2": "Dakle, niko nema uvid u kompletnu komunikaciju djeteta i ona ostaje apsolutno dio njegove/njene privatnosti."
+    },
+    "warns": {
+      "title": "Kada aplikacija upozorava",
+      "para1": "Aplikacija šalje upozorenje roditeljima i starateljima onda kada postoji komunikacija koja prelazi viši prag procijenjenog rizika.",
+      "para2": "Pod višim pragom procijenjenog rizika smatra se komunikacija koja sadrži više od 75 odsto mogućnosti da je u toku neki oblik [[digitalnog nasilja|digitalno-nasilje]]."
+    },
+    "stats": {
+      "title": "Statistički pregledi",
+      "intro": "Na dnevnom, trodnevnom ili sedmičnom nivou roditelji i staratelji mogu dobijati posebne statističke podatke o:",
+      "phoneTime": "Vremenu koje dijete provodi na telefonu",
+      "appTime": "Vremenu koje dijete provodi na aplikacijama",
+      "messages": "Broj razmijenjenih poruka na aplikacijama",
+      "note": "Statistika služi za bolje razumijevanje digitalnih navika djeteta, naravno, bez uvida u sadržaj privatnih razgovora."
+    },
+    "sos": {
+      "title": "SOS podrška",
+      "para1": "Nakon što roditelji i staratelji dobiju upozorenje, potrebno je da razgovaraju sa djecom i saznaju dodatne informacije o potencijalnom digitalnom nasilju.",
+      "para2": "Ukoliko procijene da postoji ozbiljna i neposredna opasnost, poželjno je da iskoriste SOS liniju Zaštiti.me.",
+      "para3": "Putem jednog dugmeta, roditelji i staratelji mogu stupiti u kontakt sa članovima tima Zaštiti.me:",
+      "psychologist": {
+        "title": "Psihologom",
+        "description": "Razgovor, podrška i oporavak nakon teškog iskustva"
+      },
+      "forensics": {
+        "title": "Digitalnim forenzičarom",
+        "description": "Sigurno prikupljanje i čuvanje dokaza"
+      },
+      "lawyer": {
+        "title": "Pravnikom",
+        "description": "Pravni savjeti i naredni koraci"
+      },
+      "note": "SOS linija predstavlja pomoć u kriznim situacijama, odnosno ona nije zamjena za institucije ili službe za hitne intervencije."
+    },
+    "privacy": {
+      "title": "Privatnost podataka",
+      "intro": "Zaštita privatnosti djece je osnovni princip aplikacije Zaštiti.me.",
+      "encrypted": {
+        "title": "Kriptovane poruke",
+        "description": "Sve poruke koje se, u okviru analize, šalju ka serveru – kriptovane su. To znači da niko nema uvid u sadržaj poruka – ni članovi NVO, ni treća lica, ni institucije."
+      },
+      "automated": {
+        "title": "Samo automatska analiza",
+        "description": "Podaci koje aplikacija obrađuje koriste se isključivo za automatsku analizu u cilju prepoznavanja potencijalnih opasnosti."
+      },
+      "deleted": {
+        "title": "Brisanje svake sedmice",
+        "description": "Pored toga, sve poruke i podaci se automatski brišu sa servera na sedmičnom nivou."
+      }
+    },
+    "install": {
+      "title": "Instalacija aplikacije",
+      "para": "Aplikacija Zaštiti.me je kreirana za Android telefone koje koriste djeca. Istovremeno, roditeljski nadzor može biti instaliran i na Android i iOS uređaje roditelja.",
+      "child": {
+        "label": "Telefon djeteta",
+        "value": "Android"
+      },
+      "parent": {
+        "label": "Uređaj roditelja",
+        "value": "Android i iOS"
+      }
+    },
+    "close": {
+      "title": "Ne morate znati svaku poruku da biste zaštitili dijete.",
+      "para1": "Važno je da znate kada postoji stvarna opasnost i kome da se obratite.",
+      "para2": "Zaštiti.me je alat koji pomaže odraslima da reaguju na vrijeme – uz poštovanje privatnosti djece, porodičnog povjerenja i savremenih bezbjednosnih standarda.",
+      "ctaText": "Preuzmi aplikaciju",
+      "ctaHref": "https://play.google.com/store/apps"
+    }
+  },
   "sos": {
     "hero-title": "Prijavi nasilje",
     "hero-subtitle": "Tvoja prijava je sigurna sa nama, nećemo dijeliti tvoje informacije!",
@@ -458,6 +583,7 @@
       "emailAddress": "nvu.zastiti.me@gmail.com",
       "quickLinksTitle": "Brzi linkovi",
       "quickLinks": {
+        "app": "Aplikacija",
         "about": "O nama",
         "digitalAbuse": "Digitalno nasilje",
         "activities": "Aktivnosti",
@@ -491,6 +617,7 @@
       "themeDark": "Uključi tamnu temu",
       "themeLight": "Uključi svijetlu temu",
       "menu": {
+        "app": "Aplikacija",
         "home": "Početna",
         "about": "O nama",
         "digitalAbuse": "Digitalno nasilje",
@@ -657,6 +784,8 @@
     "contact-description": "Pošaljite poruku, rado ćemo odgovoriti na vaše upite.",
     "about-title": "Zaštiti.me – O nama",
     "about-description": "Stvaramo sigurniji digitalni svijet za djecu Crne Gore.",
+    "app-title": "Zaštiti.me – Aplikacija",
+    "app-description": "Pametna i besplatna podrška roditeljima u digitalnom svijetu djece.",
     "parents-title": "Zaštiti.me - Za roditelje",
     "parents-description": "Savjeti i alati za roditelje u borbi protiv digitalnog nasilja",
     "sos-title": "Zaštiti.me - SOS",

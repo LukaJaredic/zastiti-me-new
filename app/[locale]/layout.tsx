@@ -46,20 +46,43 @@ export default async function RootLayout({
   const messages = await getDictionary();
   const { components } = messages;
   return (
+    // data-astryx-theme: the theme's tokens (page paper, Onest) are scoped
+    // to it. The root Theme only copies it here after hydration, so <body>
+    // painted in Astryx's defaults until then.
+    // suppressHydrationWarning: the script below adds data-theme before
+    // React hydrates, which React would report as a mismatch. It only
+    // covers <html>'s own attributes, not its children.
     <html
       lang={htmlLang[locale]}
       className={onest.variable}
+      data-astryx-theme="zastiti"
+      suppressHydrationWarning
     >
+      <head>
+        {/* The reader's saved light/dark pick (components/ColorMode.tsx
+            keeps it under this key), applied before the first paint. Pages
+            are static, so the server can't render it; React only reads it
+            after hydration. Without a pick the page follows the OS. */}
+        <script>{`
+          try {
+            const mode = localStorage.getItem("zastiti-color-mode");
+            if (mode === "light" || mode === "dark") {
+              document.documentElement.setAttribute("data-theme", mode);
+            }
+          } catch {}
+        `}</script>
+      </head>
       <body>
         <Providers>
           <AudienceTheme>
             <AppShell
               height="auto"
               variant="section"
-              // Under 1024px the words, language and theme switch no longer
-              // fit beside the name: keep the name, SOS and the menu.
-              // SiteHeader renders its own 44px, labelled menu toggle.
-              mobileNav={{ breakpoint: "lg", hasToggle: false }}
+              // Off: AppShell picks its mobile bar with a JavaScript media
+              // query, which the server can't run, so phones got the desktop
+              // bar first. SiteHeader renders both bars and CSS picks one
+              // (under 1024px: the name, SOS and its own menu toggle).
+              mobileNav={false}
               topNav={
                 <SiteHeader
                   locale={locale}

@@ -8,6 +8,64 @@
     font-family: var(--font-family-body);
   }
 
+  /* The header's two bars (SiteHeader): the phone bar under 1024px, the
+     full bar from 1024px. Chosen here, not in React, so the server's HTML
+     already has the right one. */
+  @media (width < 1024px) {
+    [data-site-header="desktop"] {
+      display: none;
+    }
+  }
+
+  @media (width >= 1024px) {
+    [data-site-header="mobile"] {
+      display: none;
+    }
+  }
+
+  /* Light/dark before hydration. The root layout's inline script sets the
+     saved pick on <html> before the first paint; a Theme wrapper following the system
+     (no data-theme of its own) takes it from there. After hydration every
+     wrapper carries the pick itself and this changes nothing. */
+  html[data-theme="light"] [data-astryx-theme]:not([data-theme]) {
+    color-scheme: light;
+  }
+
+  html[data-theme="dark"] [data-astryx-theme]:not([data-theme]) {
+    color-scheme: dark;
+  }
+
+  /* ThemeToggle renders a "to dark" and a "to light" button; show the one
+     that leads away from the mode on screen. */
+  html[data-theme="light"] [data-theme-toggle="light"],
+  html[data-theme="dark"] [data-theme-toggle="dark"] {
+    display: none;
+  }
+
+  @media (prefers-color-scheme: light) {
+    html:not([data-theme]) [data-theme-toggle="light"] {
+      display: none;
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    html:not([data-theme]) [data-theme-toggle="dark"] {
+      display: none;
+    }
+  }
+
+  /* The logo in dark mode (Logo.tsx): lift its dark green and blue until
+     they read on the dark ground. */
+  html[data-theme="dark"] [data-logo] {
+    filter: brightness(2.6) saturate(0.9);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    html:not([data-theme]) [data-logo] {
+      filter: brightness(2.6) saturate(0.9);
+    }
+  }
+
   /* Header links, centred between the logo and the buttons (SiteHeader).
      TopNav centres its centerContent in the whole bar, and its start slot
      only hugs its content, with no prop or theme target to make it grow.

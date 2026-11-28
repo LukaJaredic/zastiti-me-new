@@ -9,6 +9,10 @@ import {useColorMode} from './ColorMode';
  * Light/dark switch. Shows the mode it switches to: a moon on a light page,
  * a sun on a dark one. The label says the action, so state is never shown by
  * the icon alone.
+ *
+ * Both buttons are rendered and app/globals.css shows the right one
+ * (data-theme-toggle), from the saved pick on <html> or the OS setting. The
+ * server can't know either, so choosing in React flipped the icon on load.
  */
 export function ThemeToggle({
   darkLabel,
@@ -21,16 +25,27 @@ export function ThemeToggle({
    * mobile menu. */
   variant?: ButtonVariant;
 }) {
-  const {resolved, setMode} = useColorMode();
-  const toDark = resolved === 'light';
+  const {setMode} = useColorMode();
   return (
-    <Button
-      label={toDark ? darkLabel : lightLabel}
-      variant={variant}
-      size="lg"
-      isIconOnly
-      icon={<Icon icon={toDark ? MoonIcon : SunIcon} />}
-      onClick={() => setMode(toDark ? 'dark' : 'light')}
-    />
+    <>
+      <Button
+        data-theme-toggle="dark"
+        label={darkLabel}
+        variant={variant}
+        size="lg"
+        isIconOnly
+        icon={<Icon icon={MoonIcon} />}
+        onClick={() => setMode('dark')}
+      />
+      <Button
+        data-theme-toggle="light"
+        label={lightLabel}
+        variant={variant}
+        size="lg"
+        isIconOnly
+        icon={<Icon icon={SunIcon} />}
+        onClick={() => setMode('light')}
+      />
+    </>
   );
 }

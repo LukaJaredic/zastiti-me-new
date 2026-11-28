@@ -36,12 +36,12 @@ export function IconList({
           {item.description ? (
             <VStack gap={1} style={{minWidth: 0}}>
               <Heading level={3}>{item.title}</Heading>
-              <Text type="large" color="secondary" as="p">
+              <Text color="secondary" as="p">
                 {item.description}
               </Text>
             </VStack>
           ) : (
-            <Text type="large" weight="semibold" as="p" style={{minWidth: 0}}>
+            <Text weight="semibold" as="p" style={{minWidth: 0}}>
               {item.title}
             </Text>
           )}

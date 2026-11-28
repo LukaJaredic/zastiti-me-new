@@ -7,7 +7,7 @@ import {HStack} from '@astryxdesign/core/HStack';
 import {Button} from '@astryxdesign/core/Button';
 import {Divider} from '@astryxdesign/core/Divider';
 import {Heading, Text} from '@astryxdesign/core/Text';
-import {SplitArt, SplitText} from '@/components/Split';
+import {SplitArt, SplitBelow, SplitText} from '@/components/Split';
 import {GlossedText} from '@/components/GlossedText';
 import {Illustration} from '@/components/Illustration';
 import {IconList} from '@/components/IconList';
@@ -31,24 +31,29 @@ const icon = (name: string) => `/images/app/${name}.webp`;
 /** The portrait illustrations stay a comfortable size beside their text. */
 const pictureWidth = 'calc(120 * var(--spacing-1))';
 
-/** A paragraph of a row's text. */
+/** A paragraph of a row's text: body size (16px). */
 function Para({children}: {children: ReactNode}) {
   return (
-    <Text type="large" color="secondary" as="p">
+    <Text color="secondary" as="p">
       {children}
     </Text>
   );
 }
 
-/** A note under a list, below a fold in the paper. */
+/**
+ * A note under a row, below a fold in the paper, across both columns: the
+ * smaller size (13px), the text as wide as the row.
+ */
 function FinePrint({children}: {children: ReactNode}) {
   return (
-    <VStack gap={5} paddingBlockStart={8}>
-      <Divider variant="fold" />
-      <Text color="secondary" as="p">
-        {children}
-      </Text>
-    </VStack>
+    <SplitBelow>
+      <VStack gap={5} paddingBlockStart={8}>
+        <Divider variant="fold" />
+        <Text type="supporting" as="p">
+          {children}
+        </Text>
+      </VStack>
+    </SplitBelow>
   );
 }
 
@@ -69,10 +74,21 @@ export default async function AppPage() {
       <Section variant="split-hero">
         <SplitText>
           <Heading level={1}>{app.hero.title}</Heading>
-          <Text type="large" as="p">
+          <Text weight="medium" as="p">
             {app.hero.lead}
           </Text>
           <Para>{app.hero.body}</Para>
+          {/* The page's one main action: the same download as the
+              closing band, in brand green. */}
+          <HStack paddingBlockStart={4}>
+            <Button
+              variant="primary"
+              size="lg"
+              href={close.ctaHref}
+              label={close.ctaText}
+              icon={<DownloadSimpleIcon aria-hidden size="1.25em" />}
+            />
+          </HStack>
         </SplitText>
         <SplitArt centred>
           <VStack hAlign="center">
@@ -121,8 +137,8 @@ export default async function AppPage() {
               {icon: icon('rizik-drugo'), ...detects.other},
             ]}
           />
-          <FinePrint>{detects.note}</FinePrint>
         </SplitArt>
+        <FinePrint>{detects.note}</FinePrint>
       </Section>
 
       <Section variant="split">
@@ -155,8 +171,8 @@ export default async function AppPage() {
               {icon: icon('statistika-poruke'), title: stats.messages},
             ]}
           />
-          <FinePrint>{stats.note}</FinePrint>
         </SplitArt>
+        <FinePrint>{stats.note}</FinePrint>
       </Section>
 
       <Section variant="band-muted" paddingBlock={10} paddingInline={0}>
@@ -175,8 +191,8 @@ export default async function AppPage() {
                 {icon: icon('sos-pravnik'), ...sos.lawyer},
               ]}
             />
-            <FinePrint>{sos.note}</FinePrint>
           </SplitArt>
+          <FinePrint>{sos.note}</FinePrint>
         </Section>
       </Section>
 
@@ -214,10 +230,10 @@ export default async function AppPage() {
             {[install.child, install.parent].map((device) => (
               <VStack key={device.label} gap={1}>
                 <VStack as="dt">
-                  <Text color="secondary">{device.label}</Text>
+                  <Text type="supporting">{device.label}</Text>
                 </VStack>
                 <VStack as="dd" style={{margin: 0}}>
-                  <Text type="large" weight="semibold">
+                  <Text weight="semibold">
                     {device.value}
                   </Text>
                 </VStack>
@@ -231,7 +247,7 @@ export default async function AppPage() {
         <Section variant="split">
           <SplitText centred>
             <Heading level={2}>{close.title}</Heading>
-            <Text type="large" as="p">
+            <Text weight="medium" as="p">
               {close.para1}
             </Text>
             <Para>{close.para2}</Para>

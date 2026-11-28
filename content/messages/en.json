@@ -693,6 +693,7 @@
   "glossary": {
     "title": "What it means",
     "searchLabel": "Search terms",
+    "searchPlaceholder": "e.g. grooming, fake account, phishing",
     "found": "Terms found: {count}",
     "empty": "No term matches “{query}”.",
     "allTerms": "All terms"

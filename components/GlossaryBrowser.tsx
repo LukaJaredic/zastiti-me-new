@@ -43,6 +43,7 @@ export function GlossaryBrowser({
   messages: {
     title: string;
     searchLabel: string;
+    searchPlaceholder: string;
     found: string;
     empty: string;
   };
@@ -96,6 +97,8 @@ export function GlossaryBrowser({
         <TextInput
           type="search"
           label={messages.searchLabel}
+          placeholder={messages.searchPlaceholder}
+          size="lg"
           value={query}
           onChange={setQuery}
           startIcon={MagnifyingGlassIcon}

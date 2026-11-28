@@ -40,6 +40,7 @@ export default async function GlossaryPage() {
           messages={{
             title: messages.title,
             searchLabel: messages.searchLabel,
+            searchPlaceholder: messages.searchPlaceholder,
             found: messages.found,
             empty: messages.empty,
           }}

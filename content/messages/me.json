@@ -693,6 +693,7 @@
   "glossary": {
     "title": "Šta znači",
     "searchLabel": "Pretraži pojmove",
+    "searchPlaceholder": "npr. grooming, lažni profil, phishing",
     "found": "Pronađeno pojmova: {count}",
     "empty": "Nijedan pojam ne odgovara pretrazi „{query}“.",
     "allTerms": "Svi pojmovi"

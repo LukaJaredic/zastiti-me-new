@@ -1,6 +1,6 @@
 'use client';
 
-import {useEffect, useMemo, useState} from 'react';
+import {useState, useSyncExternalStore} from 'react';
 import {MagnifyingGlassIcon} from '@phosphor-icons/react';
 import {VStack} from '@astryxdesign/core/VStack';
 import {Heading, Text} from '@astryxdesign/core/Text';
@@ -28,6 +28,24 @@ function splitTerm(term: string): [string, string | null] {
 }
 
 /**
+ * The URL hash as an external store, read during render. Not CSS :target,
+ * which client-side navigation doesn't update. The server and the static
+ * HTML have no hash.
+ */
+function subscribeToHash(onChange: () => void) {
+  window.addEventListener('hashchange', onChange);
+  return () => window.removeEventListener('hashchange', onChange);
+}
+
+function readHash() {
+  return decodeURIComponent(window.location.hash.slice(1)) || null;
+}
+
+function noHash() {
+  return null;
+}
+
+/**
  * The glossary page's body, a split row: on the left the title, the search
  * field and the result count, on the right the terms under their first
  * letter. From tablets up the left side stays in view; on phones, where it
@@ -51,26 +69,15 @@ export function GlossaryBrowser({
 }) {
   const [query, setQuery] = useState('');
 
-  // The term a link arrived at (#slug) glows once (app/globals.css). Read
-  // from the hash rather than CSS :target, which client-side navigation
-  // doesn't update.
-  const [arrived, setArrived] = useState<string | null>(null);
-  useEffect(() => {
-    const read = () => setArrived(decodeURIComponent(window.location.hash.slice(1)) || null);
-    read();
-    window.addEventListener('hashchange', read);
-    return () => window.removeEventListener('hashchange', read);
-  }, []);
+  // The term a link arrived at (#slug) glows once (app/globals.css).
+  const arrived = useSyncExternalStore(subscribeToHash, readHash, noHash);
 
-  const indexed = useMemo(
-    () =>
-      items.map((item) => ({
-        ...item,
-        name: fold(item.term),
-        text: fold(item.definition),
-      })),
-    [items],
-  );
+  // React Compiler memoises this; no useMemo.
+  const indexed = items.map((item) => ({
+    ...item,
+    name: fold(item.term),
+    text: fold(item.definition),
+  }));
 
   const needle = fold(query.trim());
   const visible = needle

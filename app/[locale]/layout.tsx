@@ -11,7 +11,6 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { AudienceTheme } from "@/components/AudienceTheme";
 import { menuLinks, primaryLinks } from "@/components/siteNav";
 import { Providers } from "../providers";
-import { colorModeScript } from "@/components/colorModeScript";
 import { getDictionary, getLocale } from "./dictionaries";
 
 // One family, Onest, for headings and text. Latin Extended covers š, đ, č,
@@ -49,9 +48,10 @@ export default async function RootLayout({
   return (
     // data-astryx-theme: the theme's tokens (page paper, Onest) are scoped
     // to it. The root Theme only copies it here after hydration, so <body>
-    // painted in Astryx's defaults until then. data-theme is set before the
-    // first paint by colorModeScript, from the reader's saved pick, hence
-    // suppressHydrationWarning.
+    // painted in Astryx's defaults until then.
+    // suppressHydrationWarning: the script below adds data-theme before
+    // React hydrates, which React would report as a mismatch. It only
+    // covers <html>'s own attributes, not its children.
     <html
       lang={htmlLang[locale]}
       className={onest.variable}
@@ -59,7 +59,15 @@ export default async function RootLayout({
       suppressHydrationWarning
     >
       <head>
-        <script dangerouslySetInnerHTML={{ __html: colorModeScript }} />
+        {/* The reader's saved light/dark pick (components/ColorMode.tsx
+            keeps it under this key), applied before the first paint. Pages
+            are static, so the server can't render it; React only reads it
+            after hydration. Without a pick the page follows the OS. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{var m=localStorage.getItem("zastiti-color-mode");if(m==="light"||m==="dark")document.documentElement.setAttribute("data-theme",m)}catch(e){}`,
+          }}
+        />
       </head>
       <body>
         <Providers>

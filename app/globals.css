@@ -10,7 +10,7 @@
 
   /* The header's two bars (SiteHeader): the phone bar under 1024px, the
      full bar from 1024px. Chosen here, not in React, so the server's HTML
-     already has the right one. Keep 1024px in step with SiteHeader. */
+     already has the right one. */
   @media (width < 1024px) {
     [data-site-header="desktop"] {
       display: none;
@@ -23,8 +23,8 @@
     }
   }
 
-  /* Light/dark before hydration. colorModeScript sets the saved pick on
-     <html> before the first paint; a Theme wrapper following the system
+  /* Light/dark before hydration. The root layout's inline script sets the
+     saved pick on <html> before the first paint; a Theme wrapper following the system
      (no data-theme of its own) takes it from there. After hydration every
      wrapper carries the pick itself and this changes nothing. */
   html[data-theme="light"] [data-astryx-theme]:not([data-theme]) {

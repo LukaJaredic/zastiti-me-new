@@ -3,7 +3,6 @@
 import {useEffect} from 'react';
 import {usePathname} from 'next/navigation';
 import {TranslateIcon, WarningCircleIcon} from '@phosphor-icons/react';
-import {useMediaQuery} from '@astryxdesign/core/hooks';
 import {TopNav, TopNavItem} from '@astryxdesign/core/TopNav';
 import {HStack} from '@astryxdesign/core/HStack';
 import {Button} from '@astryxdesign/core/Button';
@@ -33,8 +32,6 @@ export type HeaderContent = {
 };
 
 const menuId = 'site-menu';
-/** Keep in step with the data-site-header rules in app/globals.css. */
-const desktopQuery = '(width >= 1024px)';
 
 /**
  * The site header: the logo and four plain words on the left, read as one
@@ -57,7 +54,6 @@ export function SiteHeader({
   content: HeaderContent;
 }) {
   const pathname = usePathname();
-  const isDesktop = useMediaQuery(desktopQuery);
   // The menu's state is shared by both languages' headers (menuState), so
   // a language switch from the menu arrives with the menu still open. Any
   // other change of page closes it.
@@ -65,11 +61,6 @@ export function SiteHeader({
   useEffect(() => {
     menuState.arrivedAt(pathname);
   }, [pathname]);
-  // The sheet belongs to the phone bar: widening the window past it closes
-  // it, as unmounting the phone bar used to.
-  useEffect(() => {
-    if (isDesktop) menuState.close();
-  }, [isDesktop]);
   const home = `/${locale}`;
 
   // The same page in the other language.

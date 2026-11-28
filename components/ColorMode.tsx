@@ -2,17 +2,18 @@
 
 import {createContext, use, useCallback, useSyncExternalStore} from 'react';
 import type {ReactNode} from 'react';
-import {colorModeKey} from './colorModeScript';
 
 /**
  * The reader's light/dark choice. "system" follows the OS until they pick
  * one; the pick is remembered in localStorage. Pages are static, so the
  * server always renders "system" and React applies a stored pick on
- * hydration. colorModeScript applies it earlier, before the first paint.
+ * hydration. An inline script in the root layout applies it earlier,
+ * before the first paint.
  */
 export type ColorMode = 'system' | 'light' | 'dark';
 
-const KEY = colorModeKey;
+// The inline script in app/[locale]/layout.tsx reads the same key.
+const KEY = 'zastiti-color-mode';
 const listeners = new Set<() => void>();
 
 function readStored(): ColorMode {
